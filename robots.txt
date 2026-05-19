@@ -1,0 +1,7 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+
+# Direct them to your sitemap
+Sitemap: https://www.yourdomain.com/sitemap.xml
