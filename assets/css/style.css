@@ -1,12 +1,26 @@
 body {
-    background: red;
+    background: rgb(243, 240, 240);
 }
 
 .dashboard {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 1rem;
-    border: 3px solid red;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    flex-wrap: wrap;               
+    gap: 20px;
+}
+
+.main-nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .move-panel {
