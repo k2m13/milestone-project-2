@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <nav class="main-nav">
+        <nav class="main-nav" aria-label="Main navigation">
             <a class="nav-link nav-link--active" href="#play">Play</a>
             <a class="nav-link" href="#ranked">Ranked</a>
             <a class="nav-link" href="#stats">Stats</a>
@@ -38,7 +38,7 @@
 
         <section id="play" class="move-panel panel">
             <h2 class="panel-title">Choose Your Move</h2>
-            <p class="panel-subtitle">Make your move!</p>
+            <p class="panel-subtitle">Make your move against the computer.</p>
 
             <div class="move-grid">
                 <button class="move-card move-card--rock" data-choice="rock">Rock</button>
@@ -49,7 +49,7 @@
             </div>
         </section>
 
-        <section class="battle-panel panel">
+        <section class="battle-panel panel" aria-live="polite">
             <h2 class="panel-title">Round <span id="round-number">1</span></h2>
 
             <div class="battle-area">
@@ -113,19 +113,21 @@
             <div class="history-list" id="history-list"></div>
         </section>
 
-        <section class="frequency-panel panel">
+        <!-- <section class="frequency-panel panel">
             <h2 class="panel-title">Move Frequency</h2>
             <div class="frequency-chart" id="frequency-chart"></div>
             <ul class="frequency-list" id="frequency-list"></ul>
-        </section>
+        </section> -->
 
-        <section class="player-panel panel">
+        <!-- <section class="player-panel panel">
             <div class="player-avatar"></div>
             <p class="player-welcome">Welcome back,</p>
             <p class="player-name">Kamil</p>
-        </section>
+        </section> -->
 
-        <section class="summary-panel panel">
+        <section id="stats" class="summary-panel panel">
+            <h2 class="panel-title">Stats</h2>
+
             <div class="summary-item">
                 <p class="summary-label">Total Rounds</p>
                 <p class="summary-value" id="total-rounds">0</p>
@@ -149,6 +151,28 @@
             </div>
             <p class="progress-score">1250 / 1500</p>
         </section> -->
+
+        <section id="how-to-play" class="rules-panel panel">
+            <h2 class="panel-title">How to Play</h2>
+
+            <p>
+                Choose Rock, Paper, Scissors, Lizard, or Spock. The computer will
+                choose at random. The winner is decided by the official rules.
+            </p>
+
+            <ul class="rules-list">
+                <li>Scissors cuts Paper</li>
+                <li>Paper covers Rock</li>
+                <li>Rock crushes Lizard</li>
+                <li>Lizard poisons Spock</li>
+                <li>Spock smashes Scissors</li>
+                <li>Scissors decapitates Lizard</li>
+                <li>Lizard eats Paper</li>
+                <li>Paper disproves Spock</li>
+                <li>Spock vaporises Rock</li>
+                <li>Rock crushes Scissors</li>
+            </ul>
+        </section>
 
     </main>
 

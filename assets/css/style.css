@@ -23,17 +23,21 @@ body {
     flex-wrap: wrap;
 }
 
-.move-panel {
-    background: blue;
-    min-height: 200px;
+.battle-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
 }
 
-.battle-panel {
-    background: green;
-    min-height: 200px;
+.choice-display {
+    display: flex;
+    flex-direction: column; /* Stacks player label above their chosen token */
+    align-items: center;
 }
 
-.score-panel {
-    background: purple;
-    min-height: 200px;
+.move-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
 }
