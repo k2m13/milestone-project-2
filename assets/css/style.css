@@ -1,5 +1,11 @@
 body {
     background: rgb(243, 240, 240);
+    font-family: "Inter", sans-serif;
+}
+
+.site-title,
+.panel-title {
+    font-family: "Orbitron", sans-serif;
 }
 
 .dashboard {
