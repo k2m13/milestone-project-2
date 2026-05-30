@@ -1,0 +1,25 @@
+body {
+    background: red;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+    border: 3px solid red;
+}
+
+.move-panel {
+    background: blue;
+    min-height: 200px;
+}
+
+.battle-panel {
+    background: green;
+    min-height: 200px;
+}
+
+.score-panel {
+    background: purple;
+    min-height: 200px;
+}
