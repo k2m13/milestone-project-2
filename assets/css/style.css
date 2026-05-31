@@ -1,6 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Colour Variables */
+:root {
+    --color-background: #051122;
+    --color-surface: rgba(255, 255, 255, 0.08);
+    --color-border: rgba(255, 255, 255, 0.25);
+    --color-text: #ffffff;
+    --color-muted: #c7d2df;
+    --color-cyan: #06c6b5;
+    --color-purple: #63036a;
+}
+
+/* Base Styles */
 body {
-    background: rgb(243, 240, 240);
+    min-height: 100vh;
     font-family: "Inter", sans-serif;
+    color: var(--color-text);
+    background: var(--color-background);
 }
 
 .site-title,
@@ -8,42 +28,21 @@ body {
     font-family: "Orbitron", sans-serif;
 }
 
+/* Temporary Layout Visualisation */
+.site-header,
+.panel {
+    border: 1px solid var(--color-border);
+    padding: 1rem;
+    margin: 1rem;
+}
+
 .dashboard {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
 }
 
-.site-header {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    flex-wrap: wrap;               
-    gap: 20px;
-}
-
-.main-nav {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.battle-area {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.choice-display {
-    display: flex;
-    flex-direction: column; /* Stacks player label above their chosen token */
-    align-items: center;
-}
-
-.move-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 12px;
+.battle-panel {
+    grid-column: 2;
+    grid-row: span 2;
 }
