@@ -36,130 +36,93 @@
             <a class="nav-link" href="#settings">Settings</a>
         </nav>
 
-        <!-- <div class="rank-panel">
-            <p class="rank-label">Rank</p>
-            <p class="rank-title">Strategist</p>
-            <p class="rank-score">1250</p>
-        </div> -->
     </header>
 
-    <main class="dashboard">
+    <main class="app-container">
+        <section id="play-screen">
+            <section id="play" class="move-panel panel">
+                <h2 class="panel-title">Choose Your Move</h2>
+                <p class="panel-subtitle">Make your move against the computer.</p>
 
-        <section id="play" class="move-panel panel">
-            <h2 class="panel-title">Choose Your Move</h2>
-            <p class="panel-subtitle">Make your move against the computer.</p>
+                <div class="move-grid">
+                    <button class="move-card move-card--rock" data-choice="rock">Rock</button>
+                    <button class="move-card move-card--paper" data-choice="paper">Paper</button>
+                    <button class="move-card move-card--scissors" data-choice="scissors">Scissors</button>
+                    <button class="move-card move-card--lizard" data-choice="lizard">Lizard</button>
+                    <button class="move-card move-card--spock" data-choice="spock">Spock</button>
+                </div>
+            </section>
 
-            <div class="move-grid">
-                <button class="move-card move-card--rock" data-choice="rock">Rock</button>
-                <button class="move-card move-card--paper" data-choice="paper">Paper</button>
-                <button class="move-card move-card--scissors" data-choice="scissors">Scissors</button>
-                <button class="move-card move-card--lizard" data-choice="lizard">Lizard</button>
-                <button class="move-card move-card--spock" data-choice="spock">Spock</button>
-            </div>
-        </section>
+            <section class="battle-panel panel" aria-live="polite">
+                <h2 class="panel-title">Round <span id="round-number">1</span></h2>
 
-        <section class="battle-panel panel" aria-live="polite">
-            <h2 class="panel-title">Round <span id="round-number">1</span></h2>
+                <div class="battle-area">
+                    <div class="choice-display choice-display--player">
+                        <h3 class="choice-title">You</h3>
+                        <div class="choice-token" id="player-choice">?</div>
+                    </div>
 
-            <div class="battle-area">
-                <div class="choice-display choice-display--player">
-                    <h3 class="choice-title">You</h3>
-                    <div class="choice-token" id="player-choice">?</div>
+                    <div class="versus-token">VS</div>
+
+                    <div class="choice-display choice-display--computer">
+                        <h3 class="choice-title">Computer</h3>
+                        <div class="choice-token" id="computer-choice">?</div>
+                    </div>
                 </div>
 
-                <div class="versus-token">VS</div>
-
-                <div class="choice-display choice-display--computer">
-                    <h3 class="choice-title">Computer</h3>
-                    <div class="choice-token" id="computer-choice">?</div>
+                <div class="result-box">
+                    <p class="result-message" id="result-message">Choose your move!</p>
+                    <p class="result-rule" id="result-rule"></p>
+                    <button class="next-round-button">Next Round</button>
                 </div>
-            </div>
+            </section>
 
-            <div class="result-box">
-                <p class="result-message" id="result-message">Choose your move!</p>
-                <p class="result-rule" id="result-rule"></p>
-                <button class="next-round-button">Next Round</button>
-            </div>
-        </section>
+            <section class="score-panel panel">
+                <h2 class="panel-title">Scoreboard</h2>
 
-        <!-- <section class="analysis-panel panel">
-            <h2 class="panel-title">AI Pattern Analysis</h2>
+                <div class="scoreboard">
+                    <div class="score-card score-card--player">
+                        <p class="score-label">You</p>
+                        <p class="score-value" id="player-score">0</p>
+                    </div>
 
-            <div class="analysis-card">
-                <p class="analysis-label">Most Used Move</p>
-                <p class="analysis-value" id="most-used-move">-</p>
+                    <div class="score-divider">VS</div>
 
-                <p class="analysis-label">AI Confidence</p>
-                <p class="analysis-value" id="ai-confidence">-</p>
-
-                <p class="analysis-label">Suggested Counter</p>
-                <p class="analysis-value" id="suggested-counter">-</p>
-            </div>
-        </section> -->
-
-        <section class="score-panel panel">
-            <h2 class="panel-title">Scoreboard</h2>
-
-            <div class="scoreboard">
-                <div class="score-card score-card--player">
-                    <p class="score-label">You</p>
-                    <p class="score-value" id="player-score">0</p>
+                    <div class="score-card score-card--computer">
+                        <p class="score-label">Computer</p>
+                        <p class="score-value" id="computer-score">0</p>
+                    </div>
                 </div>
 
-                <div class="score-divider">VS</div>
+                <p class="match-format">Best of 15 rounds</p>
+            </section>
 
-                <div class="score-card score-card--computer">
-                    <p class="score-label">Computer</p>
-                    <p class="score-value" id="computer-score">0</p>
+            <section class="history-panel panel">
+                <h2 class="panel-title">Round History</h2>
+                <div class="history-list" id="history-list"></div>
+            </section>
+
+
+            <section id="stats" class="summary-panel panel">
+                <h2 class="panel-title">Stats</h2>
+
+                <div class="summary-item">
+                    <p class="summary-label">Total Rounds</p>
+                    <p class="summary-value" id="total-rounds">0</p>
                 </div>
-            </div>
 
-            <p class="match-format">Best of 15 rounds</p>
+                <div class="summary-item">
+                    <p class="summary-label">Win Rate</p>
+                    <p class="summary-value" id="win-rate">0%</p>
+                </div>
+
+                <div class="summary-item">
+                    <p class="summary-label">Current Streak</p>
+                    <p class="summary-value" id="current-streak">0</p>
+                </div>
+            </section>
+
         </section>
-
-        <section class="history-panel panel">
-            <h2 class="panel-title">Round History</h2>
-            <div class="history-list" id="history-list"></div>
-        </section>
-
-        <!-- <section class="frequency-panel panel">
-            <h2 class="panel-title">Move Frequency</h2>
-            <div class="frequency-chart" id="frequency-chart"></div>
-            <ul class="frequency-list" id="frequency-list"></ul>
-        </section> -->
-
-        <!-- <section class="player-panel panel">
-            <div class="player-avatar"></div>
-            <p class="player-welcome">Welcome back,</p>
-            <p class="player-name">Kamil</p>
-        </section> -->
-
-        <section id="stats" class="summary-panel panel">
-            <h2 class="panel-title">Stats</h2>
-
-            <div class="summary-item">
-                <p class="summary-label">Total Rounds</p>
-                <p class="summary-value" id="total-rounds">0</p>
-            </div>
-
-            <div class="summary-item">
-                <p class="summary-label">Win Rate</p>
-                <p class="summary-value" id="win-rate">0%</p>
-            </div>
-
-            <div class="summary-item">
-                <p class="summary-label">Current Streak</p>
-                <p class="summary-value" id="current-streak">0</p>
-            </div>
-        </section>
-
-        <!-- <section class="rank-progress-panel panel">
-            <h2 class="panel-title">Rank Progress</h2>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <p class="progress-score">1250 / 1500</p>
-        </section> -->
 
         <section id="how-to-play" class="rules-panel panel">
             <h2 class="panel-title">How to Play</h2>
