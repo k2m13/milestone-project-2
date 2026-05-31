@@ -56,13 +56,6 @@ body {
     min-height: 250px;
 }
 
-.dashboard {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 1rem;
-    padding: 1rem;
-    align-items: start;
-}
 
 .battle-panel {
     grid-column: 2;
@@ -86,5 +79,13 @@ body {
 }
 
 #play-screen {
+    display: none;
+}
+
+.active-screen {
     display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: start;
 }
