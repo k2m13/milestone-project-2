@@ -20,7 +20,19 @@ body {
     min-height: 100vh;
     font-family: "Inter", sans-serif;
     color: var(--color-text);
-    background: var(--color-background);
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(0, 255, 255, 0.45),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(176, 38, 255, 0.45),
+            transparent 40%
+        ),
+        var(--color-background);
+    background-attachment: fixed;
 }
 
 .site-title,
@@ -46,3 +58,4 @@ body {
     grid-column: 2;
     grid-row: span 2;
 }
+
