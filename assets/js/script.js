@@ -6,6 +6,6 @@ console.log(screens);
 
 navLinks.forEach(function (link) {
     link.addEventListener("click", function () {
-        console.log("Nav link clicked");
+        console.log(link.textContent);
     });
 });
