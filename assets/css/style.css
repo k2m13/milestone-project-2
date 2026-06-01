@@ -62,17 +62,24 @@ body {
     grid-row: span 2;
 }
 
+.brand-panel {
+    flex-shrink: 0;
+}
+
 .main-nav {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .nav-link {
     color: var(--color-text);
     text-decoration: none;
-    padding: 0.6rem 1rem;
     border-radius: 999px;
     transition: all 0.3s ease;
+    padding: 0.5rem 0.8rem;
+    border-radius: 999px;
 }
 
 .nav-link:hover,
@@ -85,10 +92,6 @@ body {
 /* Screen Management */
 
 .screen {
-    display: none;
-}
-
-#play-screen {
     display: none;
 }
 
@@ -157,3 +160,4 @@ body {
 .move-card--spock {
     grid-column: span 2;
 }
+
