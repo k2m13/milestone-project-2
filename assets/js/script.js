@@ -18,5 +18,10 @@ navLinks.forEach(function (link) {
     });
     const targetScreen = document.querySelector(screenId);
     targetScreen.classList.add("active-screen");
+
+    navLinks.forEach(function (navLink) {
+      navLink.classList.remove("nav-link--active");
+    });
+    link.classList.add("nav-link--active");
   });
 });

@@ -72,6 +72,10 @@ body {
     text-decoration: none;
 }
 
+.nav-link--active {
+    color: var(--color-cyan);
+}
+
 /* Screen Management */
 
 .screen {
