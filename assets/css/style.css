@@ -216,3 +216,26 @@ body {
     margin-top: 0.5rem;
     color: var(--color-muted);
 }
+
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.score-card {
+    text-align: center;
+}
+
+.score-value {
+    font-family: "Orbitron", sans-serif;
+    font-size: 3rem;
+    color: var(--color-cyan);
+}
+
+.score-divider {
+    font-family: "Orbitron", sans-serif;
+    font-size: 2rem;
+    color: var(--color-muted);
+}
