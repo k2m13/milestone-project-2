@@ -119,3 +119,41 @@ body {
 .panel {
     background: rgba(255, 255, 255, 0.08);
 }
+
+/* Move Cards */
+
+.move-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.move-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+
+    color: var(--color-text);
+    font-family: "Orbitron", sans-serif;
+    font-size: 1rem;
+
+    padding: 1.5rem;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.move-card:hover {
+    transform: translateY(-3px);
+
+    border-color: var(--color-cyan);
+
+    box-shadow:
+        0 0 15px rgba(6, 198, 181, 0.35),
+        0 0 30px rgba(6, 198, 181, 0.15);
+}
+
+.move-card--spock {
+    grid-column: span 2;
+}
