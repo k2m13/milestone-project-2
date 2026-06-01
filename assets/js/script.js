@@ -1,3 +1,7 @@
+// ====================
+// Navigation System  |
+// ====================
+
 const navLinks = document.querySelectorAll(".nav-link");
 const screens = document.querySelectorAll(".screen");
 
@@ -25,3 +29,25 @@ navLinks.forEach(function (link) {
     link.classList.add("nav-link--active");
   });
 });
+
+// ====================
+// Game State         |
+// ====================
+
+let playerMove = "";
+let computerMove = "";
+
+let roundNumber = 1;
+
+let playerScore = 0;
+let computerScore = 0;
+
+const moveList = ["rock", "paper", "scissors", "lizard", "spock"];
+
+const winningMoves = {
+  rock: ["scissors", "lizard"],
+  paper: ["rock", "spock"],
+  scissors: ["paper", "lizard"],
+  lizard: ["spock", "paper"],
+  spock: ["scissors", "rock"]
+};
