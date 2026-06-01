@@ -1,9 +1,8 @@
 # Mindgame: Rock • Paper • Scissors • Lizard • Spock
-* Introduction
-* Idea
+* [Introduction](#introduction)
+* [Idea](#idea)
 
 ## 1. User Experience UX (5 plains of UX desing: surface, skeleton, structure, scope, strategy)
-* Idea
 * Project Goals
 * Player Goals
 * Developer
@@ -58,16 +57,16 @@
 * Code
 * Acknowledgements
 
-## 7. Licence
+## 7. [Licence](#licence)
 
-Introduction
+# Introduction
 
 MindGame is a browser-based implementation of Rock, Paper, Scissors, Lizard, Spock, developed as part of the Code Institute Level 5 Diploma in Web Application Development. The project combines strategic gameplay, modern web technologies, and a futuristic user interface inspired by glassmorphism and science-fiction aesthetics.
 
 The application allows players to compete against a computer opponent while tracking scores, analysing gameplay patterns, and developing winning strategies.
 
 
-Idea
+# Idea
 
 Rock, Paper, Scissors, Lizard, Spock is an extension of the traditional game of Rock, Paper, Scissors, popularised by the television series The Big Bang Theory. Two additional hand signs are introduced: Lizard (represented by a hand puppet gesture) and Spock (represented by the Vulcan salute).
 
@@ -210,3 +209,149 @@ The following features were considered but are outside the scope of the current 
 >While the core project focuses on creating a polished and accessible implementation of Rock, Paper, Scissors, Lizard, Spock, the longer-term vision for MindGame is to evolve into a strategic browser game that analyses player behaviour and adapts to individual playing styles.
 
 Favicon from Magnific(https://www.magnific.com/icon/creativity_15557951#fromView=search&page=1&position=3&uuid=e59fb263-67ba-4c6e-9098-a6b2811f5241)
+
+## JavaScript Engine Plan
+
+### Variables
+
+- `playerMove` — stores the move selected by the player.
+- `computerMove` — stores the move randomly selected by the computer.
+- `roundNumber` — tracks the current round.
+- `playerScore` — tracks the player's score.
+- `computerScore` — tracks the computer's score.
+- `totalRounds` — tracks the number of completed rounds.
+- `wins` — tracks player wins.
+- `losses` — tracks player losses.
+- `draws` — tracks drawn rounds.
+- `currentStreak` — tracks consecutive player wins.
+
+### Arrays
+
+- `moveList` — stores the five possible moves: rock, paper, scissors, lizard, spock.
+- `roundHistory` — stores previous round results.
+
+### Objects
+
+- `winningMoves` — stores which moves beat which other moves.
+- `moveFrequency` — stores how often the player chooses each move.
+- `ruleMessages` — stores the explanation for each winning combination.
+
+### Functions
+
+- `getComputerMove()` — randomly selects a computer move.
+- `playRound(playerMove)` — runs one complete round.
+- `determineWinner(playerMove, computerMove)` — compares both moves and returns win, lose, or draw.
+- `updateScores(result)` — updates player and computer scores.
+- `updateRoundStats(result)` — updates total rounds, wins, losses, draws, streak, and win rate.
+- `updateMoveFrequency(playerMove)` — records how often the player uses each move.
+- `displayChoices(playerMove, computerMove)` — displays both selected moves.
+- `displayResult(result, playerMove, computerMove)` — displays the round result message.
+- `addRoundToHistory(roundData)` — stores the round result in the history array.
+- `renderHistory()` — displays round history on the page.
+- `renderStats()` — updates total rounds, win rate, and current streak.
+- `resetBattlePanel()` — resets the visible battle area.
+- `resetGame()` — resets scores, rounds, history, and statistics.
+
+### Event Listeners
+
+- Navigation click listeners for Play, Rank, Rules, and Settings.
+- Move button click listeners for Rock, Paper, Scissors, Lizard, and Spock.
+- Optional keyboard listeners for accessibility:
+  - `r` = Rock
+  - `p` = Paper
+  - `s` = Scissors
+  - `l` = Lizard
+  - `c` = Spock
+  - `Escape` = return to Play or close overlays
+  - Arrow keys or Tab for navigation support where appropriate.
+
+### Game Loop
+
+1. Player selects a move.
+2. Computer randomly selects a move.
+3. Both choices are displayed.
+4. Winner is determined.
+5. Scoreboard is updated.
+6. Round history is updated.
+7. Statistics are recalculated.
+8. Round number increases.
+9. Player can continue by choosing another move or reset the game.
+
+### Score System
+
+- Player gains 1 point for a win.
+- Computer gains 1 point for a loss.
+- No points are awarded for a draw.
+- The game can be played until a set round limit, for example 15 rounds.
+
+### History System
+
+Each completed round should store:
+
+- Round number.
+- Player move.
+- Computer move.
+- Result.
+- Rule explanation.
+
+Example:
+
+```javascript
+{
+  round: 1,
+  playerMove: "rock",
+  computerMove: "scissors",
+  result: "win",
+  rule: "Rock crushes Scissors"
+}
+```
+
+### Statistics System
+
+The statistics system should calculate:
+
+- Total rounds played.
+- Player win rate.
+- Current winning streak.
+- Most frequently selected move.
+- Move frequency for each option.
+- Win Condition
+
+The game should check the `winningMoves` object.
+
+```javascript
+const winningMoves = {
+  rock: ["scissors", "lizard"],
+  paper: ["rock", "spock"],
+  scissors: ["paper", "lizard"],
+  lizard: ["spock", "paper"],
+  spock: ["scissors", "rock"]
+};
+```
+
+If `winningMoves[playerMove].includes(computerMove)` is true, the player wins.
+If both moves are the same, the round is a draw. Otherwise, the computer wins.
+
+7. # Licence
+
+MIT Licence
+
+Copyright (c) [2026] [Kamil Sterniczuk, k2m13]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
