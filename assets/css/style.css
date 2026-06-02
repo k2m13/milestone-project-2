@@ -1,3 +1,5 @@
+/* CSS reset removes default browser settings */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -79,7 +81,6 @@ body {
     border-radius: 999px;
     transition: all 0.3s ease;
     padding: 0.5rem 0.8rem;
-    border-radius: 999px;
 }
 
 .nav-link:hover,

@@ -30,9 +30,9 @@ navLinks.forEach(function (link) {
   });
 });
 
-// ====================
-// Game State         |
-// ====================
+// =====================
+// Game State Variables|
+// =====================
 
 let playerMove = "";
 let computerMove = "";
@@ -48,6 +48,52 @@ const winningMoves = {
   rock: ["scissors", "lizard"],
   paper: ["rock", "spock"],
   scissors: ["paper", "lizard"],
-  lizard: ["spock", "paper"],
-  spock: ["scissors", "rock"]
+  lizard: ["paper", "spock"],
+  spock: ["rock", "scissors"]
 };
+
+// ====================
+// DOM References      |
+// ====================
+
+const moveButtons = document.querySelectorAll(".move-card");
+
+const playerChoiceDisplay = document.getElementById("player-choice");
+const computerChoiceDisplay = document.getElementById("computer-choice");
+
+const resultMessage = document.getElementById("result-message");
+const resultRule = document.getElementById("result-rule");
+
+const playerScoreDisplay = document.getElementById("player-score");
+const computerScoreDisplay = document.getElementById("computer-score");
+
+const roundNumberDisplay = document.getElementById("round-number");
+
+const nextRoundButton = document.getElementById("next-round-button");
+
+// ====================
+// Computer Move       |
+// ====================
+
+function getComputerMove() {
+  const randomIndex = Math.floor(Math.random() * moveList.length);
+  return moveList[randomIndex];
+}
+
+console.log(getComputerMove());
+
+// ====================
+// Determine Winner    |
+// ====================
+
+function determineWinner(playerMove, computerMove) {
+  if (playerMove === computerMove) {
+    return "draw";
+  }
+
+  if (winningMoves[playerMove].includes(computerMove)) {
+    return "player";
+  }
+
+  return "computer";
+}

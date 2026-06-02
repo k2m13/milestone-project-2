@@ -2,35 +2,28 @@
 * [Introduction](#introduction)
 * [Idea](#idea)
 
-## 1. User Experience UX (5 plains of UX desing: surface, skeleton, structure, scope, strategy)
-* Project Goals
-* Player Goals
-* Developer
-* Business Goals
-* User Stories
-
-
+## 1. [User Experience](#1-user-experience)
 ### Strategy Plane
-- Project Goals
-- Player Goals
-- Developer Goals
-- Business Goals
+* [Project Goals](#project-goals)
+* [Player Goals](#player-goals)
+* [Developer Goals](#developer-goals)
+* [Business Goals](#business-goals)
 
 ### Scope Plane
-- User Stories
-- MoSCoW Prioritisation
+* User Stories
+* MoSCoW Prioritisation
 
 ### Structure Plane
-- Site Structure
-- User Flow
+* Site Structure
+* User Flow
 
 ### Skeleton Plane
-- Wireframes
+* Wireframes
 
 ### Surface Plane
-- Colour Palette
-- Typography
-- Visual Design
+* Colour Palette
+* Typography
+* Visual Design
 
 * Design Choices
 * Wireframes
@@ -59,14 +52,14 @@
 
 ## 7. [Licence](#licence)
 
-# Introduction
+## Introduction
 
 MindGame is a browser-based implementation of Rock, Paper, Scissors, Lizard, Spock, developed as part of the Code Institute Level 5 Diploma in Web Application Development. The project combines strategic gameplay, modern web technologies, and a futuristic user interface inspired by glassmorphism and science-fiction aesthetics.
 
 The application allows players to compete against a computer opponent while tracking scores, analysing gameplay patterns, and developing winning strategies.
 
 
-# Idea
+## Idea
 
 Rock, Paper, Scissors, Lizard, Spock is an extension of the traditional game of Rock, Paper, Scissors, popularised by the television series The Big Bang Theory. Two additional hand signs are introduced: Lizard (represented by a hand puppet gesture) and Spock (represented by the Vulcan salute).
 
@@ -87,17 +80,17 @@ The game is played by two opponents who simultaneously choose one of the five av
   <img src="assets/readme/RockPaperScissorsLizardSpock.jpg" width="350" alt="Rules Diagram">
 </p>
 
-UX 
+1. ## User Experience 
 
 The UX section describes the design process, planning, and the idea behind Mindgame, taking into consideration user needs, accessibility and project goals.
 
-Project Goals
+### Project Goals
 
 MindGame aims to create an engaging and visually appealing browser-based implementation of Rock, Paper, Scissors, Lizard, Spock. The project combines strategic gameplay with modern web design principles, including glassmorphism and futuristic user interface elements inspired by science fiction and cyberpunk aesthetics.
 
 The primary goal is to provide users with an enjoyable gaming experience while showcasing the use of HTML, CSS, and JavaScript to create an interactive web application. The project also aims to encourage users to think strategically by presenting statistics, gameplay history, and behavioural insights based on their previous choices.
 
-Player Goals
+### Player Goals
 
 As a player I want to:
 
@@ -110,7 +103,7 @@ As a player I want to:
 * Enjoy a responsive experience across desktop, tablet and mobile devices.
 * Interact with a visually appealing and immersive game environment.
 
-Developer Goals
+### Developer Goals
 
 The developer aims to:
 
@@ -122,7 +115,7 @@ The developer aims to:
 * Practise version control using Git and GitHub through regular incremental commits.
 * Produce a professional portfolio project suitable for showcasing web development skills.
 
-Business Goals
+### Business Goals
 
 Although MindGame is an educational project, it has been designed as if it were a commercial browser game. Its business goals include:
 
@@ -132,7 +125,12 @@ Although MindGame is an educational project, it has been designed as if it were 
 * Creating a distinctive visual identity that differentiates the game from traditional Rock, * Paper, Scissors implementations.
 * Demonstrating features that could support future expansion, such as player accounts, ranked matches, achievements, and adaptive AI opponents.
 
-User Stories
+
+### MoSCoW Prioritisation
+
+The project requirements and planned features were prioritised using the MoSCoW framework to ensure that the core gameplay experience was delivered before additional enhancements.
+
+#### User Stories
 First-Time Visitor:
 * As a first-time visitor, I want to understand the rules quickly so that I can start playing immediately.
 * As a first-time visitor, I want the interface to be intuitive so that I do not need external instructions.
@@ -153,10 +151,6 @@ Site Owner
 * As the site owner, I want users to enjoy the game so that they remain engaged with the application.
 * As the site owner, I want the website to function correctly across different devices and browsers.
 * As the site owner, I want the codebase to be maintainable and scalable so that additional features can be implemented in future releases.
-
-### MoSCoW Prioritisation
-
-The project requirements and planned features were prioritised using the MoSCoW framework to ensure that the core gameplay experience was delivered before additional enhancements.
 
 #### Must Have
 
@@ -332,7 +326,7 @@ const winningMoves = {
 If `winningMoves[playerMove].includes(computerMove)` is true, the player wins.
 If both moves are the same, the round is a draw. Otherwise, the computer wins.
 
-7. # Licence
+7. ## Licence
 
 MIT Licence
 
