@@ -97,3 +97,34 @@ function determineWinner(playerMove, computerMove) {
 
   return "computer";
 }
+
+// ====================
+// Play Round          |
+// ====================
+
+function playRound(selectedMove) {
+  playerMove = selectedMove;
+  computerMove = getComputerMove();
+
+  const result = determineWinner(playerMove, computerMove);
+
+  playerChoiceDisplay.textContent = playerMove;
+  computerChoiceDisplay.textContent = computerMove;
+
+  resultMessage.textContent = result;
+
+  console.log(playerMove);
+  console.log(computerMove);
+  console.log(result);
+}
+
+// ====================
+// Move Button Events  |
+// ====================
+
+moveButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    const selectedMove = button.dataset.choice;
+    playRound(selectedMove);
+  });
+});
