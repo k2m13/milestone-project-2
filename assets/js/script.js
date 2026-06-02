@@ -108,6 +108,8 @@ function playRound(selectedMove) {
 
   const result = determineWinner(playerMove, computerMove);
 
+  updateScores(result);
+
   playerChoiceDisplay.textContent = playerMove;
   computerChoiceDisplay.textContent = computerMove;
 
@@ -128,3 +130,22 @@ moveButtons.forEach(function (button) {
     playRound(selectedMove);
   });
 });
+
+// ====================
+// Update Scores       |
+// ====================
+
+function updateScores(result) {
+
+  if (result === "player") {
+    playerScore++;
+  }
+
+  if (result === "computer") {
+    computerScore++;
+  }
+
+  playerScoreDisplay.textContent = playerScore;
+  computerScoreDisplay.textContent = computerScore;
+}
+
