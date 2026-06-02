@@ -141,6 +141,7 @@ function playRound(selectedMove) {
 
   updateScores(result);
   displayResult(result);
+  disableMoveButtons();
 
   playerChoiceDisplay.textContent = playerMove;
   computerChoiceDisplay.textContent = computerMove;
@@ -149,6 +150,27 @@ function playRound(selectedMove) {
   console.log(computerMove);
   console.log(result);
 }
+
+function resetBattlePanel() {
+  roundNumber++;
+
+  roundNumberDisplay.textContent = roundNumber;
+
+  playerChoiceDisplay.textContent = "?";
+  computerChoiceDisplay.textContent = "?";
+
+  resultMessage.textContent = "Choose your move!";
+  resultRule.textContent = "";
+
+  playerMove = "";
+  computerMove = "";
+
+  enableMoveButtons();
+}
+
+nextRoundButton.addEventListener("click", function () {
+  resetBattlePanel();
+});
 
 // ====================
 // Move Button Events  |
@@ -205,4 +227,20 @@ function displayResult(result) {
   resultRule.textContent =
     winningRules[computerMove][playerMove];
 
+}
+
+// ====================
+// Round Controls      |
+// ====================
+
+function disableMoveButtons() {
+  moveButtons.forEach(function (button) {
+    button.disabled = true;
+  });
+}
+
+function enableMoveButtons() {
+  moveButtons.forEach(function (button) {
+    button.disabled = false;
+  });
 }
