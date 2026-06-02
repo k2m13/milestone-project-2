@@ -52,6 +52,37 @@ const winningMoves = {
   spock: ["rock", "scissors"]
 };
 
+// Winning Rules Object
+
+const winningRules = {
+
+  rock: {
+    scissors: "Rock crushes Scissors",
+    lizard: "Rock crushes Lizard"
+  },
+
+  paper: {
+    rock: "Paper covers Rock",
+    spock: "Paper disproves Spock"
+  },
+
+  scissors: {
+    paper: "Scissors cut Paper",
+    lizard: "Scissors decapitate Lizard"
+  },
+
+  lizard: {
+    paper: "Lizard eats Paper",
+    spock: "Lizard poisons Spock"
+  },
+
+  spock: {
+    rock: "Spock vaporises Rock",
+    scissors: "Spock smashes Scissors"
+  }
+
+};
+
 // ====================
 // DOM References      |
 // ====================
@@ -109,11 +140,10 @@ function playRound(selectedMove) {
   const result = determineWinner(playerMove, computerMove);
 
   updateScores(result);
+  displayResult(result);
 
   playerChoiceDisplay.textContent = playerMove;
   computerChoiceDisplay.textContent = computerMove;
-
-  resultMessage.textContent = result;
 
   console.log(playerMove);
   console.log(computerMove);
@@ -149,3 +179,30 @@ function updateScores(result) {
   computerScoreDisplay.textContent = computerScore;
 }
 
+function displayResult(result) {
+
+  if (result === "draw") {
+
+    resultMessage.textContent = "Draw!";
+    resultRule.textContent =
+      `Both selected ${playerMove}`;
+
+    return;
+  }
+
+  if (result === "player") {
+
+    resultMessage.textContent = "You Win!";
+
+    resultRule.textContent =
+      winningRules[playerMove][computerMove];
+
+    return;
+  }
+
+  resultMessage.textContent = "Computer Wins!";
+
+  resultRule.textContent =
+    winningRules[computerMove][playerMove];
+
+}
