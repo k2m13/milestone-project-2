@@ -42,6 +42,8 @@ let roundNumber = 1;
 let playerScore = 0;
 let computerScore = 0;
 
+let roundHistory = [];
+
 const moveList = ["rock", "paper", "scissors", "lizard", "spock"];
 
 const winningMoves = {
@@ -102,6 +104,8 @@ const roundNumberDisplay = document.getElementById("round-number");
 
 const nextRoundButton = document.getElementById("next-round-button");
 
+const historyList = document.getElementById("history-list");
+
 // ====================
 // Computer Move       |
 // ====================
@@ -141,6 +145,7 @@ function playRound(selectedMove) {
 
   updateScores(result);
   displayResult(result);
+  addRoundToHistory(result);
   disableMoveButtons();
 
   playerChoiceDisplay.textContent = playerMove;
@@ -243,4 +248,26 @@ function enableMoveButtons() {
   moveButtons.forEach(function (button) {
     button.disabled = false;
   });
+}
+
+// ====================
+// Round History       |
+// ====================
+
+function addRoundToHistory(result) {
+  const roundData = {
+    round: roundNumber,
+    player: playerMove,
+    computer: computerMove,
+    result: result
+  };
+
+  roundHistory.push(roundData);
+
+  const historyItem = document.createElement("p");
+
+  historyItem.textContent =
+    `Round ${roundData.round}: ${roundData.player} vs ${roundData.computer} - ${roundData.result}`;
+
+  historyList.prepend(historyItem);
 }
