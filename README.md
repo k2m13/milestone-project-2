@@ -165,6 +165,7 @@ These features are essential for the application to function as a playable game:
 * Player and computer score tracking.
 * Reset game functionality.
 * Rules and instructions section.
+* Casual mode: computer chooses a random move.
 
 #### Should Have
 
@@ -176,6 +177,11 @@ These features significantly improve the user experience but are not essential f
 * Win percentage calculations.
 * Visual animations and transitions.
 * Enhanced accessibility features.
+* Hard mode: computer analyses the player’s previous moves and tries to counter the most frequent one.
+    - 1. Look at player's previous moves.
+    - 2. Find the move the player uses most often.
+    - 3. Computer chooses a move that beats that move.
+    - 4. If there is no history yet, computer chooses randomly.
 
 #### Could Have
 
@@ -187,6 +193,7 @@ These features would provide additional engagement and replay value if time perm
 * AI-generated strategic recommendations.
 * Sound effects and background music.
 * Achievement and badge system.
+* Adaptive difficulty or 'AI confidence' messages.
 
 #### Won't Have (Current Release)
 
