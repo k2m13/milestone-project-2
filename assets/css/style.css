@@ -148,7 +148,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.move-card:hover {
+.move-card:not(:disabled):hover {
     transform: translateY(-3px);
 
     border-color: var(--color-cyan);
@@ -156,6 +156,13 @@ body {
     box-shadow:
         0 0 15px rgba(6, 198, 181, 0.35),
         0 0 30px rgba(6, 198, 181, 0.15);
+}
+
+.move-card:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 .move-card--spock {
