@@ -51,6 +51,8 @@ let currentStreak = 0;
 
 let roundHistory = [];
 
+let gameMode = "casual";
+
 const moveFrequency = {
   rock: 0,
   paper: 0,
@@ -138,6 +140,8 @@ const matchesLostDisplay = document.getElementById("matches-lost");
 
 const favouriteMoveDisplay = document.getElementById("favourite-move");
 
+const gameModeInputs = document.querySelectorAll('input[name="game-mode"]');
+
 // ====================
 // Computer Move       |
 // ====================
@@ -147,7 +151,41 @@ function getComputerMove() {
   return moveList[randomIndex];
 }
 
-console.log(getComputerMove());
+// Hard Mode
+function getHardComputerMove() {
+  let favouriteMove = "";
+  let highestCount = 0;
+
+  moveList.forEach(function (move) {
+    if (moveFrequency[move] > highestCount) {
+      highestCount = moveFrequency[move];
+      favouriteMove = move;
+    }
+  });
+
+  if (highestCount === 0) {
+    return getComputerMove();
+  }
+
+  const counterMoves = [];
+
+  moveList.forEach(function (move) {
+    if (winningMoves[move].includes(favouriteMove)) {
+      counterMoves.push(move);
+    }
+  });
+
+  const randomIndex = Math.floor(Math.random() * counterMoves.length);
+  return counterMoves[randomIndex];
+}
+
+function chooseComputerMove() {
+  if (gameMode === "hard") {
+    return getHardComputerMove();
+  }
+
+  return getComputerMove();
+}
 
 // ====================
 // Determine Winner    |
@@ -175,7 +213,7 @@ function playRound(selectedMove) {
   }
 
   playerMove = selectedMove;
-  computerMove = getComputerMove();
+  computerMove = chooseComputerMove();
 
   const result = determineWinner(playerMove, computerMove);
 
@@ -277,6 +315,12 @@ nextRoundButton.addEventListener("click", function () {
 
   roundPlayed = false;
   nextRoundButton.disabled = true;
+});
+
+gameModeInputs.forEach(function (input) {
+  input.addEventListener("change", function () {
+    gameMode = input.value;
+  });
 });
 
 // ====================
