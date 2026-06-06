@@ -149,6 +149,10 @@ function determineWinner(playerMove, computerMove) {
 // ====================
 
 function playRound(selectedMove) {
+  if (matchOver) {
+    return;
+  }
+
   playerMove = selectedMove;
   computerMove = getComputerMove();
 
@@ -157,15 +161,19 @@ function playRound(selectedMove) {
   updateScores(result);
   updateStats(result);
   displayResult(result);
-  checkMatchWinner();
   addRoundToHistory(result);
-  disableMoveButtons();
-
-  roundPlayed = true;
-  nextRoundButton.disabled = false;
 
   playerChoiceDisplay.textContent = playerMove;
   computerChoiceDisplay.textContent = computerMove;
+
+  checkMatchWinner();
+  disableMoveButtons();
+
+  roundPlayed = true;
+
+  if (!matchOver) {
+    nextRoundButton.disabled = false;
+  }
 
   console.log(playerMove);
   console.log(computerMove);
@@ -254,15 +262,26 @@ function displayResult(result) {
 }
 
 function checkMatchWinner() {
-  if (playerScore === winningScore) {
-    resultMessage.textContent = "🏆 You Win The Match!";
-    resultRule.textContent = "Final result: you defeated the computer.";
+  if (playerScore >= winningScore) {
+    resultMessage.textContent = "You Win The Match!";
+    resultRule.textContent = "Final result: you reached 8 wins first.";
     matchOver = true;
-  }
+  } else if (computerScore >= winningScore) {
+    resultMessage.textContent = "Computer Wins The Match!";
+    resultRule.textContent = "Final result: the computer reached 8 wins first.";
+    matchOver = true;
+  } else if (roundNumber >= 15) {
+    if (playerScore > computerScore) {
+      resultMessage.textContent = "You Win The Match!";
+      resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
+    } else if (computerScore > playerScore) {
+      resultMessage.textContent = "Computer Wins The Match!";
+      resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
+    } else {
+      resultMessage.textContent = "Match Draw!";
+      resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
+    }
 
-  if (computerScore === winningScore) {
-    resultMessage.textContent = "💀 Computer Wins The Match!";
-    resultRule.textContent = "Final result: the computer defeated you.";
     matchOver = true;
   }
 
