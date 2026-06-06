@@ -125,6 +125,9 @@ const highestStreakDisplay = document.getElementById("highest-streak");
 
 const rankHighestStreakDisplay = document.getElementById("rank-highest-streak");
 
+const matchesWonDisplay = document.getElementById("matches-won");
+const matchesLostDisplay = document.getElementById("matches-lost");
+
 // ====================
 // Computer Move       |
 // ====================
@@ -314,29 +317,36 @@ function displayResult(result) {
   resultRule.textContent = winningRules[computerMove][playerMove];
 }
 
+matchesWonDisplay.textContent = matchesWon;
+matchesLostDisplay.textContent = matchesLost;
+
 function checkMatchWinner() {
   if (playerScore >= winningScore) {
+  resultMessage.textContent = "You Win The Match!";
+  resultRule.textContent = "Final result: you reached 8 wins first.";
+  matchesWon++;
+  matchOver = true;
+} else if (computerScore >= winningScore) {
+  resultMessage.textContent = "Computer Wins The Match!";
+  resultRule.textContent = "Final result: the computer reached 8 wins first.";
+  matchesLost++;
+  matchOver = true;
+} else if (roundNumber >= 15) {
+  if (playerScore > computerScore) {
     resultMessage.textContent = "You Win The Match!";
-    resultRule.textContent = "Final result: you reached 8 wins first.";
-    matchOver = true;
-  } else if (computerScore >= winningScore) {
+    resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
+    matchesWon++;
+  } else if (computerScore > playerScore) {
     resultMessage.textContent = "Computer Wins The Match!";
-    resultRule.textContent = "Final result: the computer reached 8 wins first.";
-    matchOver = true;
-  } else if (roundNumber >= 15) {
-    if (playerScore > computerScore) {
-      resultMessage.textContent = "You Win The Match!";
-      resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
-    } else if (computerScore > playerScore) {
-      resultMessage.textContent = "Computer Wins The Match!";
-      resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
-    } else {
-      resultMessage.textContent = "Match Draw!";
-      resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
-    }
-
-    matchOver = true;
+    resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
+    matchesLost++;
+  } else {
+    resultMessage.textContent = "Match Draw!";
+    resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
   }
+
+  matchOver = true;
+}
 
   if (matchOver) {
     disableMoveButtons();
