@@ -339,3 +339,33 @@ body {
     color: var(--color-cyan);
     margin-top: 0.3rem;
 }
+
+/* Rules Screen */
+#rules-screen.active-screen {
+    display: block;
+    padding: 1rem;
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.rule-card {
+    padding: 1rem;
+    border-radius: 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.rule-card h3 {
+    font-family: "Orbitron", sans-serif;
+    color: var(--color-cyan);
+    margin-bottom: 0.5rem;
+}
+
+.rule-card p {
+    color: var(--color-muted);
+}
