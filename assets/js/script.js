@@ -201,7 +201,53 @@ function resetBattlePanel() {
   enableMoveButtons();
 }
 
+function startNewGame() {
+  playerScore = 0;
+  computerScore = 0;
+
+  totalRounds = 0;
+  currentStreak = 0;
+
+  roundNumber = 1;
+
+  matchOver = false;
+  roundPlayed = false;
+
+  playerMove = "";
+  computerMove = "";
+
+  roundHistory = [];
+
+  playerScoreDisplay.textContent = 0;
+  computerScoreDisplay.textContent = 0;
+
+  totalRoundsDisplay.textContent = 0;
+  winRateDisplay.textContent = "0%";
+  currentStreakDisplay.textContent = 0;
+
+  roundNumberDisplay.textContent = 1;
+
+  playerChoiceDisplay.textContent = "?";
+  computerChoiceDisplay.textContent = "?";
+
+  resultMessage.textContent = "Choose your move!";
+  resultRule.textContent = "";
+
+  historyList.innerHTML = "";
+
+  nextRoundButton.textContent = "Next Round";
+  nextRoundButton.disabled = true;
+
+  enableMoveButtons();
+}
+
 nextRoundButton.addEventListener("click", function () {
+
+  if (matchOver) {
+    startNewGame();
+    return;
+  }
+
   if (!roundPlayed) {
     return;
   }
@@ -288,6 +334,9 @@ function checkMatchWinner() {
   if (matchOver) {
     disableMoveButtons();
     nextRoundButton.disabled = true;
+
+    nextRoundButton.disabled = false;
+    nextRoundButton.textContent = "New Game";
   }
 }
 
