@@ -38,9 +38,13 @@ let playerMove = "";
 let computerMove = "";
 
 let roundNumber = 1;
+let roundPlayed = false;
 
 let playerScore = 0;
 let computerScore = 0;
+
+let totalRounds = 0;
+let currentStreak = 0;
 
 let roundHistory = [];
 
@@ -100,9 +104,15 @@ const resultRule = document.getElementById("result-rule");
 const playerScoreDisplay = document.getElementById("player-score");
 const computerScoreDisplay = document.getElementById("computer-score");
 
+const totalRoundsDisplay = document.getElementById("total-rounds");
+const winRateDisplay = document.getElementById("win-rate");
+const currentStreakDisplay = document.getElementById("current-streak");
+
 const roundNumberDisplay = document.getElementById("round-number");
 
 const nextRoundButton = document.getElementById("next-round-button");
+
+nextRoundButton.disabled = true;
 
 const historyList = document.getElementById("history-list");
 
@@ -144,9 +154,13 @@ function playRound(selectedMove) {
   const result = determineWinner(playerMove, computerMove);
 
   updateScores(result);
+  updateStats(result);
   displayResult(result);
   addRoundToHistory(result);
   disableMoveButtons();
+
+  roundPlayed = true;
+  nextRoundButton.disabled = false;
 
   playerChoiceDisplay.textContent = playerMove;
   computerChoiceDisplay.textContent = computerMove;
@@ -174,7 +188,14 @@ function resetBattlePanel() {
 }
 
 nextRoundButton.addEventListener("click", function () {
+  if (!roundPlayed) {
+    return;
+  }
+
   resetBattlePanel();
+
+  roundPlayed = false;
+  nextRoundButton.disabled = true;
 });
 
 // ====================
@@ -232,6 +253,22 @@ function displayResult(result) {
   resultRule.textContent =
     winningRules[computerMove][playerMove];
 
+}
+
+function updateStats(result) {
+  totalRounds++;
+
+  if (result === "player") {
+    currentStreak++;
+  } else {
+    currentStreak = 0;
+  }
+
+  const winRate = Math.round((playerScore / totalRounds) * 100);
+
+  totalRoundsDisplay.textContent = totalRounds;
+  winRateDisplay.textContent = `${winRate}%`;
+  currentStreakDisplay.textContent = currentStreak;
 }
 
 // ====================
