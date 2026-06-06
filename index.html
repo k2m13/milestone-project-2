@@ -194,8 +194,33 @@
         </section>
 
         <section id="settings-screen" class="screen">
-            <h2>Settings</h2>
-            <p>Coming soon...</p>
+            <section class="settings-panel panel">
+                <h2 class="panel-title">Settings</h2>
+
+                <p class="panel-subtitle">
+                    Choose how challenging you want the computer opponent to be.
+                </p>
+
+                <div class="setting-group">
+                    <h3 class="setting-title">Game Mode</h3>
+
+                    <label class="setting-option">
+                        <input type="radio" name="game-mode" value="casual" checked>
+                        <span>
+                            <strong>Casual Mode</strong>
+                            Computer chooses a random move.
+                        </span>
+                    </label>
+
+                    <label class="setting-option">
+                        <input type="radio" name="game-mode" value="hard" disabled>
+                        <span>
+                            <strong>Hard Mode</strong>
+                            Computer analyses your previous moves. Coming soon.
+                        </span>
+                    </label>
+                </div>
+            </section>
         </section>
 
     </main>

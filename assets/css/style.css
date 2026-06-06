@@ -369,3 +369,53 @@ body {
 .rule-card p {
     color: var(--color-muted);
 }
+
+/* Settings Screen */
+#settings-screen.active-screen {
+    display: block;
+    padding: 1rem;
+}
+
+.setting-group {
+    margin-top: 1rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.setting-title {
+    font-family: "Orbitron", sans-serif;
+    color: var(--color-cyan);
+}
+
+.setting-option {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+
+    padding: 1rem;
+    border-radius: 1rem;
+
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+
+    cursor: pointer;
+}
+
+.setting-option input {
+    margin-top: 0.25rem;
+}
+
+.setting-option strong {
+    display: block;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+}
+
+.setting-option span {
+    color: var(--color-muted);
+}
+
+.setting-option:has(input:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
