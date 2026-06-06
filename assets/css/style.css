@@ -419,3 +419,40 @@ body {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+/* Rank Screen */
+#rank-screen.active-screen {
+    display: block;
+    padding: 1rem;
+}
+
+.rank-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.rank-card {
+    padding: 1rem;
+    border-radius: 1rem;
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    text-align: center;
+}
+
+.rank-label {
+    color: var(--color-muted);
+}
+
+.rank-value {
+    margin-top: 0.5rem;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 2rem;
+
+    color: var(--color-cyan);
+}

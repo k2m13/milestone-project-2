@@ -123,6 +123,8 @@ const historyList = document.getElementById("history-list");
 
 const highestStreakDisplay = document.getElementById("highest-streak");
 
+const rankHighestStreakDisplay = document.getElementById("rank-highest-streak");
+
 // ====================
 // Computer Move       |
 // ====================
@@ -364,6 +366,7 @@ function updateStats(result) {
   winRateDisplay.textContent = `${winRate}%`;
   currentStreakDisplay.textContent = currentStreak;
   highestStreakDisplay.textContent = highestStreak;
+  rankHighestStreakDisplay.textContent = highestStreak;
 }
 
 // ====================
