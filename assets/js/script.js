@@ -51,6 +51,14 @@ let currentStreak = 0;
 
 let roundHistory = [];
 
+const moveFrequency = {
+  rock: 0,
+  paper: 0,
+  scissors: 0,
+  lizard: 0,
+  spock: 0
+};
+
 let matchesWon = 0;
 let matchesLost = 0;
 let highestStreak = 0;
@@ -128,6 +136,8 @@ const rankHighestStreakDisplay = document.getElementById("rank-highest-streak");
 const matchesWonDisplay = document.getElementById("matches-won");
 const matchesLostDisplay = document.getElementById("matches-lost");
 
+const favouriteMoveDisplay = document.getElementById("favourite-move");
+
 // ====================
 // Computer Move       |
 // ====================
@@ -172,6 +182,7 @@ function playRound(selectedMove) {
   updateScores(result);
   updateStats(result);
   displayResult(result);
+  updateFavouriteMove();
   addRoundToHistory(result);
 
   playerChoiceDisplay.textContent = playerMove;
@@ -377,6 +388,22 @@ function updateStats(result) {
   currentStreakDisplay.textContent = currentStreak;
   highestStreakDisplay.textContent = highestStreak;
   rankHighestStreakDisplay.textContent = highestStreak;
+}
+
+function updateFavouriteMove() {
+  moveFrequency[playerMove]++;
+
+  let favouriteMove = "";
+  let highestCount = 0;
+
+  moveList.forEach(function (move) {
+    if (moveFrequency[move] > highestCount) {
+      highestCount = moveFrequency[move];
+      favouriteMove = move;
+    }
+  });
+
+  favouriteMoveDisplay.textContent = favouriteMove;
 }
 
 // ====================
