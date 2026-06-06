@@ -40,6 +40,9 @@ let computerMove = "";
 let roundNumber = 1;
 let roundPlayed = false;
 
+const winningScore = 8;
+let matchOver = false;
+
 let playerScore = 0;
 let computerScore = 0;
 
@@ -55,38 +58,36 @@ const winningMoves = {
   paper: ["rock", "spock"],
   scissors: ["paper", "lizard"],
   lizard: ["paper", "spock"],
-  spock: ["rock", "scissors"]
+  spock: ["rock", "scissors"],
 };
 
 // Winning Rules Object
 
 const winningRules = {
-
   rock: {
     scissors: "Rock crushes Scissors",
-    lizard: "Rock crushes Lizard"
+    lizard: "Rock crushes Lizard",
   },
 
   paper: {
     rock: "Paper covers Rock",
-    spock: "Paper disproves Spock"
+    spock: "Paper disproves Spock",
   },
 
   scissors: {
     paper: "Scissors cut Paper",
-    lizard: "Scissors decapitate Lizard"
+    lizard: "Scissors decapitate Lizard",
   },
 
   lizard: {
     paper: "Lizard eats Paper",
-    spock: "Lizard poisons Spock"
+    spock: "Lizard poisons Spock",
   },
 
   spock: {
     rock: "Spock vaporises Rock",
-    scissors: "Spock smashes Scissors"
-  }
-
+    scissors: "Spock smashes Scissors",
+  },
 };
 
 // ====================
@@ -156,6 +157,7 @@ function playRound(selectedMove) {
   updateScores(result);
   updateStats(result);
   displayResult(result);
+  checkMatchWinner();
   addRoundToHistory(result);
   disableMoveButtons();
 
@@ -171,6 +173,10 @@ function playRound(selectedMove) {
 }
 
 function resetBattlePanel() {
+  if (matchOver) {
+    return;
+  }
+
   roundNumber++;
 
   roundNumberDisplay.textContent = roundNumber;
@@ -214,7 +220,6 @@ moveButtons.forEach(function (button) {
 // ====================
 
 function updateScores(result) {
-
   if (result === "player") {
     playerScore++;
   }
@@ -228,31 +233,43 @@ function updateScores(result) {
 }
 
 function displayResult(result) {
-
   if (result === "draw") {
-
     resultMessage.textContent = "Draw!";
-    resultRule.textContent =
-      `Both selected ${playerMove}`;
+    resultRule.textContent = `Both selected ${playerMove}`;
 
     return;
   }
 
   if (result === "player") {
-
     resultMessage.textContent = "You Win!";
 
-    resultRule.textContent =
-      winningRules[playerMove][computerMove];
+    resultRule.textContent = winningRules[playerMove][computerMove];
 
     return;
   }
 
   resultMessage.textContent = "Computer Wins!";
 
-  resultRule.textContent =
-    winningRules[computerMove][playerMove];
+  resultRule.textContent = winningRules[computerMove][playerMove];
+}
 
+function checkMatchWinner() {
+  if (playerScore === winningScore) {
+    resultMessage.textContent = "🏆 You Win The Match!";
+    resultRule.textContent = "Final result: you defeated the computer.";
+    matchOver = true;
+  }
+
+  if (computerScore === winningScore) {
+    resultMessage.textContent = "💀 Computer Wins The Match!";
+    resultRule.textContent = "Final result: the computer defeated you.";
+    matchOver = true;
+  }
+
+  if (matchOver) {
+    disableMoveButtons();
+    nextRoundButton.disabled = true;
+  }
 }
 
 function updateStats(result) {
@@ -296,15 +313,14 @@ function addRoundToHistory(result) {
     round: roundNumber,
     player: playerMove,
     computer: computerMove,
-    result: result
+    result: result,
   };
 
   roundHistory.push(roundData);
 
   const historyItem = document.createElement("p");
 
-  historyItem.textContent =
-    `Round ${roundData.round}: ${roundData.player} vs ${roundData.computer} - ${roundData.result}`;
+  historyItem.textContent = `Round ${roundData.round}: ${roundData.player} vs ${roundData.computer} - ${roundData.result}`;
 
   historyList.prepend(historyItem);
 }
