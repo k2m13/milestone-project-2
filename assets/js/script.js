@@ -51,6 +51,10 @@ let currentStreak = 0;
 
 let roundHistory = [];
 
+let matchesWon = 0;
+let matchesLost = 0;
+let highestStreak = 0;
+
 const moveList = ["rock", "paper", "scissors", "lizard", "spock"];
 
 const winningMoves = {
@@ -116,6 +120,8 @@ const nextRoundButton = document.getElementById("next-round-button");
 nextRoundButton.disabled = true;
 
 const historyList = document.getElementById("history-list");
+
+const highestStreakDisplay = document.getElementById("highest-streak");
 
 // ====================
 // Computer Move       |
@@ -242,7 +248,6 @@ function startNewGame() {
 }
 
 nextRoundButton.addEventListener("click", function () {
-
   if (matchOver) {
     startNewGame();
     return;
@@ -349,11 +354,16 @@ function updateStats(result) {
     currentStreak = 0;
   }
 
+  if (currentStreak > highestStreak) {
+    highestStreak = currentStreak;
+  }
+
   const winRate = Math.round((playerScore / totalRounds) * 100);
 
   totalRoundsDisplay.textContent = totalRounds;
   winRateDisplay.textContent = `${winRate}%`;
   currentStreakDisplay.textContent = currentStreak;
+  highestStreakDisplay.textContent = highestStreak;
 }
 
 // ====================
