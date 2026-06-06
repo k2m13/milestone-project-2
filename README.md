@@ -2,7 +2,7 @@
 * [Introduction](#introduction)
 * [Idea](#idea)
 
-## 1. [User Experience](#1-user-experience)
+## 1. [User Experience](#user-experience)
 ### Strategy Plane
 * [Project Goals](#project-goals)
 * [Player Goals](#player-goals)
@@ -36,7 +36,7 @@
 ## 3. Technologies Used
 * Interesting Code Solutions
 
-## 4. Testing
+## 4. [Testing](#testing)
 * Manual: Expected, Testing, Result, Fix
 * Bugs Discovered
 
@@ -332,6 +332,30 @@ const winningMoves = {
 
 If `winningMoves[playerMove].includes(computerMove)` is true, the player wins.
 If both moves are the same, the round is a draw. Otherwise, the computer wins.
+
+4. ## Testing
+
+### Manual Regression Testing
+
+| Feature | Test | Expected Result | Pass/Fail |
+|----------|----------|----------|----------|
+| Navigation | Click Play, Rank, Rules and Settings tabs | Correct screen is displayed and active tab is highlighted | Pass |
+| Next Round Button | Load page and click Next Round before choosing a move | Nothing happens | Pass |
+| Round Flow | Select a move card | Computer move appears, result is displayed and move buttons become disabled | Pass |
+| Next Round | Click Next Round after a completed round | Round number increases, battle panel resets and move buttons are re-enabled | Pass |
+| Scoreboard | Win a round | Player score increases by 1 | Pass |
+| Scoreboard | Lose a round | Computer score increases by 1 | Pass |
+| Scoreboard | Draw a round | Neither score changes | Pass |
+| Round History | Complete a round | Round result is added to the history panel | Pass |
+| Total Rounds | Complete a round | Total rounds statistic increases by 1 | Pass |
+| Win Rate | Win and lose multiple rounds | Win rate updates correctly | Pass |
+| Current Streak | Win consecutive rounds | Streak increases correctly | Pass |
+| Current Streak | Lose or draw a round | Streak resets to 0 | Pass |
+| Match End | Reach 8 wins or complete 15 rounds with a higher score | Match winner message is displayed | Pass |
+| Match End | Match finishes | Move buttons remain disabled | Pass |
+| New Game | Click New Game after a completed match | Scores, stats, history and round number reset | Pass |
+| New Game | Start a new game | Move buttons are enabled and game is playable again | Pass |
+| Responsiveness | Test on mobile, tablet and desktop widths | Layout remains usable and readable | Pass |
 
 7. ## Licence
 

@@ -58,12 +58,6 @@ body {
     min-height: 250px;
 }
 
-
-.battle-panel {
-    grid-column: 2;
-    grid-row: span 2;
-}
-
 .brand-panel {
     flex-shrink: 0;
 }
@@ -91,17 +85,47 @@ body {
 }
 
 /* Screen Management */
-
-.screen {
-    display: none;
-}
-
-.active-screen {
+#play-screen.active-screen {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+        "hero hero hero"
+        "quick-start quick-start quick-start"
+        "moves battle score"
+        "history battle stats";
     gap: 1rem;
     padding: 1rem;
     align-items: start;
+}
+
+.play-grid-hero {
+    grid-area: hero;
+    min-height: auto;
+}
+
+.play-grid-quick-start {
+    grid-area: quick-start;
+    min-height: auto;
+}
+
+.play-grid-moves {
+    grid-area: moves;
+}
+
+.play-grid-battle {
+    grid-area: battle;
+}
+
+.play-grid-score {
+    grid-area: score;
+}
+
+.play-grid-history {
+    grid-area: history;
+}
+
+.play-grid-stats {
+    grid-area: stats;
 }
 
 /* Glassmorphism Styling */
