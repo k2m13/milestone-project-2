@@ -105,6 +105,33 @@ const winningRules = {
 };
 
 // ====================
+// Local Storage      |
+// ====================
+
+function saveRankStats() {
+  localStorage.setItem("matchesWon", matchesWon);
+  localStorage.setItem("matchesLost", matchesLost);
+  localStorage.setItem("highestStreak", highestStreak);
+}
+
+function loadRankStats() {
+  matchesWon =
+    Number(localStorage.getItem("matchesWon")) || 0;
+
+  matchesLost =
+    Number(localStorage.getItem("matchesLost")) || 0;
+
+  highestStreak =
+    Number(localStorage.getItem("highestStreak")) || 0;
+
+  matchesWonDisplay.textContent = matchesWon;
+  matchesLostDisplay.textContent = matchesLost;
+
+  highestStreakDisplay.textContent = highestStreak;
+  rankHighestStreakDisplay.textContent = highestStreak;
+}
+
+// ====================
 // DOM References      |
 // ====================
 
@@ -391,10 +418,12 @@ function checkMatchWinner() {
     resultMessage.textContent = "You Win The Match!";
     resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
     matchesWon++;
+    saveRankStats();
   } else if (computerScore > playerScore) {
     resultMessage.textContent = "Computer Wins The Match!";
     resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
     matchesLost++;
+    saveRankStats();
   } else {
     resultMessage.textContent = "Match Draw!";
     resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
@@ -422,8 +451,10 @@ function updateStats(result) {
   }
 
   if (currentStreak > highestStreak) {
-    highestStreak = currentStreak;
-  }
+  highestStreak = currentStreak;
+
+  saveRankStats();
+}
 
   const winRate = Math.round((playerScore / totalRounds) * 100);
 
@@ -486,3 +517,5 @@ function addRoundToHistory(result) {
 
   historyList.prepend(historyItem);
 }
+
+loadRankStats();
