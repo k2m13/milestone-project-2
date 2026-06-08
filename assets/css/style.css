@@ -8,13 +8,16 @@
 
 /* Colour Variables */
 :root {
-    --color-background: #051122;
-    --color-surface: rgba(255, 255, 255, 0.08);
-    --color-border: rgba(255, 255, 255, 0.25);
-    --color-text: #ffffff;
-    --color-muted: #c7d2df;
+    --color-background: #f4fbff;
+    --color-surface: rgba(255, 255, 255, 0.82);
+    --color-surface-strong: #ffffff;
+    --color-border: rgba(0, 186, 220, 0.25);
+    --color-text: #14345a;
+    --color-muted: #5f7897;
     --color-cyan: #06c6b5;
-    --color-purple: #63036a;
+    --color-purple: #9b4dff;
+    --color-orange: #ff9f1c;
+    --color-shadow: rgba(0, 188, 212, 0.18);
 }
 
 /* Base Styles */
@@ -25,15 +28,15 @@ body {
     background:
         radial-gradient(
             circle at top left,
-            rgba(0, 255, 255, 0.45),
-            transparent 40%
+            rgba(0, 188, 212, 0.18),
+            transparent 32%
         ),
         radial-gradient(
             circle at bottom right,
-            rgba(176, 38, 255, 0.45),
-            transparent 40%
+            rgba(155, 77, 255, 0.14),
+            transparent 35%
         ),
-        var(--color-background);
+        linear-gradient(135deg, #f8fdff 0%, #eef8ff 100%);
     background-attachment: fixed;
 }
 
@@ -141,11 +144,11 @@ body {
 }
 
 .site-header {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--color-surface);
 }
 
 .panel {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--color-surface);
 }
 
 /* Move Cards */
@@ -158,8 +161,8 @@ body {
 }
 
 .move-card {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border);
     border-radius: 1rem;
 
     color: var(--color-text);
@@ -276,12 +279,11 @@ body {
     font-size: 2.5rem;
     letter-spacing: 0.15rem;
     color: var(--color-cyan);
-    text-shadow: 0 0 12px rgba(6, 198, 181, 0.5);
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.25);
 }
 
 .site-subtitle {
     color: var(--color-muted);
-    margin-top: 0.3rem;
 }
 
 .panel-title {
@@ -322,10 +324,8 @@ body {
 .summary-item {
     padding: 1rem;
     border-radius: 1rem;
-
-    background: rgba(255,255,255,0.05);
-
-    border: 1px solid rgba(255,255,255,0.1);
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border);
 }
 
 .summary-label {
@@ -356,8 +356,8 @@ body {
 .rule-card {
     padding: 1rem;
     border-radius: 1rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border);
 }
 
 .rule-card h3 {
@@ -391,13 +391,10 @@ body {
     display: flex;
     gap: 1rem;
     align-items: flex-start;
-
     padding: 1rem;
     border-radius: 1rem;
-
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border);
     cursor: pointer;
 }
 
@@ -436,11 +433,8 @@ body {
 .rank-card {
     padding: 1rem;
     border-radius: 1rem;
-
-    background: rgba(255,255,255,0.05);
-
-    border: 1px solid rgba(255,255,255,0.1);
-
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border);
     text-align: center;
 }
 
