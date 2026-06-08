@@ -58,7 +58,7 @@ const moveFrequency = {
   paper: 0,
   scissors: 0,
   lizard: 0,
-  spock: 0
+  spock: 0,
 };
 
 let matchesWon = 0;
@@ -115,14 +115,11 @@ function saveRankStats() {
 }
 
 function loadRankStats() {
-  matchesWon =
-    Number(localStorage.getItem("matchesWon")) || 0;
+  matchesWon = Number(localStorage.getItem("matchesWon")) || 0;
 
-  matchesLost =
-    Number(localStorage.getItem("matchesLost")) || 0;
+  matchesLost = Number(localStorage.getItem("matchesLost")) || 0;
 
-  highestStreak =
-    Number(localStorage.getItem("highestStreak")) || 0;
+  highestStreak = Number(localStorage.getItem("highestStreak")) || 0;
 
   matchesWonDisplay.textContent = matchesWon;
   matchesLostDisplay.textContent = matchesLost;
@@ -304,6 +301,13 @@ function startNewGame() {
   computerMove = "";
 
   roundHistory = [];
+  moveFrequency.rock = 0;
+  moveFrequency.paper = 0;
+  moveFrequency.scissors = 0;
+  moveFrequency.lizard = 0;
+  moveFrequency.spock = 0;
+
+  favouriteMoveDisplay.textContent = "N/A";
 
   playerScoreDisplay.textContent = 0;
   computerScoreDisplay.textContent = 0;
@@ -404,33 +408,35 @@ matchesLostDisplay.textContent = matchesLost;
 
 function checkMatchWinner() {
   if (playerScore >= winningScore) {
-  resultMessage.textContent = "You Win The Match!";
-  resultRule.textContent = "Final result: you reached 8 wins first.";
-  matchesWon++;
-  matchOver = true;
-} else if (computerScore >= winningScore) {
-  resultMessage.textContent = "Computer Wins The Match!";
-  resultRule.textContent = "Final result: the computer reached 8 wins first.";
-  matchesLost++;
-  matchOver = true;
-} else if (roundNumber >= 15) {
-  if (playerScore > computerScore) {
     resultMessage.textContent = "You Win The Match!";
-    resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
+    resultRule.textContent = "Final result: you reached 8 wins first.";
     matchesWon++;
     saveRankStats();
-  } else if (computerScore > playerScore) {
+    matchOver = true;
+  } else if (computerScore >= winningScore) {
     resultMessage.textContent = "Computer Wins The Match!";
-    resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
+    resultRule.textContent = "Final result: the computer reached 8 wins first.";
     matchesLost++;
     saveRankStats();
-  } else {
-    resultMessage.textContent = "Match Draw!";
-    resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
-  }
+    matchOver = true;
+  } else if (roundNumber >= 15) {
+    if (playerScore > computerScore) {
+      resultMessage.textContent = "You Win The Match!";
+      resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
+      matchesWon++;
+      saveRankStats();
+    } else if (computerScore > playerScore) {
+      resultMessage.textContent = "Computer Wins The Match!";
+      resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
+      matchesLost++;
+      saveRankStats();
+    } else {
+      resultMessage.textContent = "Match Draw!";
+      resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
+    }
 
-  matchOver = true;
-}
+    matchOver = true;
+  }
 
   if (matchOver) {
     disableMoveButtons();
@@ -446,15 +452,15 @@ function updateStats(result) {
 
   if (result === "player") {
     currentStreak++;
-  } else {
+  } else if (result === "computer") {
     currentStreak = 0;
   }
 
   if (currentStreak > highestStreak) {
-  highestStreak = currentStreak;
+    highestStreak = currentStreak;
 
-  saveRankStats();
-}
+    saveRankStats();
+  }
 
   const winRate = Math.round((playerScore / totalRounds) * 100);
 
