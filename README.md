@@ -357,6 +357,12 @@ If both moves are the same, the round is a draw. Otherwise, the computer wins.
 | New Game | Start a new game | Move buttons are enabled and game is playable again | Pass |
 | Responsiveness | Test on mobile, tablet and desktop widths | Layout remains usable and readable | Pass |
 
+### Automated testing with Jest
+
+Automated testing was implemented using Jest. Core game logic, DOM manipulation, and statistics calculations were tested independently.
+
+![Jest](assets/readme/Screenshot%202026-06-09%20at%2000.08.29.png)
+
 7. ## Licence
 
 MIT Licence
