@@ -48,7 +48,7 @@ body {
 /* Layout */
 .site-header {
     border: 1px solid var(--color-border);
-    padding: 1rem;
+    padding: 1.25rem 1.5rem;
     margin: 1rem;
     display: flex;
     justify-content: space-between;
@@ -137,11 +137,14 @@ body {
 .panel {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 0 25px rgba(6, 198, 181, 0.12);
+    border-radius: 1 rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0, 188, 212, 0.08),
+        0 2px 8px rgba(20, 52, 90, 0.08);
+    transition: all 0.3s ease;
 }
+
 
 .site-header {
     background: var(--color-surface);
@@ -149,6 +152,14 @@ body {
 
 .panel {
     background: var(--color-surface);
+}
+
+.panel:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 188, 212, 0.12),
+        0 4px 12px rgba(20, 52, 90, 0.12);
 }
 
 /* Move Cards */
@@ -287,7 +298,9 @@ body {
 }
 
 .panel-title {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
     letter-spacing: 0.08rem;
     margin-bottom: 1rem;
     color: var(--color-cyan);
