@@ -49,7 +49,8 @@ body {
 .site-header {
     border: 1px solid var(--color-border);
     padding: 1.25rem 1.5rem;
-    margin: 1rem;
+    margin: 0.85rem auto;
+    max-width: 1400px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,8 +58,8 @@ body {
 
 .panel {
     border: 1px solid var(--color-border);
-    padding: 1.5rem;
-    min-height: 250px;
+    padding: 1.25rem;
+    min-height: auto;
 }
 
 .brand-panel {
@@ -87,18 +88,23 @@ body {
     box-shadow: 0 0 15px rgba(6, 198, 181, 0.35);
 }
 
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
 /* Screen Management */
 #play-screen.active-screen {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 0.9fr 1.6fr 0.9fr;
     grid-template-areas:
         "hero hero hero"
         "quick-start quick-start quick-start"
         "moves battle score"
         "history battle stats";
-    gap: 1rem;
-    padding: 1rem;
-    align-items: start;
+    gap: 0.85rem;
+    padding: 0.85rem;
+    align-items: stretch;
 }
 
 .play-grid-hero {
@@ -117,6 +123,7 @@ body {
 
 .play-grid-battle {
     grid-area: battle;
+    min-height: 520px;
 }
 
 .play-grid-score {
