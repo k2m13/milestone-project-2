@@ -102,13 +102,16 @@ body {
     display: grid;
     grid-template-columns: minmax(280px, 0.9fr) minmax(420px, 1.6fr) minmax(280px, 0.9fr);
     grid-template-areas:
-        "hero hero hero"
-        "quick-start quick-start quick-start"
         "moves battle score"
-        "history battle stats";
+        "moves battle stats"
+        "history history history";
     gap: 0.75rem;
     padding: 0.75rem;
     align-items: stretch;
+}
+
+#play-screen .quick-start-panel {
+    display: none;
 }
 
 .play-grid-hero {
