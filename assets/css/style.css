@@ -94,13 +94,18 @@ body {
 }
 
 /* Screen Management */
+.screen {
+    display: none;
+}
+
 #play-screen.active-screen {
     display: grid;
-    grid-template-columns: 260px minmax(420px, 1fr) 260px;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(420px, 1.6fr) minmax(280px, 0.9fr);
     grid-template-areas:
-        "hero battle score"
-        "quick-start battle stats"
-        "moves battle history";
+        "hero hero hero"
+        "quick-start quick-start quick-start"
+        "moves battle score"
+        "history battle stats";
     gap: 0.75rem;
     padding: 0.75rem;
     align-items: stretch;
