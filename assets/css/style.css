@@ -658,11 +658,67 @@ body {
 
 /* History Panel */
 .history-list {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding-bottom: 0.5rem;
+
+    scrollbar-width: thin;
+}
+
+.history-entry {
     display: grid;
+    grid-template-columns: auto 28px auto 28px auto;
+    align-items: center;
     gap: 0.5rem;
-    max-height: 180px;
-    overflow-y: auto;
-    padding-right: 0.25rem;
+
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.75rem;
+
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border);
+
+    flex-shrink: 0;
+    min-width: 120px;
+}
+
+.history-round,
+.history-vs,
+.history-result {
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.75rem;
+}
+
+.history-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.history-player {
+    border-left: 4px solid #20c997;
+}
+
+.history-computer {
+    border-left: 4px solid #ff6b6b;
+}
+
+.history-draw {
+    border-left: 4px solid #adb5bd;
+}
+
+.history-player .history-result {
+    color: #20c997;
+}
+
+.history-computer .history-result {
+    color: #ff6b6b;
+}
+
+.history-draw .history-result {
+    color: #6c757d;
 }
 
 .history-list p {
