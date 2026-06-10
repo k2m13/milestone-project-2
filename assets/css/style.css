@@ -655,3 +655,23 @@ body {
     font-family: "Orbitron", sans-serif;
     font-size: 0.8rem;
 }
+
+/* History Panel */
+.history-list {
+    display: grid;
+    gap: 0.5rem;
+    max-height: 180px;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+}
+
+.history-list p {
+    padding: 0.65rem 0.8rem;
+    border-radius: 0.75rem;
+
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border);
+
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
