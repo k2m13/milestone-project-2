@@ -166,6 +166,10 @@ const favouriteMoveDisplay = document.getElementById("favourite-move");
 
 const gameModeInputs = document.querySelectorAll('input[name="game-mode"]');
 
+const playerChoiceIcon = document.getElementById("player-choice-icon");
+
+const computerChoiceIcon = document.getElementById("computer-choice-icon");
+
 // ====================
 // Computer Move       |
 // ====================
@@ -250,6 +254,9 @@ function playRound(selectedMove) {
   playerChoiceDisplay.textContent = playerMove;
   computerChoiceDisplay.textContent = computerMove;
 
+  playerChoiceIcon.src = `assets/images/icons/${playerMove}.svg`;
+  computerChoiceIcon.src = `assets/images/icons/${computerMove}.svg`;
+
   checkMatchWinner();
   disableMoveButtons();
 
@@ -273,8 +280,11 @@ function resetBattlePanel() {
 
   roundNumberDisplay.textContent = roundNumber;
 
-  playerChoiceDisplay.textContent = "?";
-  computerChoiceDisplay.textContent = "?";
+  playerChoiceDisplay.textContent = "";
+  computerChoiceDisplay.textContent = "";
+
+  playerChoiceIcon.src = "assets/images/icons/question.svg";
+  computerChoiceIcon.src = "assets/images/icons/question.svg";
 
   resultMessage.textContent = "Choose your move!";
   resultRule.textContent = "";
@@ -318,8 +328,11 @@ function startNewGame() {
 
   roundNumberDisplay.textContent = 1;
 
-  playerChoiceDisplay.textContent = "?";
-  computerChoiceDisplay.textContent = "?";
+  playerChoiceDisplay.textContent = "";
+  computerChoiceDisplay.textContent = "";
+
+  playerChoiceIcon.src = "assets/images/icons/question.svg";
+  computerChoiceIcon.src = "assets/images/icons/question.svg";
 
   resultMessage.textContent = "Choose your move!";
   resultRule.textContent = "";
@@ -517,13 +530,11 @@ function addRoundToHistory(result) {
 
   roundHistory.push(roundData);
 
-   const historyItem = document.createElement("div");
+  const historyItem = document.createElement("div");
   historyItem.classList.add("history-entry", `history-${result}`);
 
   const resultLabel =
-    result === "player" ? "W" :
-    result === "computer" ? "L" :
-    "D";
+    result === "player" ? "W" : result === "computer" ? "L" : "D";
 
   historyItem.innerHTML = `
     <span class="history-round">#${roundData.round}</span>

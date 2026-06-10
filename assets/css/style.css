@@ -305,6 +305,31 @@ body {
     color: var(--color-muted);
 }
 
+.choice-token {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.choice-token span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: center;
+    font-size: clamp(0.9rem, 2vw, 1.4rem);
+}
+
+.choice-token span:empty {
+    display: none;
+}
+
+.battle-icon {
+    width: clamp(60px, 6vw, 100px);
+    height: clamp(60px, 6vw, 100px);
+    object-fit: contain;
+}
+
 .choice-token,
 .versus-token {
     display: grid;

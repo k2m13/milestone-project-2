@@ -33,7 +33,7 @@
 * Existing Features
 * Features Left to Implement
 
-## 3. Technologies Used
+## 3. [Technologies Used](#techonlogies-used)
 * Interesting Code Solutions
 
 ## 4. [Testing](#testing)
@@ -210,6 +210,17 @@ The following features were considered but are outside the scope of the current 
 >While the core project focuses on creating a polished and accessible implementation of Rock, Paper, Scissors, Lizard, Spock, the longer-term vision for MindGame is to evolve into a strategic browser game that analyses player behaviour and adapts to individual playing styles.
 
 Favicon from Magnific(https://www.magnific.com/icon/creativity_15557951#fromView=search&page=1&position=3&uuid=e59fb263-67ba-4c6e-9098-a6b2811f5241)
+
+3. ## Techonlogies Used
+
+### Modern CSS Features Used
+
+The project uses modern responsive CSS techniques. Layouts are built with CSS Grid using fractional (fr) units. 
+Typography and icons use ```clamp()``` 
+to create fluid scaling between minimum and maximum sizes. 
+Relative units (rem) are used for spacing and sizing to improve accessibility 
+and maintain consistent proportions across different screen sizes.
+
 
 ## JavaScript Engine Plan
 
