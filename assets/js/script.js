@@ -517,9 +517,21 @@ function addRoundToHistory(result) {
 
   roundHistory.push(roundData);
 
-  const historyItem = document.createElement("p");
+   const historyItem = document.createElement("div");
+  historyItem.classList.add("history-entry", `history-${result}`);
 
-  historyItem.textContent = `Round ${roundData.round}: ${roundData.player} vs ${roundData.computer} - ${roundData.result}`;
+  const resultLabel =
+    result === "player" ? "W" :
+    result === "computer" ? "L" :
+    "D";
+
+  historyItem.innerHTML = `
+    <span class="history-round">#${roundData.round}</span>
+    <img src="assets/images/icons/${roundData.player}.svg" alt="${roundData.player}" class="history-icon">
+    <span class="history-vs">VS</span>
+    <img src="assets/images/icons/${roundData.computer}.svg" alt="${roundData.computer}" class="history-icon">
+    <span class="history-result">${resultLabel}</span>
+  `;
 
   historyList.prepend(historyItem);
 }
