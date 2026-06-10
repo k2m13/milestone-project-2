@@ -272,8 +272,8 @@ body {
 }
 
 .move-icon {
-    width: 68px;
-    height: 68px;
+    width: clamp(56px, 5vw, 80px);
+    height: clamp(56px, 5vw, 80px);
     object-fit: contain;
 }
 
@@ -367,6 +367,8 @@ body {
 .score-value {
     font-family: "Orbitron", sans-serif;
     font-size: clamp(2.4rem, 5vw, 4rem);
+    width: clamp(56px, 5vw, 80px);
+    height: clamp(56px, 5vw, 80px);
     font-weight: 700;
     line-height: 1;
     color: var(--color-cyan);
@@ -396,6 +398,8 @@ body {
 .site-title {
     font-size: 2.5rem;
     letter-spacing: 0.15rem;
+    width: clamp(56px, 5vw, 80px);
+    height: clamp(56px, 5vw, 80px);
     color: var(--color-cyan);
     text-shadow: 0 0 10px rgba(0, 188, 212, 0.25);
 }
@@ -420,8 +424,8 @@ body {
 }
 
 .brand-icon {
-    width: 80px;
-    height: 80px;
+    width: clamp(56px, 5vw, 80px);
+    height: clamp(56px, 5vw, 80px);
     object-fit: contain;
 }
 
