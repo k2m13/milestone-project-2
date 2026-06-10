@@ -349,37 +349,50 @@ body {
 }
 
 .scoreboard {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(90px, 1fr) auto minmax(90px, 1fr);
+    gap: 0.75rem;
+    align-items: stretch;
     margin-top: 1rem;
 }
 
 .score-card {
+    min-width: 0;
+    padding: 0.85rem;
+    border-radius: 1rem;
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border);
     text-align: center;
-}
-
-.score-card h3 {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12rem;
-    color: var(--color-muted);
-    margin-bottom: 0.75rem;
 }
 
 .score-value {
     font-family: "Orbitron", sans-serif;
-    font-size: 4.5rem;
+    font-size: clamp(2.4rem, 5vw, 4rem);
     font-weight: 700;
     line-height: 1;
     color: var(--color-cyan);
 }
 
 .score-divider {
+    display: grid;
+    place-items: center;
     font-family: "Orbitron", sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--color-muted);
-    opacity: 0.4;
+    opacity: 0.5;
+}
+
+.score-label {
+    margin-bottom: 0.5rem;
+    color: var(--color-muted);
+
+    font-size: 0.65rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    /* overflow-wrap: break-word; */
 }
 
 .site-title {
@@ -425,9 +438,13 @@ body {
 }
 
 .summary-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.summary-panel .panel-title {
+    grid-column: 1 / -1;
 }
 
 .summary-item {
@@ -444,7 +461,7 @@ body {
 
 .summary-value {
     font-family: "Orbitron", sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--color-cyan);
     margin-top: 0.3rem;
 }
@@ -621,4 +638,20 @@ body {
     font-size: 2rem;
 
     color: var(--color-cyan);
+}
+
+/* Match Format */
+
+.match-format {
+    margin-top: 1rem;
+    padding: 0.75rem;
+
+    border-radius: 0.75rem;
+    background: linear-gradient(145deg, #ffffff, #eefbff);
+    border: 1px solid var(--color-border);
+
+    text-align: center;
+    color: var(--color-muted);
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.8rem;
 }
