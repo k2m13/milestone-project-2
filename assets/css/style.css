@@ -359,16 +359,27 @@ body {
     text-align: center;
 }
 
+.score-card h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12rem;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+}
+
 .score-value {
     font-family: "Orbitron", sans-serif;
-    font-size: 3rem;
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1;
     color: var(--color-cyan);
 }
 
 .score-divider {
     font-family: "Orbitron", sans-serif;
-    font-size: 2rem;
+    font-size: 3rem;
     color: var(--color-muted);
+    opacity: 0.4;
 }
 
 .site-title {
@@ -436,6 +447,26 @@ body {
     font-size: 2rem;
     color: var(--color-cyan);
     margin-top: 0.3rem;
+}
+
+/* Round Counter */
+.round-display {
+    margin-top: 1rem;
+    padding: 0.75rem;
+
+    border-radius: 0.75rem;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #eefbff
+    );
+
+    border: 1px solid var(--color-border);
+
+    text-align: center;
+
+    font-family: "Orbitron", sans-serif;
 }
 
 /* Next Round Button */
