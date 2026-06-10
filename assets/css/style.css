@@ -222,6 +222,10 @@ body {
         0 8px 20px rgba(20, 52, 90, 0.08);
 
     transition: all 0.25s ease;
+
+    display: grid;
+    place-items: center;
+    gap: 0.6rem;
 }
 
 .move-card:not(:disabled):hover {
@@ -266,6 +270,12 @@ body {
 .move-card--lizard {
     border-color: #20c997;
     color: #20a886;
+}
+
+.move-icon {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
 }
 
 /* Battle Area */

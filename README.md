@@ -360,6 +360,8 @@ If both moves are the same, the round is a draw. Otherwise, the computer wins.
 ### Automated testing with Jest
 
 Automated testing was implemented using Jest. Core game logic, DOM manipulation, and statistics calculations were tested independently.
+I prioritised testing the core game logic, statistics calculations and DOM updates because these are the most important functions and 
+the most likely to affect gameplay if they fail.
 
 ![Jest](assets/readme/Screenshot%202026-06-09%20at%2000.08.29.png)
 
