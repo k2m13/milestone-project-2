@@ -99,10 +99,6 @@ body {
     display: none;
 }
 
-#play-screen.active-screen {
-    gap: var(--layout-gap);
-    padding: var(--layout-gap);
-}
 
 #play-screen.active-screen {
     display: grid;
@@ -111,23 +107,13 @@ body {
         "moves battle score"
         "moves battle stats"
         "history history history";
-    gap: 0.75rem;
-    padding: 0.75rem;
+    gap: var(--layout-gap);
+    padding: var(--layout-gap);
     align-items: stretch;
 }
 
 #play-screen .quick-start-panel {
     display: none;
-}
-
-.play-grid-hero {
-    grid-area: hero;
-    min-height: auto;
-}
-
-.play-grid-quick-start {
-    grid-area: quick-start;
-    min-height: auto;
 }
 
 .play-grid-moves {
@@ -168,14 +154,6 @@ body {
 }
 
 
-.site-header {
-    background: var(--color-surface);
-}
-
-.panel {
-    background: var(--color-surface);
-}
-
 .panel:hover {
     transform: translateY(-2px);
 
@@ -203,22 +181,26 @@ body {
 
 .move-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--layout-gap);
     margin-top: 0.75rem;
 }
 
 .move-card {
-    min-height: 85px;
+    min-height: 130px;
+    width: 100%;
+
     background: linear-gradient(145deg, #ffffff, #eefbff);
     border: 2px solid var(--color-border);
     border-radius: 1rem;
 
     color: var(--color-text);
     font-family: "Orbitron", sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 700;
     text-transform: uppercase;
+    text-align: center;
+    line-height: 1.1;
 
     padding: 1rem;
     cursor: pointer;
@@ -230,14 +212,19 @@ body {
     transition: all 0.25s ease;
 
     display: grid;
+    grid-template-rows: 72px auto;
     place-items: center;
     gap: 0.6rem;
 }
 
+.move-card span {
+    display: block;
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
 .move-card:not(:disabled):hover {
     transform: translateY(-4px) scale(1.02);
-
-    
 
     box-shadow:
         inset 0 0 24px rgba(255, 255, 255, 0.75),
@@ -251,19 +238,14 @@ body {
     box-shadow: none;
 }
 
-.move-card--spock {
-    grid-column: span 2;
-}
-
-/* Move Cards */
+/* Move Cards Colours */
 
 .move-card--rock {
     border-color: var(--color-cyan);
     color: var(--color-cyan);
 }
 
-.move-card--paper,
-.move-card--spock {
+.move-card--paper {
     border-color: var(--color-purple);
     color: var(--color-purple);
 }
@@ -278,9 +260,20 @@ body {
     color: #20a886;
 }
 
+.move-card--spock {
+    border-color: #f1398c;
+    color: #ff3c80;
+    grid-column: auto;
+}
+
+.move-card--spock .move-icon {
+    width: 76px;
+    height: 76px;
+}
+
 .move-icon {
-    width: 44px;
-    height: 44px;
+    width: 68px;
+    height: 68px;
     object-fit: contain;
 }
 
@@ -398,7 +391,6 @@ body {
 
     text-transform: uppercase;
     letter-spacing: 0.05rem;
-    /* overflow-wrap: break-word; */
 }
 
 .site-title {
@@ -460,26 +452,6 @@ body {
     font-size: 1.5rem;
     color: var(--color-cyan);
     margin-top: 0.3rem;
-}
-
-/* Round Counter */
-.round-display {
-    margin-top: 1rem;
-    padding: 0.75rem;
-
-    border-radius: 0.75rem;
-
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        #eefbff
-    );
-
-    border: 1px solid var(--color-border);
-
-    text-align: center;
-
-    font-family: "Orbitron", sans-serif;
 }
 
 /* Next Round Button */
@@ -715,15 +687,4 @@ body {
 
 .history-draw .history-result {
     color: #6c757d;
-}
-
-.history-list p {
-    padding: 0.65rem 0.8rem;
-    border-radius: 0.75rem;
-
-    background: var(--color-surface-strong);
-    border: 1px solid var(--color-border);
-
-    color: var(--color-muted);
-    font-size: 0.9rem;
 }
