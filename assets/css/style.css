@@ -324,6 +324,26 @@ body {
     display: none;
 }
 
+choice-token.choice-token--rock {
+    border-color: var(--color-cyan);
+}
+
+.choice-token.choice-token--paper {
+    border-color: var(--color-purple);
+}
+
+.choice-token.choice-token--scissors {
+    border-color: var(--color-orange);
+}
+
+.choice-token.choice-token--lizard {
+    border-color: #20c997;
+}
+
+.choice-token.choice-token--spock {
+    border-color: #ff3c80;
+}
+
 .battle-icon {
     width: clamp(60px, 6vw, 100px);
     height: clamp(60px, 6vw, 100px);
