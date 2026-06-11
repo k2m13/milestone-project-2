@@ -173,6 +173,12 @@ const computerChoiceIcon = document.getElementById("computer-choice-icon");
 const battlePanel =
   document.querySelector(".play-grid-battle");
 
+const playerChoiceToken =
+  playerChoiceDisplay.parentElement;
+
+const computerChoiceToken =
+  computerChoiceDisplay.parentElement;
+
 // ====================
 // Computer Move       |
 // ====================
@@ -254,6 +260,8 @@ function playRound(selectedMove) {
   updateFavouriteMove();
   addRoundToHistory(result);
   updateBattlePanel(result);
+  updateChoiceTokenColour(playerChoiceToken, playerMove);
+  updateChoiceTokenColour(computerChoiceToken, computerMove);
 
   playerChoiceDisplay.textContent = playerMove;
   computerChoiceDisplay.textContent = computerMove;
@@ -273,6 +281,18 @@ function playRound(selectedMove) {
   console.log(playerMove);
   console.log(computerMove);
   console.log(result);
+}
+
+function updateChoiceTokenColour(choiceToken, move) {
+  choiceToken.classList.remove(
+    "choice-token--rock",
+    "choice-token--paper",
+    "choice-token--scissors",
+    "choice-token--lizard",
+    "choice-token--spock"
+  );
+
+  choiceToken.classList.add(`choice-token--${move}`);
 }
 
 function resetBattlePanel() {
@@ -300,6 +320,22 @@ function resetBattlePanel() {
   "battle-win",
   "battle-loss",
   "battle-draw"
+);
+
+playerChoiceToken.classList.remove(
+  "choice-token--rock",
+  "choice-token--paper",
+  "choice-token--scissors",
+  "choice-token--lizard",
+  "choice-token--spock"
+);
+
+computerChoiceToken.classList.remove(
+  "choice-token--rock",
+  "choice-token--paper",
+  "choice-token--scissors",
+  "choice-token--lizard",
+  "choice-token--spock"
 );
 
   enableMoveButtons();
@@ -368,6 +404,22 @@ function startNewGame() {
   nextRoundButton.textContent = "Next Round";
   nextRoundButton.disabled = true;
 
+  playerChoiceToken.classList.remove(
+  "choice-token--rock",
+  "choice-token--paper",
+  "choice-token--scissors",
+  "choice-token--lizard",
+  "choice-token--spock"
+);
+
+computerChoiceToken.classList.remove(
+  "choice-token--rock",
+  "choice-token--paper",
+  "choice-token--scissors",
+  "choice-token--lizard",
+  "choice-token--spock"
+);
+
   enableMoveButtons();
 }
 
@@ -402,6 +454,56 @@ moveButtons.forEach(function (button) {
     const selectedMove = button.dataset.choice;
     playRound(selectedMove);
   });
+});
+
+// ====================
+// Keyboard Controls   |
+// ====================
+
+function selectMoveByKeyboard(move) {
+  const moveButton = document.querySelector(`[data-choice="${move}"]`);
+
+  if (!moveButton || moveButton.disabled || matchOver) {
+    return;
+  }
+
+  playRound(move);
+}
+
+function switchTabByKeyboard(index) {
+  const navLink = navLinks[index];
+
+  if (!navLink) {
+    return;
+  }
+
+  navLink.click();
+}
+
+document.addEventListener("keydown", function (event) {
+  const key = event.key.toLowerCase();
+
+  if (key === "r") {
+    selectMoveByKeyboard("rock");
+  } else if (key === "p") {
+    selectMoveByKeyboard("paper");
+  } else if (key === "s") {
+    selectMoveByKeyboard("scissors");
+  } else if (key === "l") {
+    selectMoveByKeyboard("lizard");
+  } else if (key === "k") {
+    selectMoveByKeyboard("spock");
+  } else if (key === "n") {
+    nextRoundButton.click();
+  } else if (key === "1") {
+    switchTabByKeyboard(0);
+  } else if (key === "2") {
+    switchTabByKeyboard(1);
+  } else if (key === "3") {
+    switchTabByKeyboard(2);
+  } else if (key === "4") {
+    switchTabByKeyboard(3);
+  }
 });
 
 // ====================
