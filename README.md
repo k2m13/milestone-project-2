@@ -221,6 +221,9 @@ to create fluid scaling between minimum and maximum sizes.
 Relative units (rem) are used for spacing and sizing to improve accessibility 
 and maintain consistent proportions across different screen sizes.
 
+Empty move labels are hidden using the :empty pseudo-class, allowing the placeholder icon 
+to remain perfectly centred until a move is selected.
+
 
 ## JavaScript Engine Plan
 

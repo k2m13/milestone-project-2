@@ -170,6 +170,9 @@ const playerChoiceIcon = document.getElementById("player-choice-icon");
 
 const computerChoiceIcon = document.getElementById("computer-choice-icon");
 
+const battlePanel =
+  document.querySelector(".play-grid-battle");
+
 // ====================
 // Computer Move       |
 // ====================
@@ -250,6 +253,7 @@ function playRound(selectedMove) {
   displayResult(result);
   updateFavouriteMove();
   addRoundToHistory(result);
+  updateBattlePanel(result);
 
   playerChoiceDisplay.textContent = playerMove;
   computerChoiceDisplay.textContent = computerMove;
@@ -292,7 +296,29 @@ function resetBattlePanel() {
   playerMove = "";
   computerMove = "";
 
+  battlePanel.classList.remove(
+  "battle-win",
+  "battle-loss",
+  "battle-draw"
+);
+
   enableMoveButtons();
+}
+
+function updateBattlePanel(result) {
+  battlePanel.classList.remove(
+    "battle-win",
+    "battle-loss",
+    "battle-draw"
+  );
+
+  if (result === "player") {
+    battlePanel.classList.add("battle-win");
+  } else if (result === "computer") {
+    battlePanel.classList.add("battle-loss");
+  } else {
+    battlePanel.classList.add("battle-draw");
+  }
 }
 
 function startNewGame() {
