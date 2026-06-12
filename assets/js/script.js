@@ -170,14 +170,16 @@ const playerChoiceIcon = document.getElementById("player-choice-icon");
 
 const computerChoiceIcon = document.getElementById("computer-choice-icon");
 
-const battlePanel =
-  document.querySelector(".play-grid-battle");
+const movePanel =
+  document.querySelector(".play-grid-moves");
 
 const playerChoiceToken =
   playerChoiceDisplay.parentElement;
 
 const computerChoiceToken =
   computerChoiceDisplay.parentElement;
+
+const resultBox = document.querySelector(".result-box");
 
 // ====================
 // Computer Move       |
@@ -259,7 +261,7 @@ function playRound(selectedMove) {
   displayResult(result);
   updateFavouriteMove();
   addRoundToHistory(result);
-  updateBattlePanel(result);
+  updateResultBox(result);
   updateChoiceTokenColour(playerChoiceToken, playerMove);
   updateChoiceTokenColour(computerChoiceToken, computerMove);
 
@@ -316,10 +318,10 @@ function resetBattlePanel() {
   playerMove = "";
   computerMove = "";
 
-  battlePanel.classList.remove(
-  "battle-win",
-  "battle-loss",
-  "battle-draw"
+  resultBox.classList.remove(
+  "result-win",
+  "result-loss",
+  "result-draw"
 );
 
 playerChoiceToken.classList.remove(
@@ -341,19 +343,19 @@ computerChoiceToken.classList.remove(
   enableMoveButtons();
 }
 
-function updateBattlePanel(result) {
-  battlePanel.classList.remove(
-    "battle-win",
-    "battle-loss",
-    "battle-draw"
+function updateResultBox(result) {
+  resultBox.classList.remove(
+    "result-win",
+    "result-loss",
+    "result-draw"
   );
 
   if (result === "player") {
-    battlePanel.classList.add("battle-win");
+    resultBox.classList.add("result-win");
   } else if (result === "computer") {
-    battlePanel.classList.add("battle-loss");
+    resultBox.classList.add("result-loss");
   } else {
-    battlePanel.classList.add("battle-draw");
+    resultBox.classList.add("result-draw");
   }
 }
 
@@ -418,6 +420,12 @@ computerChoiceToken.classList.remove(
   "choice-token--scissors",
   "choice-token--lizard",
   "choice-token--spock"
+);
+
+resultBox.classList.remove(
+  "result-win",
+  "result-loss",
+  "result-draw"
 );
 
   enableMoveButtons();

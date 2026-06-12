@@ -224,6 +224,12 @@ and maintain consistent proportions across different screen sizes.
 Empty move labels are hidden using the :empty pseudo-class, allowing the placeholder icon 
 to remain perfectly centred until a move is selected.
 
+### Interesting Solutions
+
+When the expected visual change did not occur, browser developer tools and CSS inspection revealed that the issue 
+was not in the JavaScript logic but in CSS specificity and property overriding. This reinforced 
+the importance of debugging both behaviour and presentation separately.
+
 
 ## JavaScript Engine Plan
 
