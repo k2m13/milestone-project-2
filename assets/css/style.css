@@ -49,8 +49,8 @@ body {
 /* Layout */
 .site-header {
     border: 1px solid var(--color-border);
-    padding: 1.25rem 1.5rem;
-    margin: var(--layout-gap) auto;
+    padding: 0.75rem 1.25rem;
+    margin: 0.4rem auto;
     max-width: 1400px;
     display: flex;
     justify-content: space-between;
@@ -89,8 +89,8 @@ body {
     box-shadow: 0 0 15px rgba(6, 198, 181, 0.35);
 }
 
-.app-container {
-    max-width: 1400px;
+.app-container, .site-header {
+    width: min(98vw, 1600px);
     margin: 0 auto;
 }
 
@@ -102,13 +102,13 @@ body {
 
 #play-screen.active-screen {
     display: grid;
-    grid-template-columns: minmax(280px, 0.9fr) minmax(420px, 1.6fr) minmax(280px, 0.9fr);
+    grid-template-columns: minmax(320px, 0.9fr) minmax(520px, 1.6fr) minmax(320px, 0.9fr);
     grid-template-areas:
         "moves battle score"
         "moves battle stats"
         "history history history";
-    gap: var(--layout-gap);
-    padding: var(--layout-gap);
+    gap: 0.75rem;
+    padding: 0.5rem 0;
     align-items: stretch;
 }
 
@@ -122,7 +122,7 @@ body {
 
 .play-grid-battle {
     grid-area: battle;
-    min-height: 520px;
+    min-height: clamp(420px, 58vh, 560px);
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
@@ -187,7 +187,7 @@ body {
 }
 
 .move-card {
-    min-height: 130px;
+    min-height: clamp(90px, 13vh, 115px);
     width: 100%;
 
     background: linear-gradient(145deg, #ffffff, #eefbff);
@@ -289,7 +289,7 @@ body {
 }
 
 .choice-display {
-    min-height: 260px;
+    min-height: clamp(170px, 24vh, 220px);
     display: grid;
     gap: 1rem;
     align-content: center;
@@ -324,6 +324,11 @@ body {
     display: none;
 }
 
+.choice-token,
+.versus-token {
+    min-height: clamp(110px, 18vh, 140px);
+}
+
 .choice-token.choice-token--rock {
     border-color: var(--color-cyan);
 }
@@ -354,7 +359,6 @@ body {
 .versus-token {
     display: grid;
     place-items: center;
-    min-height: 150px;
     border-radius: 1rem;
     font-family: "Orbitron", sans-serif;
     font-size: 2.4rem;
@@ -460,10 +464,8 @@ body {
 }
 
 .site-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
     letter-spacing: 0.15rem;
-    width: clamp(56px, 5vw, 80px);
-    height: clamp(56px, 5vw, 80px);
     color: var(--color-cyan);
     text-shadow: 0 0 10px rgba(0, 188, 212, 0.25);
 }
@@ -488,8 +490,8 @@ body {
 }
 
 .brand-icon {
-    width: clamp(56px, 5vw, 80px);
-    height: clamp(56px, 5vw, 80px);
+    width: clamp(48px, 4vw, 64px);
+    height: clamp(48px, 4vw, 64px);
     object-fit: contain;
 }
 
@@ -699,7 +701,7 @@ body {
     overflow-x: auto;
     overflow-y: hidden;
 
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
 
     scrollbar-width: thin;
 }
@@ -710,7 +712,7 @@ body {
     align-items: center;
     gap: 0.5rem;
 
-    padding: 0.5rem 0.75rem;
+    padding: 0.4rem 0.65rem;
     border-radius: 0.75rem;
 
     background: var(--color-surface-strong);
@@ -755,4 +757,74 @@ body {
 
 .history-draw .history-result {
     color: #6c757d;
+}
+
+/* Media Queries */
+@media (min-width: 1400px) {
+    .app-container,
+    .site-header {
+        width: 98vw;
+        max-width: 1700px;
+    }
+
+    #play-screen.active-screen {
+        grid-template-columns: minmax(360px, 0.9fr) minmax(620px, 1.7fr) minmax(360px, 0.9fr);
+        gap: 1rem;
+    }
+
+    .panel {
+        padding: 1.25rem;
+    }
+
+    .site-title {
+        font-size: clamp(2rem, 3vw, 3rem);
+    }
+
+    .panel-title {
+        font-size: 1.25rem;
+    }
+
+    .play-grid-battle {
+        min-height: clamp(520px, 62vh, 650px);
+    }
+
+    .battle-area {
+        margin: 2rem 0;
+    }
+
+    .choice-display {
+        min-height: clamp(260px, 32vh, 330px);
+    }
+
+    .choice-token {
+        min-height: clamp(170px, 22vh, 230px);
+    }
+
+    .battle-icon {
+        width: clamp(90px, 7vw, 130px);
+        height: clamp(90px, 7vw, 130px);
+    }
+
+    .move-card {
+        min-height: clamp(130px, 15vh, 170px);
+        font-size: 1.05rem;
+    }
+
+    .move-icon {
+        width: clamp(76px, 5vw, 110px);
+        height: clamp(76px, 5vw, 110px);
+    }
+
+    .result-message {
+        font-size: 1.35rem;
+        padding: 1.25rem;
+    }
+
+    .score-value {
+        font-size: clamp(3rem, 5vw, 5rem);
+    }
+
+    .summary-value {
+        font-size: 2rem;
+    }
 }
