@@ -246,13 +246,35 @@ function determineWinner(playerMove, computerMove) {
 // Play Round          |
 // ====================
 
-function playRound(selectedMove) {
+function wait(milliseconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, milliseconds);
+  });
+}
+
+async function playRound(selectedMove) {
   if (matchOver) {
     return;
   }
 
+  disableMoveButtons();
+
   playerMove = selectedMove;
   computerMove = chooseComputerMove();
+
+  playerChoiceDisplay.textContent = playerMove;
+  playerChoiceIcon.src = `assets/images/icons/${playerMove}.svg`;
+
+  computerChoiceDisplay.textContent = "";
+  computerChoiceIcon.src = "assets/images/icons/question.svg";
+
+  resultMessage.textContent = "CPU is thinking...";
+  resultRule.textContent = "";
+
+  await wait(600);
+
+  computerChoiceDisplay.textContent = computerMove;
+  computerChoiceIcon.src = `assets/images/icons/${computerMove}.svg`;
 
   const result = determineWinner(playerMove, computerMove);
 
@@ -265,14 +287,7 @@ function playRound(selectedMove) {
   updateChoiceTokenColour(playerChoiceToken, playerMove);
   updateChoiceTokenColour(computerChoiceToken, computerMove);
 
-  playerChoiceDisplay.textContent = playerMove;
-  computerChoiceDisplay.textContent = computerMove;
-
-  playerChoiceIcon.src = `assets/images/icons/${playerMove}.svg`;
-  computerChoiceIcon.src = `assets/images/icons/${computerMove}.svg`;
-
   checkMatchWinner();
-  disableMoveButtons();
 
   roundPlayed = true;
 
