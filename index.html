@@ -30,10 +30,21 @@
         </div>
 
         <nav class="main-nav" aria-label="Main navigation">
-            <a class="nav-link nav-link--active" href="#play-screen">Play</a>
-            <a class="nav-link" href="#rank-screen">Rank</a>
-            <a class="nav-link" href="#rules-screen">Rules</a>
-            <a class="nav-link" href="#settings-screen">Settings</a>
+            <a class="nav-link nav-link--active" href="#play-screen" title="Play the game (Keyboard: 1)">
+                Play
+            </a>
+
+            <a class="nav-link" href="#rank-screen" title="View your statistics and achievements (Keyboard: 2)">
+                Rank
+            </a>
+
+            <a class="nav-link" href="#rules-screen" title="Learn the rules and winning combinations (Keyboard: 3)">
+                Rules
+            </a>
+
+            <a class="nav-link" href="#settings-screen" title="Change game settings and difficulty (Keyboard: 4)">
+                Settings
+            </a>
         </nav>
 
     </header>
@@ -71,23 +82,23 @@
                 <p class="panel-subtitle">Make your move against the computer.</p>
 
                 <div class="move-grid">
-                    <button class="move-card move-card--rock" data-choice="rock">
+                    <button class="move-card move-card--rock" data-choice="rock" title="Rock (Keyboard: R)">
                         <img src="assets/images/icons/rock.svg" alt="" class="move-icon">
                         <span>Rock</span>
                     </button>
-                    <button class="move-card move-card--paper" data-choice="paper">
+                    <button class="move-card move-card--paper" data-choice="paper" title="Paper (Keyboard: P)">
                         <img src="assets/images/icons/paper.svg" alt="" class="move-icon">
                         <span>Paper</span>
                     </button>
-                    <button class="move-card move-card--scissors" data-choice="scissors">
+                    <button class="move-card move-card--scissors" data-choice="scissors" title="Scissors (Keyboard: S)">
                         <img src="assets/images/icons/scissors.svg" alt="" class="move-icon">
                         <span>Scissors</span>
                     </button>
-                    <button class="move-card move-card--lizard" data-choice="lizard">
+                    <button class="move-card move-card--lizard" data-choice="lizard" title="Lizard (Keyboard: L)">
                         <img src="assets/images/icons/lizard.svg" alt="" class="move-icon">
                         <span>Lizard</span>
                     </button>
-                    <button class="move-card move-card--spock" data-choice="spock">
+                    <button class="move-card move-card--spock" data-choice="spock" title="Spock (Keyboard: K)">
                         <img src="assets/images/icons/spock.svg" alt="" class="move-icon">
                         <span>Spock</span>
                     </button>
@@ -118,7 +129,8 @@
                 <div class="result-box">
                     <p class="result-message" id="result-message">Choose your move!</p>
                     <p class="result-rule" id="result-rule"></p>
-                    <button id="next-round-button" class="next-round-button">Next Round</button>
+                    <button id="next-round-button" class="next-round-button"
+                        title="Next Round or New Game (Keyboard: N)">Next Round</button>
                 </div>
             </section>
 
@@ -243,6 +255,19 @@
                         <h3>Spock</h3>
                         <p>Vaporises Rock and smashes Scissors.</p>
                     </article>
+
+                    <article class="rule-card">
+                        <h3>Keyboard Shortcuts</h3>
+                        <p>
+                            R = Rock<br>
+                            P = Paper<br>
+                            S = Scissors<br>
+                            L = Lizard<br>
+                            K = Spock<br>
+                            N = Next Round<br>
+                            1 – 4 = Switch Tabs
+                        </p>
+                    </article>
                 </div>
             </section>
         </section>
@@ -259,7 +284,7 @@
                     <h3 class="setting-title">Game Mode</h3>
 
                     <label class="setting-option">
-                        <input type="radio" name="game-mode" value="casual" checked>
+                        <input type="radio" name="game-mode" value="casual" checked title="Random computer moves">
                         <span>
                             <strong>Casual Mode</strong>
                             Computer chooses a random move.
@@ -267,7 +292,8 @@
                     </label>
 
                     <label class="setting-option">
-                        <input type="radio" name="game-mode" value="hard">
+                        <input type="radio" name="game-mode" value="hard"
+                            title="Computer adapts to your previous moves">
                         <span>
                             <strong>Hard Mode</strong>
                             Computer analyses your previous moves.
