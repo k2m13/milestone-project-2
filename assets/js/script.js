@@ -257,6 +257,8 @@ const computerChoiceToken =
 
 const resultBox = document.querySelector(".result-box");
 
+const themeInputs = document.querySelectorAll('input[name="theme-mode"]');
+
 // ====================
 // Computer Move       |
 // ====================
@@ -811,3 +813,24 @@ loadRankStats();
 updateAchievement();
 loadHighScores();
 
+const savedTheme = localStorage.getItem("selectedTheme") || "theme-default";
+applyTheme(savedTheme);
+
+//Colour Pallettes
+
+function applyTheme(themeName) {
+  document.body.classList.remove(
+    "theme-default",
+    "theme-high-contrast",
+    "theme-colourblind"
+  );
+
+  document.body.classList.add(themeName);
+  localStorage.setItem("selectedTheme", themeName);
+}
+
+themeInputs.forEach(function (input) {
+  input.addEventListener("change", function () {
+    applyTheme(input.value);
+  });
+});

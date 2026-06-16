@@ -57,6 +57,36 @@ body {
     font-family: "Orbitron", sans-serif;
 }
 
+/* 2 Additional Colour Pallettes */
+
+body.theme-high-contrast {
+    --color-background: #0b1020;
+
+    --color-surface: #111827;
+    --color-surface-strong: #1f2937;
+
+    --color-border: #38bdf8;
+
+    --color-text: #f8fafc;
+    --color-muted: #cbd5e1;
+
+    --color-cyan: #22d3ee;
+    --color-purple: #c084fc;
+    --color-orange: #fbbf24;
+}
+
+body.theme-colourblind {
+    --color-background: #f8f9fa;
+    --color-surface: rgba(255, 255, 255, 0.9);
+    --color-surface-strong: #ffffff;
+    --color-border: rgba(0, 114, 178, 0.35);
+    --color-text: #1f2933;
+    --color-muted: #52616b;
+    --color-cyan: #0072b2;
+    --color-purple: #cc79a7;
+    --color-orange: #e69f00;
+}
+
 /* Layout */
 .site-header {
     border: 1px solid var(--color-border);
@@ -101,7 +131,7 @@ body {
 
 .app-container,
 .site-header {
-    width: min(97vw, 1600px);
+    width: min(98vw, 1600px);
     margin-left: auto;
     margin-right: auto;
 }
@@ -118,7 +148,7 @@ body {
 #play-screen.active-screen {
     height: auto;
     display: grid;
-    grid-template-columns: minmax(320px, 0.9fr) minmax(520px, 1.6fr) minmax(320px, 0.9fr);
+    grid-template-columns: minmax(260px, 0.9fr) minmax(420px, 1.6fr) minmax(260px, 0.9fr);
     grid-template-rows: auto auto;
     grid-template-areas:
         "moves battle score"
@@ -219,7 +249,7 @@ body {
     min-height: var(--move-card-height);
     width: 100%;
 
-    background: linear-gradient(145deg, #ffffff, #eefbff);
+    background: var(--color-surface-strong);
     border: 2px solid var(--color-border);
     border-radius: 1rem;
 
@@ -324,7 +354,7 @@ body {
     align-content: center;
     padding: 1rem;
     border-radius: 1rem;
-    background: linear-gradient(145deg, #ffffff, #eefbff);
+    background: var(--color-surface-strong);
     border: 1px solid var(--color-border);
 
 }
@@ -563,7 +593,7 @@ body {
     border: 2px solid var(--color-cyan);
     border-radius: 0.75rem;
 
-    background: linear-gradient(145deg, #ffffff, #e9fbff);
+    background: var(--color-surface-strong);
     color: var(--color-cyan);
 
     font-family: "Orbitron", sans-serif;
@@ -781,7 +811,7 @@ body {
     padding: 0.55rem;
 
     border-radius: 0.75rem;
-    background: linear-gradient(145deg, #ffffff, #eefbff);
+    background: var(--color-surface-strong);
     border: 1px solid var(--color-border);
 
     text-align: center;
