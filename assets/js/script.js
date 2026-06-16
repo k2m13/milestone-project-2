@@ -126,6 +126,8 @@ function loadRankStats() {
 
   highestStreakDisplay.textContent = highestStreak;
   rankHighestStreakDisplay.textContent = highestStreak;
+
+  updateAchievement();
 }
 
 // ====================
@@ -163,6 +165,8 @@ const matchesWonDisplay = document.getElementById("matches-won");
 const matchesLostDisplay = document.getElementById("matches-lost");
 
 const favouriteMoveDisplay = document.getElementById("favourite-move");
+
+const achievementTitleDisplay = document.getElementById("achievement-title");
 
 const gameModeInputs = document.querySelectorAll('input[name="game-mode"]');
 
@@ -271,7 +275,7 @@ async function playRound(selectedMove) {
   resultMessage.textContent = "CPU is thinking...";
   resultRule.textContent = "";
 
-  await wait(600);
+  await wait(550);
 
   computerChoiceDisplay.textContent = computerMove;
   computerChoiceIcon.src = `assets/images/icons/${computerMove}.svg`;
@@ -409,6 +413,7 @@ function startNewGame() {
 
   playerChoiceDisplay.textContent = "";
   computerChoiceDisplay.textContent = "";
+  updateAchievement();
 
   playerChoiceIcon.src = "assets/images/icons/question.svg";
   computerChoiceIcon.src = "assets/images/icons/question.svg";
@@ -576,6 +581,7 @@ function checkMatchWinner() {
     resultRule.textContent = "Final result: you reached 8 wins first.";
     matchesWon++;
     saveRankStats();
+    updateAchievement();
     matchOver = true;
   } else if (computerScore >= winningScore) {
     resultMessage.textContent = "Computer Wins The Match!";
@@ -649,6 +655,22 @@ function updateFavouriteMove() {
   });
 
   favouriteMoveDisplay.textContent = favouriteMove;
+}
+
+function updateAchievement() {
+  let achievement = "Beginner";
+
+  if (matchesWon >= 50) {
+    achievement = "Mind Master";
+  } else if (matchesWon >= 25) {
+    achievement = "Grand Strategist";
+  } else if (matchesWon >= 10) {
+    achievement = "Veteran";
+  } else if (matchesWon >= 5) {
+    achievement = "Competitor";
+  }
+
+  achievementTitleDisplay.textContent = achievement;
 }
 
 // ====================

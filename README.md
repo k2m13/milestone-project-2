@@ -353,6 +353,16 @@ const winningMoves = {
 If `winningMoves[playerMove].includes(computerMove)` is true, the player wins.
 If both moves are the same, the round is a draw. Otherwise, the computer wins.
 
+### Rank
+
+Players now progress:
+
+0 wins      Beginner
+5 wins      Competitor
+10 wins     Veteran
+25 wins     Grand Strategist
+50 wins     Mind Master
+
 4. ## Testing
 
 ### Manual Regression Testing
