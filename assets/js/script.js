@@ -64,6 +64,7 @@ const moveFrequency = {
 let matchesWon = 0;
 let matchesLost = 0;
 let highestStreak = 0;
+let highScores = [];
 
 const moveList = ["rock", "paper", "scissors", "lizard", "spock"];
 
@@ -130,6 +131,76 @@ function loadRankStats() {
   updateAchievement();
 }
 
+
+function updateAchievement() {
+  let achievement = "Beginner";
+
+  if (matchesWon >= 50) {
+    achievement = "Mind Master";
+  } else if (matchesWon >= 25) {
+    achievement = "Grand Strategist";
+  } else if (matchesWon >= 10) {
+    achievement = "Veteran";
+  } else if (matchesWon >= 5) {
+    achievement = "Competitor";
+  }
+
+  achievementTitleDisplay.textContent = achievement;
+}
+
+function saveHighScores() {
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+}
+
+function loadHighScores() {
+  highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+  displayHighScores();
+}
+
+function addHighScore(finalScore, finalRounds) {
+  const playerName = prompt("New high score! Enter your name:");
+
+  if (!playerName) {
+    return;
+  }
+
+  const scoreData = {
+    name: playerName,
+    wins: finalScore,
+    rounds: finalRounds,
+    winRate: `${Math.round((finalScore / finalRounds) * 100)}%`,
+  };
+
+  highScores.push(scoreData);
+
+  highScores.sort(function (a, b) {
+    return b.wins - a.wins || a.rounds - b.rounds;
+  });
+
+  highScores = highScores.slice(0, 5);
+  saveHighScores();
+  displayHighScores();
+
+}
+
+function displayHighScores() {
+  highScoreList.innerHTML = "";
+
+  if (highScores.length === 0) {
+    highScoreList.innerHTML = "<li>No high scores yet.</li>";
+    return;
+  }
+
+  highScores.forEach(function (score) {
+    const listItem = document.createElement("li");
+
+    listItem.textContent =
+      `${score.name} — ${score.wins} wins in ${score.rounds} rounds (${score.winRate})`;
+
+    highScoreList.appendChild(listItem);
+  });
+}
+
 // ====================
 // DOM References      |
 // ====================
@@ -165,6 +236,8 @@ const matchesWonDisplay = document.getElementById("matches-won");
 const matchesLostDisplay = document.getElementById("matches-lost");
 
 const favouriteMoveDisplay = document.getElementById("favourite-move");
+
+const highScoreList = document.getElementById("high-score-list");
 
 const achievementTitleDisplay = document.getElementById("achievement-title");
 
@@ -582,12 +655,14 @@ function checkMatchWinner() {
     matchesWon++;
     saveRankStats();
     updateAchievement();
+    addHighScore(playerScore, totalRounds);
     matchOver = true;
   } else if (computerScore >= winningScore) {
     resultMessage.textContent = "Computer Wins The Match!";
     resultRule.textContent = "Final result: the computer reached 8 wins first.";
     matchesLost++;
     saveRankStats();
+    updateAchievement();
     matchOver = true;
   } else if (roundNumber >= 15) {
     if (playerScore > computerScore) {
@@ -595,11 +670,14 @@ function checkMatchWinner() {
       resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
       matchesWon++;
       saveRankStats();
+      updateAchievement();
+      addHighScore(playerScore, totalRounds);
     } else if (computerScore > playerScore) {
       resultMessage.textContent = "Computer Wins The Match!";
       resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
       matchesLost++;
       saveRankStats();
+      updateAchievement();
     } else {
       resultMessage.textContent = "Match Draw!";
       resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
@@ -610,8 +688,6 @@ function checkMatchWinner() {
 
   if (matchOver) {
     disableMoveButtons();
-    nextRoundButton.disabled = true;
-
     nextRoundButton.disabled = false;
     nextRoundButton.textContent = "New Game";
   }
@@ -721,3 +797,6 @@ function addRoundToHistory(result) {
 }
 
 loadRankStats();
+updateAchievement();
+loadHighScores();
+
