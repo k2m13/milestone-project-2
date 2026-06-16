@@ -131,7 +131,6 @@ function loadRankStats() {
   updateAchievement();
 }
 
-
 function updateAchievement() {
   let achievement = "Beginner";
 
@@ -748,6 +747,18 @@ function updateAchievement() {
 
   achievementTitleDisplay.textContent = achievement;
 }
+
+const resetHighScoresButton =
+  document.getElementById("reset-highscores-button");
+
+resetHighScoresButton.addEventListener("click", function () {
+  if (confirm("Delete all high scores?")) {
+    highScores = [];
+    saveHighScores();
+    displayHighScores();
+    alert("High scores deleted.");
+  }
+});
 
 // ====================
 // Round Controls      |
