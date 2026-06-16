@@ -708,6 +708,30 @@ body {
     color: var(--color-cyan);
 }
 
+/* Highscores */
+
+.high-score-panel {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: var(--color-surface-strong);
+    border: 1px solid var(--color-border);
+}
+
+.high-score-list {
+    margin-top: 0.75rem;
+    padding-left: 1.5rem;
+    color: var(--color-text);
+}
+
+.high-score-list li {
+    margin-bottom: 0.5rem;
+}
+
+.rank-card:last-child {
+    grid-column: 1 / -1;
+}
+
 /* Match Format */
 
 .match-format {
