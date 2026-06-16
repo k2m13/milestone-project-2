@@ -62,7 +62,6 @@ body {
     border: 1px solid var(--color-border);
     padding: 0.75rem 1.25rem;
     margin: 0.4rem auto;
-    max-width: 1400px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -102,7 +101,7 @@ body {
 
 .app-container,
 .site-header {
-    width: var(--page-width);
+    width: min(97vw, 1600px);
     margin-left: auto;
     margin-right: auto;
 }
@@ -115,7 +114,6 @@ body {
 .screen {
     display: none;
 }
-
 
 #play-screen.active-screen {
     height: auto;
@@ -602,7 +600,7 @@ body {
 /* Rules Screen */
 #rules-screen.active-screen {
     display: block;
-    padding: 1rem;
+    padding: 0.5rem 0;
 }
 
 .rules-grid {
@@ -632,7 +630,7 @@ body {
 /* Settings Screen */
 #settings-screen.active-screen {
     display: block;
-    padding: 1rem;
+    padding: 0.5rem 0;
 }
 
 .setting-group {
@@ -679,7 +677,7 @@ body {
 /* Rank Screen */
 #rank-screen.active-screen {
     display: block;
-    padding: 1rem;
+    padding: 0.5rem 0;
 }
 
 .rank-grid {
@@ -796,11 +794,6 @@ body {
 
 /* Media Queries */
 @media (min-width: 1400px) {
-    .app-container,
-    .site-header {
-        width: 98vw;
-        max-width: 1700px;
-    }
 
     #play-screen.active-screen {
         grid-template-columns: minmax(360px, 0.9fr) minmax(620px, 1.7fr) minmax(360px, 0.9fr);
@@ -819,31 +812,14 @@ body {
         font-size: 1.25rem;
     }
 
-    /* .play-grid-battle {
-        min-height: clamp(340px, 42vh, 430px);
-    } */
-
     .battle-area {
         margin: 0.5rem 0;
     }
-
-    /* .choice-display {
-        min-height: clamp(170px, 22vh, 220px);
-    } */
-
-    /* .choice-token {
-        min-height: clamp(130px, 17vh, 170px);
-    } */
 
     .battle-icon {
         width: clamp(90px, 7vw, 130px);
         height: clamp(90px, 7vw, 130px);
     }
-
-    /* .move-card {
-        min-height: clamp(105px, 13vh, 135px);
-        font-size: 1.05rem;
-    } */
 
     .move-icon {
         width: clamp(76px, 5vw, 110px);
