@@ -605,8 +605,14 @@ document.addEventListener("keydown", function (event) {
     switchTabByKeyboard(2);
   } else if (key === "4") {
     switchTabByKeyboard(3);
+  } else if (key === "h") {
+    resetHighScoresButton.click();
   }
 });
+
+if (confirm("Reset all saved high scores?")) {
+    resetHighScores();
+}
 
 // ====================
 // Update Scores       |
