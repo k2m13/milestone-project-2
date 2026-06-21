@@ -822,7 +822,7 @@ body.theme-colourblind {
     margin-bottom: 0.5rem;
 }
 
-.rank-card:last-child {
+.rank-card:first-child {
     grid-column: 1 / -1;
 }
 
