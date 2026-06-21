@@ -690,6 +690,37 @@ body.theme-colourblind {
     color: var(--color-muted);
 }
 
+.rule-flow {
+    display: grid;
+    grid-template-columns: 64px auto 64px;
+    grid-template-areas:
+        "main beats beaten-one"
+        "main beats beaten-two";
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem 0.75rem;
+    margin: 0.75rem 0;
+}
+
+.rule-flow-icon {
+    grid-area: main;
+    width: 64px;
+    height: 64px;
+}
+
+.rule-flow-arrow {
+    grid-area: beats;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-cyan);
+    text-transform: uppercase;
+}
+
+.rule-flow-icon-small {
+    width: 36px;
+    height: 36px;
+}
+
 /* Settings Screen */
 #settings-screen.active-screen {
     display: block;
