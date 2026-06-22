@@ -18,7 +18,8 @@
     --color-purple: #9b4dff;
     --color-orange: #ff9f1c;
     --color-shadow: rgba(0, 188, 212, 0.18);
-    --layout-gap: 0.85rem;
+    --layout-gap: clamp(0.6rem, 0.9vw, 0.9rem);
+    --card-gap: clamp(0.5rem, 0.8vw, 0.85rem);
     --page-width: min(98vw, 1600px);
     --panel-padding: clamp(0.75rem, 1vw, 1.25rem);
     --panel-radius: 1rem;
@@ -154,7 +155,7 @@ body.theme-colourblind {
         "moves battle score"
         "moves battle stats"
         "history history history";
-    gap: 0.75rem;
+    gap: var(--layout-gap);
     padding: 0.5rem 0;
     align-items: stretch;
 }
@@ -495,11 +496,12 @@ body.theme-colourblind {
 .score-value {
     font-family: "Orbitron", sans-serif;
     font-size: clamp(2.4rem, 5vw, 4rem);
-    width: clamp(56px, 5vw, 80px);
-    height: clamp(56px, 5vw, 80px);
     font-weight: 700;
     line-height: 1;
     color: var(--color-cyan);
+    display: grid;
+    place-items: center;
+    margin: 0 auto;
 }
 
 .score-divider {
@@ -539,7 +541,7 @@ body.theme-colourblind {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     color: var(--color-cyan);
 }
 
@@ -570,6 +572,9 @@ body.theme-colourblind {
     border-radius: 1rem;
     background: var(--color-surface-strong);
     border: 1px solid var(--color-border);
+    display: grid;
+    place-items: center;
+    text-align: center;
 }
 
 .summary-label {
@@ -636,7 +641,7 @@ body.theme-colourblind {
 .rules-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
+    gap: var(--card-gap);
     margin-top: 1rem;
 }
 
@@ -730,7 +735,7 @@ body.theme-colourblind {
 .setting-group {
     margin-top: 1rem;
     display: grid;
-    gap: 1rem;
+    gap: var(--card-gap);
 }
 
 .setting-title {
@@ -777,7 +782,7 @@ body.theme-colourblind {
 .rank-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: var(--card-gap);
     margin-top: 1rem;
 }
 
@@ -787,6 +792,8 @@ body.theme-colourblind {
     background: var(--color-surface-strong);
     border: 1px solid var(--color-border);
     text-align: center;
+    display: grid;
+    place-items: center;
 }
 
 .rank-label {
@@ -848,7 +855,7 @@ body.theme-colourblind {
 
 .secondary-button:hover {
     transform: translateY(-2px);
-    border-color: var(--color-accent);
+    border-color: var(--color-cyan);
 }
 
 .secondary-button:active {
@@ -856,7 +863,7 @@ body.theme-colourblind {
 }
 
 .secondary-button:focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-cyan);
     outline-offset: 2px;
 }
 
