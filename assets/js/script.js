@@ -667,10 +667,6 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-if (confirm("Reset all saved high scores?")) {
-  resetHighScores();
-}
-
 // ====================
 // Update Scores       |
 // ====================
@@ -891,11 +887,15 @@ function applyTheme(themeName) {
   document.body.classList.remove(
     "theme-default",
     "theme-high-contrast",
-    "theme-colourblind",
+    "theme-colourblind"
   );
 
   document.body.classList.add(themeName);
   localStorage.setItem("selectedTheme", themeName);
+
+  themeInputs.forEach(function (input) {
+    input.checked = input.value === themeName;
+  });
 }
 
 themeInputs.forEach(function (input) {
