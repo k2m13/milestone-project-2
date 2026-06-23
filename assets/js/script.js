@@ -179,7 +179,6 @@ function addHighScore(finalScore, finalRounds) {
   highScores = highScores.slice(0, 5);
   saveHighScores();
   displayHighScores();
-
 }
 
 function displayHighScores() {
@@ -193,8 +192,7 @@ function displayHighScores() {
   highScores.forEach(function (score) {
     const listItem = document.createElement("li");
 
-    listItem.textContent =
-      `${score.name} — ${score.wins} wins in ${score.rounds} rounds (${score.winRate})`;
+    listItem.textContent = `${score.name} — ${score.wins} wins in ${score.rounds} rounds (${score.winRate})`;
 
     highScoreList.appendChild(listItem);
   });
@@ -246,18 +244,78 @@ const playerChoiceIcon = document.getElementById("player-choice-icon");
 
 const computerChoiceIcon = document.getElementById("computer-choice-icon");
 
-const movePanel =
-  document.querySelector(".play-grid-moves");
+const movePanel = document.querySelector(".play-grid-moves");
 
-const playerChoiceToken =
-  playerChoiceDisplay.parentElement;
+const playerChoiceToken = playerChoiceDisplay.parentElement;
 
-const computerChoiceToken =
-  computerChoiceDisplay.parentElement;
+const computerChoiceToken = computerChoiceDisplay.parentElement;
 
 const resultBox = document.querySelector(".result-box");
 
 const themeInputs = document.querySelectorAll('input[name="theme-mode"]');
+
+const soundInputs = document.querySelectorAll('input[name="sound-mode"]');
+
+// ====================
+// Sound Effects       |
+// ====================
+
+let soundEnabled = true;
+
+const sounds = {
+  moveSelected: new Audio("assets/audio/move-selected.mp3"),
+  cpuReveal: new Audio("assets/audio/cpu-reveal.mp3"),
+  roundWin: new Audio("assets/audio/round-win.mp3"),
+  roundLoss: new Audio("assets/audio/round-loss.mp3"),
+  roundDraw: new Audio("assets/audio/round-draw.mp3"),
+  matchWin: new Audio("assets/audio/match-win.mp3"),
+  matchLoss: new Audio("assets/audio/match-loss.mp3"),
+  matchDraw: new Audio("assets/audio/match-draw.mp3"),
+  newGame: new Audio("assets/audio/new-game.mp3"),
+};
+
+function setSoundVolumes() {
+  sounds.moveSelected.volume = 0.2;
+  sounds.cpuReveal.volume = 0.2;
+
+  sounds.roundWin.volume = 0.25;
+  sounds.roundLoss.volume = 0.25;
+  sounds.roundDraw.volume = 0.25;
+
+  sounds.matchWin.volume = 0.35;
+  sounds.matchLoss.volume = 0.35;
+  sounds.matchDraw.volume = 0.35;
+
+  sounds.newGame.volume = 0.2;
+}
+
+function playSound(sound) {
+  if (!soundEnabled || !sound) {
+    return;
+  }
+
+  sound.currentTime = 0;
+  sound.play().catch(function () {
+    // Browser may block sound until the user interacts with the page.
+  });
+}
+
+function applySoundSetting(setting) {
+  soundEnabled = setting === "on";
+  localStorage.setItem("soundSetting", setting);
+
+  soundInputs.forEach(function (input) {
+    input.checked = input.value === setting;
+  });
+}
+
+soundInputs.forEach(function (input) {
+  input.addEventListener("change", function () {
+    applySoundSetting(input.value);
+  });
+});
+
+setSoundVolumes();
 
 // ====================
 // Computer Move       |
@@ -336,6 +394,7 @@ async function playRound(selectedMove) {
   }
 
   disableMoveButtons();
+  playSound(sounds.moveSelected);
 
   playerMove = selectedMove;
   computerMove = chooseComputerMove();
@@ -353,8 +412,17 @@ async function playRound(selectedMove) {
 
   computerChoiceDisplay.textContent = computerMove;
   computerChoiceIcon.src = `assets/images/icons/${computerMove}.svg`;
+  playSound(sounds.cpuReveal);
 
   const result = determineWinner(playerMove, computerMove);
+
+  if (result === "player") {
+    playSound(sounds.roundWin);
+  } else if (result === "computer") {
+    playSound(sounds.roundLoss);
+  } else {
+    playSound(sounds.roundDraw);
+  }
 
   updateScores(result);
   updateStats(result);
@@ -384,7 +452,7 @@ function updateChoiceTokenColour(choiceToken, move) {
     "choice-token--paper",
     "choice-token--scissors",
     "choice-token--lizard",
-    "choice-token--spock"
+    "choice-token--spock",
   );
 
   choiceToken.classList.add(`choice-token--${move}`);
@@ -411,37 +479,29 @@ function resetBattlePanel() {
   playerMove = "";
   computerMove = "";
 
-  resultBox.classList.remove(
-  "result-win",
-  "result-loss",
-  "result-draw"
-);
+  resultBox.classList.remove("result-win", "result-loss", "result-draw");
 
-playerChoiceToken.classList.remove(
-  "choice-token--rock",
-  "choice-token--paper",
-  "choice-token--scissors",
-  "choice-token--lizard",
-  "choice-token--spock"
-);
+  playerChoiceToken.classList.remove(
+    "choice-token--rock",
+    "choice-token--paper",
+    "choice-token--scissors",
+    "choice-token--lizard",
+    "choice-token--spock",
+  );
 
-computerChoiceToken.classList.remove(
-  "choice-token--rock",
-  "choice-token--paper",
-  "choice-token--scissors",
-  "choice-token--lizard",
-  "choice-token--spock"
-);
+  computerChoiceToken.classList.remove(
+    "choice-token--rock",
+    "choice-token--paper",
+    "choice-token--scissors",
+    "choice-token--lizard",
+    "choice-token--spock",
+  );
 
   enableMoveButtons();
 }
 
 function updateResultBox(result) {
-  resultBox.classList.remove(
-    "result-win",
-    "result-loss",
-    "result-draw"
-  );
+  resultBox.classList.remove("result-win", "result-loss", "result-draw");
 
   if (result === "player") {
     resultBox.classList.add("result-win");
@@ -453,6 +513,7 @@ function updateResultBox(result) {
 }
 
 function startNewGame() {
+  playSound(sounds.newGame);
   playerScore = 0;
   computerScore = 0;
 
@@ -501,26 +562,22 @@ function startNewGame() {
   nextRoundButton.disabled = true;
 
   playerChoiceToken.classList.remove(
-  "choice-token--rock",
-  "choice-token--paper",
-  "choice-token--scissors",
-  "choice-token--lizard",
-  "choice-token--spock"
-);
+    "choice-token--rock",
+    "choice-token--paper",
+    "choice-token--scissors",
+    "choice-token--lizard",
+    "choice-token--spock",
+  );
 
-computerChoiceToken.classList.remove(
-  "choice-token--rock",
-  "choice-token--paper",
-  "choice-token--scissors",
-  "choice-token--lizard",
-  "choice-token--spock"
-);
+  computerChoiceToken.classList.remove(
+    "choice-token--rock",
+    "choice-token--paper",
+    "choice-token--scissors",
+    "choice-token--lizard",
+    "choice-token--spock",
+  );
 
-resultBox.classList.remove(
-  "result-win",
-  "result-loss",
-  "result-draw"
-);
+  resultBox.classList.remove("result-win", "result-loss", "result-draw");
 
   enableMoveButtons();
 }
@@ -611,7 +668,7 @@ document.addEventListener("keydown", function (event) {
 });
 
 if (confirm("Reset all saved high scores?")) {
-    resetHighScores();
+  resetHighScores();
 }
 
 // ====================
@@ -663,6 +720,7 @@ function checkMatchWinner() {
     saveRankStats();
     updateAchievement();
     addHighScore(playerScore, totalRounds);
+    playSound(sounds.matchWin);
     matchOver = true;
   } else if (computerScore >= winningScore) {
     resultMessage.textContent = "Computer Wins The Match!";
@@ -670,6 +728,7 @@ function checkMatchWinner() {
     matchesLost++;
     saveRankStats();
     updateAchievement();
+    playSound(sounds.matchLoss);
     matchOver = true;
   } else if (roundNumber >= 15) {
     if (playerScore > computerScore) {
@@ -679,15 +738,18 @@ function checkMatchWinner() {
       saveRankStats();
       updateAchievement();
       addHighScore(playerScore, totalRounds);
+      playSound(sounds.matchWin);
     } else if (computerScore > playerScore) {
       resultMessage.textContent = "Computer Wins The Match!";
       resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
       matchesLost++;
       saveRankStats();
       updateAchievement();
+      playSound(sounds.matchLoss);
     } else {
       resultMessage.textContent = "Match Draw!";
       resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
+      playSound(sounds.matchDraw);
     }
 
     matchOver = true;
@@ -756,8 +818,9 @@ function updateAchievement() {
   achievementTitleDisplay.textContent = achievement;
 }
 
-const resetHighScoresButton =
-  document.getElementById("reset-highscores-button");
+const resetHighScoresButton = document.getElementById(
+  "reset-highscores-button",
+);
 
 resetHighScoresButton.addEventListener("click", function () {
   if (confirm("Delete all high scores?")) {
@@ -828,7 +891,7 @@ function applyTheme(themeName) {
   document.body.classList.remove(
     "theme-default",
     "theme-high-contrast",
-    "theme-colourblind"
+    "theme-colourblind",
   );
 
   document.body.classList.add(themeName);
@@ -840,3 +903,6 @@ themeInputs.forEach(function (input) {
     applyTheme(input.value);
   });
 });
+
+const savedSoundSetting = localStorage.getItem("soundSetting") || "on";
+applySoundSetting(savedSoundSetting);
