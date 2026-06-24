@@ -562,11 +562,16 @@ body.theme-high-contrast .secondary-button {
 
 .score-card {
   min-width: 0;
-  padding: clamp(0.45rem, 0.7vw, 0.65rem);
+  padding: 0.65rem;
   border-radius: 1rem;
   background: var(--color-surface-strong);
   border: 1px solid var(--color-border);
   text-align: center;
+
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.35rem;
 }
 
 .score-value {
@@ -591,7 +596,6 @@ body.theme-high-contrast .secondary-button {
 }
 
 .score-label {
-  margin-bottom: 0.5rem;
   color: var(--color-muted);
 
   font-size: 0.65rem;
@@ -1191,6 +1195,7 @@ body.theme-high-contrast .secondary-button {
 
   .score-value {
     font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 1;
   }
 
   .summary-value {
