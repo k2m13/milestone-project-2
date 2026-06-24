@@ -8,16 +8,16 @@
 
 /* Colour Variables */
 :root {
-  --color-background: #f4fbff;
+  --color-background: #f7f3ff;
   --color-surface: rgba(255, 255, 255, 0.58);
-  --color-surface-strong: rgba(255, 255, 255, 0.74);
-  --color-border: rgba(0, 188, 212, 0.34);
-  --color-shadow: rgba(0, 188, 212, 0.22);
-  --color-text: #14345a;
-  --color-muted: #5f7897;
-  --color-cyan: #06c6b5;
-  --color-purple: #9b4dff;
-  --color-orange: #ff9f1c;
+  --color-surface-strong: rgba(255, 255, 255, 0.76);
+  --color-border: rgba(124, 58, 237, 0.32);
+  --color-shadow: rgba(124, 58, 237, 0.22);
+  --color-text: #261447;
+  --color-muted: #6b5a86;
+  --color-cyan: #7c3aed;
+  --color-purple: #ec4899;
+  --color-orange: #f59e0b;
   --layout-gap: clamp(0.6rem, 0.9vw, 0.9rem);
   --card-gap: clamp(0.5rem, 0.8vw, 0.85rem);
   --page-width: min(98vw, 1600px);
@@ -41,15 +41,15 @@ body {
   background:
     radial-gradient(
       circle at top left,
-      rgba(0, 188, 212, 0.18),
+      rgba(124, 58, 237, 0.18),
       transparent 32%
     ),
     radial-gradient(
       circle at bottom right,
-      rgba(155, 77, 255, 0.14),
+      rgba(245, 158, 11, 0.16),
       transparent 35%
     ),
-    linear-gradient(135deg, #f8fdff 0%, #eef8ff 100%);
+    linear-gradient(135deg, #fbf8ff 0%, #f4edff 50%, #fff7e6 100%);
   background-attachment: fixed;
 }
 
@@ -227,12 +227,11 @@ body.theme-colourblind {
 
 .site-header,
 .panel {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.72),
-      rgba(225, 248, 255, 0.42)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.72),
+    rgba(225, 248, 255, 0.42)
+  );
   border: 1px solid var(--color-border);
   border-radius: 1rem;
   backdrop-filter: blur(12px);
@@ -505,8 +504,8 @@ body.theme-high-contrast .secondary-button {
   background: var(--color-cyan);
   color: #ffffff;
   box-shadow:
-  0 0 20px rgba(6, 198, 181, 0.35),
-  0 0 40px rgba(6, 198, 181, 0.15);
+    0 0 20px rgba(6, 198, 181, 0.35),
+    0 0 40px rgba(6, 198, 181, 0.15);
 }
 
 .result-box {
@@ -523,7 +522,7 @@ body.theme-high-contrast .secondary-button {
   border: 1px solid var(--color-border);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    0 8px 24px rgba(0, 188, 212, 0.10);
+    0 8px 24px rgba(0, 188, 212, 0.1);
 }
 
 .result-rule {
