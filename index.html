@@ -194,14 +194,20 @@
 
             <section class="rank-panel panel">
 
-                <h2 class="panel-title">Player Rank</h2>
+                <h2 class="panel-title">Rank Centre</h2>
 
-                <div class="rank-grid">
-                    <div class="rank-card rank-card--achievement">
+                <p class="panel-subtitle rank-intro">
+                    Win matches to unlock higher achievement ranks. Your rank progress,
+                    favourite move and high scores are saved on this device.
+                </p>
+
+                <div class="rank-layout">
+
+                    <article class="rank-card rank-card--achievement">
                         <img src="assets/images/icons/ranks/rank-beginner.svg" alt="" class="rank-badge-icon"
                             id="rank-badge-icon">
 
-                        <p class="rank-label">Achievement</p>
+                        <p class="rank-label">Current Achievement</p>
 
                         <p class="rank-value" id="achievement-title">
                             Beginner
@@ -210,39 +216,48 @@
                         <p class="rank-description" id="rank-description">
                             Win matches to unlock higher achievement titles.
                         </p>
+                    </article>
+
+                    <div class="rank-grid" aria-label="Player statistics">
+                        <div class="rank-card">
+                            <p class="rank-label">Matches Won</p>
+                            <p class="rank-value" id="matches-won">0</p>
+                        </div>
+
+                        <div class="rank-card">
+                            <p class="rank-label">Matches Lost</p>
+                            <p class="rank-value" id="matches-lost">0</p>
+                        </div>
+
+                        <div class="rank-card">
+                            <p class="rank-label">Highest Streak</p>
+                            <p class="rank-value" id="rank-highest-streak">0</p>
+                        </div>
+
+                        <div class="rank-card">
+                            <p class="rank-label">Favourite Move</p>
+                            <p class="rank-value" id="favourite-move">N/A</p>
+                        </div>
                     </div>
 
-                    <div class="rank-card">
-                        <p class="rank-label">Matches Won</p>
-                        <p class="rank-value" id="matches-won">0</p>
-                    </div>
+                    <section class="high-score-panel">
+                        <div class="high-score-header">
+                            <h3 class="setting-title">High Scores</h3>
+                            <p class="panel-subtitle">
+                                Best saved match results on this device.
+                            </p>
+                        </div>
 
-                    <div class="rank-card">
-                        <p class="rank-label">Matches Lost</p>
-                        <p class="rank-value" id="matches-lost">0</p>
-                    </div>
+                        <ol class="high-score-list" id="high-score-list">
+                            <li>No high scores yet.</li>
+                        </ol>
 
-                    <div class="rank-card">
-                        <p class="rank-label">Highest Streak</p>
-                        <p class="rank-value" id="rank-highest-streak">0</p>
-                    </div>
-
-                    <div class="rank-card">
-                        <p class="rank-label">Favourite Move</p>
-                        <p class="rank-value" id="favourite-move">N/A</p>
-                    </div>
+                        <button id="reset-highscores-button" class="secondary-button" title="Reset (Keyboard: H)">
+                            Reset High Scores
+                        </button>
+                    </section>
 
                 </div>
-                <section class="high-score-panel">
-                    <h3 class="setting-title">High Scores</h3>
-                    <ol class="high-score-list" id="high-score-list">
-                        <li>No high scores yet.</li>
-                    </ol>
-                </section>
-
-                <button id="reset-highscores-button" class="secondary-button" title="Reset (Keyboard: H)">
-                    Reset High Scores
-                </button>
 
             </section>
 

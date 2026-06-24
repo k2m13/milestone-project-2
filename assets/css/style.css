@@ -961,16 +961,30 @@ body.theme-high-contrast .secondary-button {
 }
 
 /* Rank Screen */
+
 #rank-screen.active-screen {
   display: block;
   padding: 0.5rem 0;
 }
 
+.rank-intro {
+  margin-bottom: 1rem;
+}
+
+.rank-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(420px, 1.1fr);
+  grid-template-areas:
+    "achievement stats"
+    "scores scores";
+  gap: var(--layout-gap);
+}
+
 .rank-grid {
+  grid-area: stats;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--card-gap);
-  margin-top: 1rem;
 }
 
 .rank-card {
@@ -981,6 +995,21 @@ body.theme-high-contrast .secondary-button {
   text-align: center;
   display: grid;
   place-items: center;
+  align-content: center;
+}
+
+.rank-card--achievement {
+  grid-area: achievement;
+  gap: 0.45rem;
+  min-height: 100%;
+}
+
+.rank-badge-icon {
+  width: clamp(84px, 8vw, 125px);
+  height: clamp(84px, 8vw, 125px);
+  object-fit: contain;
+
+  filter: drop-shadow(0 0 12px rgba(var(--color-primary-rgb), 0.25));
 }
 
 .rank-label {
@@ -988,25 +1017,12 @@ body.theme-high-contrast .secondary-button {
 }
 
 .rank-value {
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 
   font-family: "Orbitron", sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
 
   color: var(--color-cyan);
-}
-
-.rank-card--achievement {
-  grid-column: 1 / -1;
-  gap: 0.45rem;
-}
-
-.rank-badge-icon {
-  width: clamp(64px, 7vw, 96px);
-  height: clamp(64px, 7vw, 96px);
-  object-fit: contain;
-
-  filter: drop-shadow(0 0 12px rgba(var(--color-primary-rgb), 0.25));
 }
 
 .rank-description {
@@ -1019,21 +1035,30 @@ body.theme-high-contrast .secondary-button {
 /* Highscores */
 
 .high-score-panel {
-  margin-top: 1rem;
+  grid-area: scores;
+
   padding: 1rem;
   border-radius: 1rem;
   background: var(--color-surface-strong);
   border: 1px solid var(--color-border);
 }
 
+.high-score-header {
+  text-align: center;
+}
+
 .high-score-list {
   margin-top: 0.75rem;
   padding-left: 1.5rem;
   color: var(--color-text);
+
+  columns: 2;
+  column-gap: 2rem;
 }
 
 .high-score-list li {
   margin-bottom: 0.5rem;
+  break-inside: avoid;
 }
 
 .secondary-button {
@@ -1068,14 +1093,6 @@ body.theme-high-contrast .secondary-button {
 .secondary-button:focus-visible {
   outline: 2px solid var(--color-cyan);
   outline-offset: 2px;
-}
-
-.high-score-panel {
-  text-align: center;
-}
-
-.high-score-list {
-  text-align: left;
 }
 
 /* Match Format */
@@ -1168,6 +1185,24 @@ body.theme-high-contrast .secondary-button {
 }
 
 /* Media Queries */
+
+@media (max-width: 800px) {
+  .rank-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "achievement"
+      "stats"
+      "scores";
+  }
+
+  .rank-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .high-score-list {
+    columns: 1;
+  }
+}
 
 @media (max-width: 1250px) {
   #play-screen.active-screen {
