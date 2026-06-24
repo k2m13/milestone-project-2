@@ -13,6 +13,8 @@ navLinks.forEach(function (link) {
   link.addEventListener("click", function (event) {
     event.preventDefault();
 
+    playSound(sounds.moveSelected);
+
     console.log(link.textContent);
 
     const screenId = link.getAttribute("href");
@@ -311,7 +313,14 @@ function applySoundSetting(setting) {
 
 soundInputs.forEach(function (input) {
   input.addEventListener("change", function () {
+    if (input.value === "off") {
+      playSound(sounds.moveSelected);
+      applySoundSetting(input.value);
+      return;
+    }
+
     applySoundSetting(input.value);
+    playSound(sounds.moveSelected);
   });
 });
 
@@ -601,6 +610,7 @@ nextRoundButton.addEventListener("click", function () {
 gameModeInputs.forEach(function (input) {
   input.addEventListener("change", function () {
     gameMode = input.value;
+    playSound(sounds.moveSelected);
   });
 });
 
@@ -901,6 +911,7 @@ function applyTheme(themeName) {
 themeInputs.forEach(function (input) {
   input.addEventListener("change", function () {
     applyTheme(input.value);
+    playSound(sounds.moveSelected);
   });
 });
 
