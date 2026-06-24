@@ -256,7 +256,8 @@ const resultBox = document.querySelector(".result-box");
 
 const themeInputs = document.querySelectorAll('input[name="theme-mode"]');
 
-const soundInputs = document.querySelectorAll('input[name="sound-mode"]');
+const soundToggle = document.getElementById("sound-toggle");
+const musicToggle = document.getElementById("music-toggle");
 
 // ====================
 // Sound Effects       |
@@ -302,29 +303,111 @@ function playSound(sound) {
   });
 }
 
+function updateToggleButton(button, isOn, label) {
+  if (!button) {
+    return;
+  }
+
+  button.setAttribute("aria-pressed", isOn);
+  button.textContent = `${label}: ${isOn ? "On" : "Off"}`;
+}
+
 function applySoundSetting(setting) {
   soundEnabled = setting === "on";
   localStorage.setItem("soundSetting", setting);
 
-  soundInputs.forEach(function (input) {
-    input.checked = input.value === setting;
-  });
+  if (soundToggle) {
+    soundToggle.checked = soundEnabled;
+    soundToggle.setAttribute("aria-checked", soundEnabled);
+  }
 }
 
-soundInputs.forEach(function (input) {
-  input.addEventListener("change", function () {
-    if (input.value === "off") {
+if (soundToggle) {
+  soundToggle.addEventListener("change", function () {
+    const newSetting = soundToggle.checked ? "on" : "off";
+
+    if (newSetting === "off") {
       playSound(sounds.moveSelected);
-      applySoundSetting(input.value);
+      applySoundSetting(newSetting);
       return;
     }
 
-    applySoundSetting(input.value);
+    applySoundSetting(newSetting);
     playSound(sounds.moveSelected);
   });
-});
+}
 
 setSoundVolumes();
+
+// ====================
+// Background Music    |
+// ====================
+
+let musicEnabled = false;
+
+const backgroundMusic = new Audio("assets/audio/background-music.mp3");
+
+// Starfall fades down near the end, so restart before the quiet gap.
+const musicLoopPoint = 136;
+
+backgroundMusic.volume = 0.08;
+backgroundMusic.loop = false;
+backgroundMusic.preload = "auto";
+
+function playBackgroundMusic() {
+  if (!musicEnabled) {
+    return;
+  }
+
+  backgroundMusic.play().catch(function () {
+    // Browser may block music until the user interacts with the page.
+  });
+}
+
+function pauseBackgroundMusic() {
+  backgroundMusic.pause();
+}
+
+function applyMusicSetting(setting) {
+  musicEnabled = setting === "on";
+  localStorage.setItem("musicSetting", setting);
+
+  if (musicToggle) {
+    musicToggle.checked = musicEnabled;
+    musicToggle.setAttribute("aria-checked", musicEnabled);
+  }
+
+  if (musicEnabled) {
+    playBackgroundMusic();
+  } else {
+    pauseBackgroundMusic();
+  }
+}
+
+backgroundMusic.addEventListener("timeupdate", function () {
+  if (backgroundMusic.currentTime >= musicLoopPoint) {
+    backgroundMusic.currentTime = 0;
+    playBackgroundMusic();
+  }
+});
+
+if (musicToggle) {
+  musicToggle.addEventListener("change", function () {
+    const newSetting = musicToggle.checked ? "on" : "off";
+
+    playSound(sounds.moveSelected);
+    applyMusicSetting(newSetting);
+  });
+}
+
+function startMusicAfterUserInteraction() {
+  if (musicEnabled && backgroundMusic.paused) {
+    playBackgroundMusic();
+  }
+}
+
+document.addEventListener("click", startMusicAfterUserInteraction);
+document.addEventListener("keydown", startMusicAfterUserInteraction);
 
 // ====================
 // Computer Move       |
@@ -917,3 +1000,6 @@ themeInputs.forEach(function (input) {
 
 const savedSoundSetting = localStorage.getItem("soundSetting") || "on";
 applySoundSetting(savedSoundSetting);
+
+const savedMusicSetting = localStorage.getItem("musicSetting") || "off";
+applyMusicSetting(savedMusicSetting);
