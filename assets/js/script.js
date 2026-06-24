@@ -776,7 +776,7 @@ document.addEventListener("keydown", function (event) {
     switchTabByKeyboard(2);
   } else if (key === "4") {
     switchTabByKeyboard(3);
-  } else if (key === "h") {back
+  } else if (key === "h") {
     resetHighScoresButton.click();
   } else if (key === "e") {
     toggleSoundEffects();

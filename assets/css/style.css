@@ -172,15 +172,12 @@ body.theme-colourblind {
 #play-screen.active-screen {
   height: auto;
   display: grid;
-  grid-template-columns: minmax(260px, 0.9fr) minmax(420px, 1.6fr) minmax(
-      260px,
-      0.9fr
-    );
-  grid-template-rows: auto auto;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(460px, 1.6fr) minmax(280px, 0.9fr);
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
-    "moves battle score"
-    "moves battle stats"
-    "history history history";
+    "moves score history"
+    "moves battle history"
+    "stats stats stats";
   gap: var(--layout-gap);
   padding: 0.5rem 0;
   align-items: stretch;
@@ -208,8 +205,11 @@ body.theme-colourblind {
 .play-grid-history {
   grid-area: history;
   min-height: 0;
-  max-height: 92px;
+  max-height: none;
   overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .play-grid-stats {
@@ -506,7 +506,7 @@ body.theme-high-contrast .secondary-button {
   background: var(--color-cyan);
   color: #ffffff;
   box-shadow:
-    0 0 20px rgba(var(--color-primary-rgb), 0.35);
+    0 0 20px rgba(var(--color-primary-rgb), 0.35),
     0 0 40px rgba(6, 198, 181, 0.15);
 }
 
@@ -662,6 +662,22 @@ body.theme-high-contrast .secondary-button {
   font-size: 1.5rem;
   color: var(--color-cyan);
   margin-top: 0.3rem;
+}
+
+.play-grid-stats {
+  grid-area: stats;
+}
+
+.play-grid-stats.summary-panel {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.play-grid-stats .summary-item {
+  padding: 0.75rem;
+}
+
+.play-grid-stats .summary-value {
+  font-size: clamp(1.4rem, 2vw, 2rem);
 }
 
 /* Next Round Button */
@@ -1044,17 +1060,35 @@ body.theme-high-contrast .secondary-button {
   font-size: 0.8rem;
 }
 
+.play-grid-score .scoreboard {
+  margin-top: 0.5rem;
+}
+
+.play-grid-score .score-card {
+  padding: 0.55rem;
+}
+
+.play-grid-score .score-value {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.play-grid-score .match-format {
+  margin-top: 0.5rem;
+}
+
 /* History Panel */
 .history-list {
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  min-height: 0;
-  max-height: 40px;
-  align-items: center;
 
-  padding-bottom: 0.25rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  min-height: 0;
+  max-height: 100%;
+
+  padding-right: 0.25rem;
 
   scrollbar-width: thin;
 }
@@ -1072,7 +1106,7 @@ body.theme-high-contrast .secondary-button {
   border: 1px solid var(--color-border);
 
   flex-shrink: 0;
-  min-width: 105px;
+  width: 100%;
 }
 
 .history-round,
@@ -1113,12 +1147,36 @@ body.theme-high-contrast .secondary-button {
 }
 
 /* Media Queries */
-@media (min-width: 1400px) {
+@media (max-width: 1100px) {
   #play-screen.active-screen {
-    grid-template-columns: minmax(360px, 0.9fr) minmax(620px, 1.7fr) minmax(
-        360px,
-        0.9fr
-      );
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "score"
+      "battle"
+      "moves"
+      "history"
+      "stats";
+  }
+
+  .history-list {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .history-entry {
+    min-width: 105px;
+    width: auto;
+  }
+
+  .play-grid-stats.summary-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+    #play-screen.active-screen {
+    grid-template-columns: minmax(360px, 0.9fr) minmax(640px, 1.7fr) minmax(360px, 0.9fr);
     gap: 0.55rem;
   }
 
