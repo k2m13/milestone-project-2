@@ -140,6 +140,8 @@ body.theme-colourblind {
   border-radius: 999px;
   transition: all 0.3s ease;
   padding: 0.5rem 0.8rem;
+  font-size: clamp(0.95rem, 1vw, 1.1rem);
+  font-weight: 700;
 }
 
 .nav-link:hover,
@@ -712,9 +714,10 @@ body.theme-high-contrast .secondary-button {
 
 .rules-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: var(--card-gap);
   margin-top: 1rem;
+  align-items: stretch;
 }
 
 .rule-card--guide {
