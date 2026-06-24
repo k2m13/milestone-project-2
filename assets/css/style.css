@@ -1142,6 +1142,16 @@ body.theme-high-contrast .secondary-button {
 
 /* Media Queries */
 
+@media (max-width: 1250px) {
+  #play-screen.active-screen {
+    grid-template-columns: 0.9fr 1.4fr;
+    grid-template-areas:
+      "moves battle"
+      "score stats"
+      "history history";
+  }
+}
+
 @media (min-width: 1400px) {
   #play-screen.active-screen {
     grid-template-columns: minmax(360px, 0.9fr) minmax(620px, 1.7fr) minmax(360px, 0.9fr);
