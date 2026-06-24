@@ -395,6 +395,11 @@ the most likely to affect gameplay if they fail.
 
 ![Jest](assets/readme/Screenshot%202026-06-09%20at%2000.08.29.png)
 
+
+6. ## Credits
+
+Background music: LumiaMusic18 - 'Starfall' https://www.newgrounds.com/audio/listen/1577123
+
 7. ## Licence
 
 MIT Licence

@@ -5,32 +5,45 @@
 const navLinks = document.querySelectorAll(".nav-link");
 const screens = document.querySelectorAll(".screen");
 
-console.log(navLinks);
-console.log(screens);
+function showScreen(screenId, playFeedback = true) {
+  const targetScreen = document.querySelector(screenId);
 
-// Log nav links and screen id's to the console
+  if (!targetScreen) {
+    return;
+  }
+
+  screens.forEach(function (screen) {
+    screen.classList.remove("active-screen");
+  });
+
+  targetScreen.classList.add("active-screen");
+
+  navLinks.forEach(function (navLink) {
+    navLink.classList.remove("nav-link--active");
+
+    if (navLink.getAttribute("href") === screenId) {
+      navLink.classList.add("nav-link--active");
+    }
+  });
+
+  if (playFeedback && typeof playSound === "function" && typeof sounds !== "undefined") {
+    playSound(sounds.moveSelected);
+  }
+}
+
 navLinks.forEach(function (link) {
   link.addEventListener("click", function (event) {
     event.preventDefault();
 
-    playSound(sounds.moveSelected);
-
-    console.log(link.textContent);
-
     const screenId = link.getAttribute("href");
-    console.log(screenId);
-    screens.forEach(function (screen) {
-      screen.classList.remove("active-screen");
-    });
-    const targetScreen = document.querySelector(screenId);
-    targetScreen.classList.add("active-screen");
 
-    navLinks.forEach(function (navLink) {
-      navLink.classList.remove("nav-link--active");
-    });
-    link.classList.add("nav-link--active");
+    showScreen(screenId);
+    window.location.hash = screenId;
   });
 });
+
+const startingScreen = window.location.hash || "#play-screen";
+showScreen(startingScreen, false);
 
 // =====================
 // Game State Variables|
@@ -303,6 +316,26 @@ function playSound(sound) {
   });
 }
 
+function toggleSoundEffects() {
+  const newSetting = soundEnabled ? "off" : "on";
+
+  if (newSetting === "off") {
+    playSound(sounds.moveSelected);
+    applySoundSetting(newSetting);
+    return;
+  }
+
+  applySoundSetting(newSetting);
+  playSound(sounds.moveSelected);
+}
+
+function toggleBackgroundMusic() {
+  const newSetting = musicEnabled ? "off" : "on";
+
+  playSound(sounds.moveSelected);
+  applyMusicSetting(newSetting);
+}
+
 function updateToggleButton(button, isOn, label) {
   if (!button) {
     return;
@@ -324,16 +357,7 @@ function applySoundSetting(setting) {
 
 if (soundToggle) {
   soundToggle.addEventListener("change", function () {
-    const newSetting = soundToggle.checked ? "on" : "off";
-
-    if (newSetting === "off") {
-      playSound(sounds.moveSelected);
-      applySoundSetting(newSetting);
-      return;
-    }
-
-    applySoundSetting(newSetting);
-    playSound(sounds.moveSelected);
+    toggleSoundEffects();
   });
 }
 
@@ -393,10 +417,7 @@ backgroundMusic.addEventListener("timeupdate", function () {
 
 if (musicToggle) {
   musicToggle.addEventListener("change", function () {
-    const newSetting = musicToggle.checked ? "on" : "off";
-
-    playSound(sounds.moveSelected);
-    applyMusicSetting(newSetting);
+    toggleBackgroundMusic();
   });
 }
 
@@ -755,8 +776,12 @@ document.addEventListener("keydown", function (event) {
     switchTabByKeyboard(2);
   } else if (key === "4") {
     switchTabByKeyboard(3);
-  } else if (key === "h") {
+  } else if (key === "h") {back
     resetHighScoresButton.click();
+  } else if (key === "e") {
+    toggleSoundEffects();
+  } else if (key === "m") {
+    toggleBackgroundMusic();
   }
 });
 
