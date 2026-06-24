@@ -996,6 +996,26 @@ body.theme-high-contrast .secondary-button {
   color: var(--color-cyan);
 }
 
+.rank-card--achievement {
+  grid-column: 1 / -1;
+  gap: 0.45rem;
+}
+
+.rank-badge-icon {
+  width: clamp(64px, 7vw, 96px);
+  height: clamp(64px, 7vw, 96px);
+  object-fit: contain;
+
+  filter: drop-shadow(0 0 12px rgba(var(--color-primary-rgb), 0.25));
+}
+
+.rank-description {
+  max-width: 520px;
+  color: var(--color-muted);
+  text-align: center;
+  line-height: 1.4;
+}
+
 /* Highscores */
 
 .high-score-panel {
@@ -1014,10 +1034,6 @@ body.theme-high-contrast .secondary-button {
 
 .high-score-list li {
   margin-bottom: 0.5rem;
-}
-
-.rank-card:first-child {
-  grid-column: 1 / -1;
 }
 
 .secondary-button {

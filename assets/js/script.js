@@ -148,18 +148,39 @@ function loadRankStats() {
 
 function updateAchievement() {
   let achievement = "Beginner";
+  let rankIcon = "rank-beginner.svg";
+  let rankDescription = "Starting rank. Win matches to begin your progress.";
 
   if (matchesWon >= 50) {
     achievement = "Mind Master";
+    rankIcon = "rank-mind-master.svg";
+    rankDescription = "Elite rank unlocked after 50 match wins.";
   } else if (matchesWon >= 25) {
     achievement = "Grand Strategist";
+    rankIcon = "rank-grand-strategist.svg";
+    rankDescription = "Advanced rank unlocked after 25 match wins.";
   } else if (matchesWon >= 10) {
     achievement = "Veteran";
+    rankIcon = "rank-veteran.svg";
+    rankDescription = "Experienced rank unlocked after 10 match wins.";
   } else if (matchesWon >= 5) {
     achievement = "Competitor";
+    rankIcon = "rank-competitor.svg";
+    rankDescription = "First achievement rank unlocked after 5 match wins.";
   }
 
   achievementTitleDisplay.textContent = achievement;
+
+  const rankBadgeIcon = document.getElementById("rank-badge-icon");
+  const rankDescriptionDisplay = document.getElementById("rank-description");
+
+  if (rankBadgeIcon) {
+    rankBadgeIcon.src = `assets/images/icons/ranks/${rankIcon}`;
+  }
+
+  if (rankDescriptionDisplay) {
+    rankDescriptionDisplay.textContent = rankDescription;
+  }
 }
 
 function saveHighScores() {
