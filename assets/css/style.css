@@ -600,6 +600,12 @@ body.theme-high-contrast .secondary-button {
   letter-spacing: 0.05rem;
 }
 
+.score-panel-subtitle {
+  margin-bottom: 0.6rem;
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
 .site-title {
   font-size: clamp(1.6rem, 2.5vw, 2.2rem);
   letter-spacing: 0.15rem;
@@ -1045,20 +1051,6 @@ body.theme-high-contrast .secondary-button {
 }
 
 /* Match Format */
-
-.match-format {
-  margin-top: 0.65rem;
-  padding: 0.55rem;
-
-  border-radius: 0.75rem;
-  background: var(--color-surface-strong);
-  border: 1px solid var(--color-border);
-
-  text-align: center;
-  color: var(--color-muted);
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.8rem;
-}
 
 .play-grid-score .scoreboard {
   margin-top: 0.5rem;
