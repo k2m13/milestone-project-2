@@ -968,7 +968,7 @@ body.theme-high-contrast .secondary-button {
 }
 
 .rank-intro {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .rank-layout {
@@ -977,7 +977,7 @@ body.theme-high-contrast .secondary-button {
   grid-template-areas:
     "achievement stats"
     "scores scores";
-  gap: var(--layout-gap);
+  gap: var(--card-gap);
 }
 
 .rank-grid {
@@ -988,7 +988,7 @@ body.theme-high-contrast .secondary-button {
 }
 
 .rank-card {
-  padding: 1rem;
+  padding: 0.8rem;
   border-radius: 1rem;
   background: var(--color-surface-strong);
   border: 1px solid var(--color-border);
@@ -1005,8 +1005,8 @@ body.theme-high-contrast .secondary-button {
 }
 
 .rank-badge-icon {
-  width: clamp(84px, 8vw, 125px);
-  height: clamp(84px, 8vw, 125px);
+  width: clamp(72px, 7vw, 110px);
+  height: clamp(72px, 7vw, 110px);
   object-fit: contain;
 
   filter: drop-shadow(0 0 12px rgba(var(--color-primary-rgb), 0.25));
@@ -1032,12 +1032,49 @@ body.theme-high-contrast .secondary-button {
   line-height: 1.4;
 }
 
+.rank-ladder {
+  width: 100%;
+  max-width: 520px;
+
+  display: grid;
+  gap: 0.3rem;
+
+  margin-top: 0.35rem;
+}
+
+.rank-ladder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.65rem;
+
+  background: rgba(var(--color-primary-rgb), 0.06);
+  border: 1px solid var(--color-border);
+
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.rank-ladder-item span {
+  font-weight: 600;
+}
+
+.rank-ladder-item strong {
+  color: var(--color-cyan);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
 /* Highscores */
 
 .high-score-panel {
   grid-area: scores;
 
-  padding: 1rem;
+  padding: 0.8rem;
   border-radius: 1rem;
   background: var(--color-surface-strong);
   border: 1px solid var(--color-border);
