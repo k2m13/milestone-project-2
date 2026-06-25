@@ -363,6 +363,12 @@ Players now progress:
 25 wins     Grand Strategist
 50 wins     Mind Master
 
+
+### Custom 404 Page
+
+Although MindGame is a single-page application with hash-based navigation, a custom 404 page has been included to improve the user experience when visitors enter an incorrect URL path, follow a broken link, or try to access a page that does not exist.
+This supports a more complete and polished deployment on GitHub Pages.
+
 4. ## Testing
 
 ### Manual Regression Testing
@@ -395,10 +401,17 @@ the most likely to affect gameplay if they fail.
 
 ![Jest](assets/readme/Screenshot%202026-06-09%20at%2000.08.29.png)
 
+### 404
+
+404 page tested by visiting an invalid deployed URL path and confirming that the custom 404 page loads, displays the themed astronaut illustration, 
+and provides a working return-to-homepage button.
 
 6. ## Credits
 
 Background music: LumiaMusic18 - 'Starfall' https://www.newgrounds.com/audio/listen/1577123
+Sounds: https://pixabay.com/sound-effects/search/victory/
+Graphics: https://www.svgrepo.com/collection/universe-18/2
+
 
 7. ## Licence
 

@@ -26,7 +26,11 @@ function showScreen(screenId, playFeedback = true) {
     }
   });
 
-  if (playFeedback && typeof playSound === "function" && typeof sounds !== "undefined") {
+  if (
+    playFeedback &&
+    typeof playSound === "function" &&
+    typeof sounds !== "undefined"
+  ) {
     playSound(sounds.moveSelected);
   }
 }
@@ -38,7 +42,12 @@ navLinks.forEach(function (link) {
     const screenId = link.getAttribute("href");
 
     showScreen(screenId);
-    window.location.hash = screenId;
+    history.pushState(null, "", screenId);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
   });
 });
 
@@ -1010,7 +1019,7 @@ function applyTheme(themeName) {
   document.body.classList.remove(
     "theme-default",
     "theme-high-contrast",
-    "theme-colourblind"
+    "theme-colourblind",
   );
 
   document.body.classList.add(themeName);

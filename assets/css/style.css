@@ -153,6 +153,14 @@ body.theme-colourblind {
   box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.35);
 }
 
+button,
+.nav-link,
+.setting-option,
+.toggle-setting,
+.secondary-button {
+  touch-action: manipulation;
+}
+
 .app-container,
 .site-header {
   width: min(98vw, 1600px);
@@ -1355,6 +1363,18 @@ body.theme-high-contrast .secondary-button {
   }
 }
 
+@media (max-width: 900px) {
+  #play-screen.active-screen {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "battle"
+      "moves"
+      "score"
+      "stats"
+      "history";
+  }
+}
+
 @media (max-width: 1250px) {
   #play-screen.active-screen {
     grid-template-columns: 0.9fr 1.4fr;
@@ -1370,6 +1390,112 @@ body.theme-high-contrast .secondary-button {
 
   .settings-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (hover: none) and (orientation: landscape) and (min-width: 900px) and (max-width: 1250px) {
+  #play-screen.active-screen {
+    grid-template-columns: minmax(230px, 0.9fr) minmax(390px, 1.5fr) minmax(230px, 0.9fr);
+    grid-template-areas:
+      "moves battle score"
+      "moves battle stats"
+      "history history history";
+    gap: 0.5rem;
+  }
+
+  #play-screen.active-screen .panel {
+    padding: 0.7rem;
+  }
+
+  .move-grid {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .move-card {
+    min-height: clamp(82px, 11vh, 115px);
+    padding: 0.5rem;
+    gap: 0.35rem;
+  }
+
+  .move-icon {
+    width: clamp(52px, 5vw, 74px);
+    height: clamp(52px, 5vw, 74px);
+  }
+
+  .battle-area {
+    gap: 0.75rem;
+    margin: 0.45rem 0;
+  }
+
+  .choice-display {
+    min-height: clamp(135px, 20vh, 170px);
+    padding: 0.7rem;
+  }
+
+  .choice-token {
+    width: min(100%, 230px);
+    min-height: clamp(125px, 18vh, 160px);
+    padding: 0.65rem;
+  }
+
+  .battle-icon {
+    width: clamp(58px, 5vw, 82px);
+    height: clamp(58px, 5vw, 82px);
+  }
+
+  .result-box {
+    margin-top: 0.6rem;
+  }
+
+  .result-message {
+    padding: 0.65rem;
+    font-size: 1rem;
+  }
+
+  .result-rule {
+    margin-top: 0.35rem;
+  }
+
+  .next-round-button {
+    margin-top: 0.6rem;
+    padding: 0.65rem 1.5rem;
+  }
+
+  .scoreboard {
+    margin-top: 0.45rem;
+  }
+
+  .score-card {
+    padding: 0.45rem;
+  }
+
+  .score-value {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+  }
+
+  .summary-item {
+    padding: 0.55rem;
+  }
+
+  .summary-value {
+    font-size: 1.4rem;
+  }
+
+  .play-grid-history {
+    max-height: 78px;
+  }
+}
+
+@media (hover: none) and (orientation: portrait) {
+  #rank-screen.active-screen > .panel,
+  #rules-screen.active-screen > .panel,
+  #settings-screen.active-screen > .panel {
+    min-height: auto;
+  }
+
+  .settings-panel {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1420,6 +1546,25 @@ body.theme-high-contrast .secondary-button {
 
   .summary-value {
     font-size: 2rem;
+  }
+}
+
+/* Tablet Settings */
+@media (hover: none) {
+  .panel:hover,
+  .rule-card:hover,
+  .move-card:not(:disabled):hover,
+  .secondary-button:hover,
+  .next-round-button:not(:disabled):hover {
+    transform: none;
+  }
+}
+
+@media (hover: none) {
+  .site-header,
+  .panel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
 
