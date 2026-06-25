@@ -937,22 +937,6 @@ function updateFavouriteMove() {
   favouriteMoveDisplay.textContent = favouriteMove;
 }
 
-function updateAchievement() {
-  let achievement = "Beginner";
-
-  if (matchesWon >= 50) {
-    achievement = "Mind Master";
-  } else if (matchesWon >= 25) {
-    achievement = "Grand Strategist";
-  } else if (matchesWon >= 10) {
-    achievement = "Veteran";
-  } else if (matchesWon >= 5) {
-    achievement = "Competitor";
-  }
-
-  achievementTitleDisplay.textContent = achievement;
-}
-
 const resetHighScoresButton = document.getElementById(
   "reset-highscores-button",
 );
