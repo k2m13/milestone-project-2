@@ -1280,3 +1280,51 @@ body.theme-high-contrast .secondary-button {
     font-size: 2rem;
   }
 }
+
+/* 404 Page */
+
+.error-container {
+  min-height: calc(100vh - 140px);
+  display: grid;
+  place-items: center;
+  padding: 1rem 0;
+}
+
+.error-panel {
+  width: min(100%, 720px);
+  text-align: center;
+  display: grid;
+  place-items: center;
+  gap: 0.9rem;
+}
+
+.error-illustration {
+  width: clamp(130px, 18vw, 230px);
+  height: clamp(130px, 18vw, 230px);
+  object-fit: contain;
+
+  filter: drop-shadow(0 0 18px rgba(var(--color-primary-rgb), 0.25));
+}
+
+.error-code {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 1;
+
+  color: var(--color-cyan);
+  text-shadow: 0 0 16px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.error-title {
+  margin-bottom: 0;
+}
+
+.error-text {
+  max-width: 520px;
+}
+
+.error-button {
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
