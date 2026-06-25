@@ -1044,27 +1044,32 @@ body.theme-high-contrast .secondary-button {
 }
 
 .high-score-header {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
 }
 
 .high-score-list {
-  margin-top: 0.75rem;
+  margin-top: 0.85rem;
   padding-left: 1.5rem;
   color: var(--color-text);
 
   columns: 2;
-  column-gap: 2rem;
+  column-gap: 3rem;
 }
 
 .high-score-list li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.45rem;
   break-inside: avoid;
+  line-height: 1.35;
 }
 
 .secondary-button {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 0.7rem 1.2rem;
+  margin-top: 0;
+  padding: 0.6rem 1rem;
 
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
@@ -1075,11 +1080,14 @@ body.theme-high-contrast .secondary-button {
   font: inherit;
   cursor: pointer;
 
+  white-space: nowrap;
+
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
     background-color 0.2s ease;
 }
+
 
 .secondary-button:hover {
   transform: translateY(-2px);
@@ -1198,6 +1206,15 @@ body.theme-high-contrast .secondary-button {
   .rank-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .high-score-header {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.high-score-list {
+  columns: 1;
+}
 
   .high-score-list {
     columns: 1;

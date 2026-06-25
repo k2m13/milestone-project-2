@@ -212,7 +212,7 @@ function addHighScore(finalScore, finalRounds) {
     return b.wins - a.wins || a.rounds - b.rounds;
   });
 
-  highScores = highScores.slice(0, 5);
+  highScores = highScores.slice(0, 10);
   saveHighScores();
   displayHighScores();
 }
