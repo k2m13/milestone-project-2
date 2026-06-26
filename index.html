@@ -29,7 +29,14 @@
             </div>
         </div>
 
-        <nav class="main-nav" aria-label="Main navigation">
+        <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
+            aria-controls="main-navigation">
+            <span class="menu-toggle-line"></span>
+            <span class="menu-toggle-line"></span>
+            <span class="menu-toggle-line"></span>
+        </button>
+
+        <nav id="main-navigation" class="main-nav" aria-label="Main navigation">
             <a class="nav-link nav-link--active" href="#play-screen" title="Play the game (Keyboard: 1)">
                 Play
             </a>
@@ -46,7 +53,6 @@
                 Settings
             </a>
         </nav>
-
     </header>
 
     <main class="app-container">

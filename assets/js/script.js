@@ -5,6 +5,31 @@
 const navLinks = document.querySelectorAll(".nav-link");
 const screens = document.querySelectorAll(".screen");
 
+const menuToggle = document.querySelector(".menu-toggle");
+const mainNavigation = document.getElementById("main-navigation");
+
+function closeMobileMenu() {
+  if (!menuToggle || !mainNavigation) {
+    return;
+  }
+
+  mainNavigation.classList.remove("nav-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-label", "Open navigation menu");
+}
+
+if (menuToggle && mainNavigation) {
+  menuToggle.addEventListener("click", function () {
+    const isOpen = mainNavigation.classList.toggle("nav-open");
+
+    menuToggle.setAttribute("aria-expanded", isOpen.toString());
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+  });
+}
+
 function showScreen(screenId, playFeedback = true) {
   const targetScreen = document.querySelector(screenId);
 
@@ -42,6 +67,7 @@ navLinks.forEach(function (link) {
     const screenId = link.getAttribute("href");
 
     showScreen(screenId);
+    closeMobileMenu();
     history.pushState(null, "", screenId);
     window.scrollTo({
       top: 0,
@@ -812,7 +838,9 @@ document.addEventListener("keydown", function (event) {
     toggleSoundEffects();
   } else if (key === "m") {
     toggleBackgroundMusic();
-  }
+  } else if (key === "escape") {
+  closeMobileMenu();
+}
 });
 
 // ====================
