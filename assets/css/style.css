@@ -109,6 +109,13 @@ body.theme-colourblind {
     linear-gradient(135deg, #f8f9fa 0%, #edf6fb 100%);
 }
 
+body.theme-high-contrast .rank-badge-icon {
+  padding: 0.4rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-border);
+}
+
 /* Layout */
 .site-header {
   border: 1px solid var(--color-border);
@@ -1240,6 +1247,15 @@ body.theme-high-contrast .secondary-button {
   outline-offset: 2px;
 }
 
+#reset-highscores-button {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+#reset-highscores-button:hover {
+  background: rgba(var(--color-primary-rgb), 0.1);
+}
+
 /* Match Format */
 
 .play-grid-score .scoreboard {
@@ -1539,6 +1555,23 @@ body.theme-high-contrast .secondary-button {
     gap: 0.55rem;
   }
 
+  .brand-icon {
+  width: clamp(4rem, 16vw, 4.6rem);
+  height: clamp(4rem, 16vw, 4.6rem);
+}
+
+.site-subtitle {
+  line-height: 1.25;
+}
+
+.site-subtitle span {
+  display: block;
+}
+
+.site-subtitle span + span::before {
+  content: "";
+}
+
   /* Hide intro panels on mobile to keep the game focused */
   .play-grid-quick-start,
   .quick-start-panel:not(.play-grid-moves) {
@@ -1792,6 +1825,14 @@ body.theme-high-contrast .secondary-button {
     grid-template-rows: 1fr;
     gap: 0;
     place-items: center;
+  }
+
+  .site-subtitle span {
+    display: inline;
+  }
+
+  .site-subtitle span + span::before {
+    content: " · ";
   }
 
   /* Keep move names available to screen readers while showing icons only */

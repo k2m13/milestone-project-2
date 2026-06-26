@@ -547,6 +547,10 @@ function determineWinner(playerMove, computerMove) {
   return "computer";
 }
 
+function formatMoveName(move) {
+  return move.charAt(0).toUpperCase() + move.slice(1);
+}
+
 // ====================
 // Play Round          |
 // ====================
@@ -863,7 +867,7 @@ function updateScores(result) {
 function displayResult(result) {
   if (result === "draw") {
     resultMessage.textContent = "Draw!";
-    resultRule.textContent = `Both selected ${playerMove}`;
+    resultRule.textContent = `Both selected ${formatMoveName(playerMove)}.`;
 
     return;
   }
