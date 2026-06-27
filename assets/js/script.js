@@ -80,6 +80,25 @@ navLinks.forEach(function (link) {
 const startingScreen = window.location.hash || "#play-screen";
 showScreen(startingScreen, false);
 
+const brandHomeLink = document.querySelector(".brand-home-link");
+
+if (brandHomeLink) {
+  brandHomeLink.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    showScreen("#play-screen");
+    closeMobileMenu();
+
+    history.pushState(null, "", "#play-screen");
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
+  });
+}
+
 // =====================
 // Game State Variables|
 // =====================
