@@ -88,7 +88,6 @@ if (brandHomeLink) {
 
     showScreen("#play-screen");
     closeMobileMenu();
-
     history.pushState(null, "", "#play-screen");
 
     window.scrollTo({
