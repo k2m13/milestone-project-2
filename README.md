@@ -36,6 +36,8 @@
 ## 3. [Technologies Used](#techonlogies-used)
 * Interesting Code Solutions
 
+## [Accessibility](#accessibility-1)
+
 ## 4. [Testing](#testing)
 * Manual: Expected, Testing, Result, Fix
 * Bugs Discovered
@@ -213,6 +215,13 @@ Favicon from Magnific(https://www.magnific.com/icon/creativity_15557951#fromView
 
 3. ## Techonlogies Used
 
+### HTML5
+
+HTML5 was used to create the structure and content of the MindGame application. The page is organised using semantic elements such as `header`, `main`, `section`, `nav`, `article`, `button`, `label`, `input`, `ol` and `ul`.
+The project uses a single-page application structure, with separate screen sections for Play, Rank, Guide and Settings. Navigation links point to these sections using hash links, while JavaScript controls which screen is currently visible.
+Interactive game choices are built with real `button` elements rather than clickable images or generic `div` elements. This improves accessibility, keyboard support and semantic meaning. Form controls are also used in the Settings screen for difficulty, 
+colour theme, sound effects and background music. The HTML was structured to support responsive design. The same content is rearranged with CSS Grid and media queries for desktop, tablet and mobile layouts.
+
 ### Modern CSS Features Used
 
 The project uses modern responsive CSS techniques. Layouts are built with CSS Grid using fractional (fr) units. 
@@ -369,7 +378,75 @@ Players now progress:
 Although MindGame is a single-page application with hash-based navigation, a custom 404 page has been included to improve the user experience when visitors enter an incorrect URL path, follow a broken link, or try to access a page that does not exist.
 This supports a more complete and polished deployment on GitHub Pages.
 
+### Accessibility
+
+### HTML and ARIA Accessibility
+
+Accessibility was considered throughout the HTML structure. Semantic HTML elements were used wherever possible so that the page has a clear document structure for users, browsers and assistive technologies.
+
+The navigation is placed inside a `nav` element with an accessible label. The mobile hamburger menu uses `aria-label`, `aria-expanded` and `aria-controls` to describe what the button does, whether the menu is currently open, and which navigation element it controls.
+The battle panel uses `aria-live="polite"` so that round feedback can be announced to assistive technology users when the result changes. `aria-atomic="true"` was added so that the updated battle feedback is treated as a complete message rather than disconnected fragments.
+The audio controls use native checkbox inputs with `role="switch"` to communicate that they behave like on/off switches. Additional `aria-label` attributes were added so that screen readers can identify the Sound Effects and Background Music controls clearly.
+Decorative icons use empty `alt=""` text where the surrounding text already provides the meaning. This avoids unnecessary repetition for screen reader users. Visual-only hamburger menu lines use `aria-hidden="true"` because the button itself already has an accessible label.
+
 4. ## Testing
+
+### HTML Testing
+
+The HTML was tested to check that the page structure remained valid, readable and accessible across the application.
+
+HTML testing included:
+
+- Checking that all main screens were present and reachable: Play, Rank, Guide and Settings.
+- Checking that navigation links opened the correct screen.
+- Checking that all move buttons were real button elements and responded to mouse, touch and keyboard interaction.
+- Checking that form controls in Settings could be selected and toggled.
+- Checking that images had appropriate alt text: meaningful where needed and empty where decorative.
+- Checking that ARIA attributes were used appropriately for the mobile menu, live battle feedback and switch-style audio controls.
+- Checking that the document contained one main heading for the game title and clear section headings for each screen.
+- Running the HTML through a validator and correcting any reported issues.
+- Testing the structure on desktop, tablet and mobile screen sizes to ensure content remained readable and usable.
+
+## Testing Approach
+
+Testing was carried out throughout the development of MindGame to check that the project worked correctly, remained usable across different devices, and met the needs of the intended users.
+The project used both **manual testing** and **automated testing**. These two types of testing served different purposes.
+
+### Manual Testing
+
+Manual testing was used to test the full user experience of the application. This included checking layout, navigation, responsiveness, accessibility, visual feedback, game flow, audio controls and local storage behaviour.
+Manual testing was important because MindGame is an interactive browser game. Some aspects of the project cannot be fully tested by automated code tests alone, such as whether the interface feels clear on mobile, whether buttons are easy to tap, whether the colour themes are readable, and whether the game gives understandable feedback after each round.
+Manual testing focused on:
+
+- Checking that the Play, Rank, Guide and Settings screens worked correctly.
+- Checking that users could play a full match from start to finish.
+- Checking that the scoreboard, round history and statistics updated correctly during gameplay.
+- Checking that the layout adapted correctly on desktop, tablet and mobile screens.
+- Checking that buttons, radio inputs, switches and navigation links were usable with mouse, touch and keyboard input.
+- Checking that accessibility features such as semantic HTML, ARIA attributes, alt text and keyboard shortcuts worked as intended.
+- Checking that local storage saved rank progress, high scores, favourite move data and settings correctly.
+- Checking that the deployed GitHub Pages version matched the local development version.
+
+### Automated Testing
+
+Automated testing was used to test the core JavaScript logic in a repeatable way. Jest tests were added for important game functions so that key parts of the game could be checked quickly after changes were made.
+Automated testing was important because the game contains logic that must remain reliable, such as move validation, winner calculation, score updates, statistics and local storage behaviour. These areas are easier to test with predictable inputs and expected outputs.
+
+Automated testing focused on:
+
+- Checking that valid moves were recognised.
+- Checking that draw rounds were identified correctly.
+- Checking that winning and losing combinations returned the correct result.
+- Checking that score and statistics functions behaved as expected.
+- Checking that rank-related values and stored data could be tested without needing to play through the whole game manually.
+
+The purpose of automated testing was to reduce the risk of regressions. When new features were added, such as Hard Mode, high scores, settings, sound controls and responsive layout changes, automated tests helped confirm that the underlying game logic still worked correctly.
+
+### Why Both Testing Methods Were Needed
+
+Manual and automated testing were both necessary because they tested different aspects of the project.
+Automated testing helped confirm that the JavaScript logic produced the correct results. Manual testing confirmed that the complete application was usable, responsive, accessible and enjoyable to play.
+Together, these testing methods provided stronger evidence that MindGame works as intended across its main features, devices and user interactions.
 
 ### Manual Regression Testing
 
