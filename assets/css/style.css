@@ -1951,6 +1951,50 @@ body.theme-high-contrast .secondary-button {
   }
 }
 
+@media (hover: none) and (orientation: portrait) and (max-width: 950px) {
+  .rank-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "achievement"
+      "stats"
+      "scores";
+  }
+
+  .rank-card--achievement {
+    min-height: auto;
+    padding: 0.8rem;
+  }
+
+  .rank-badge-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .rank-value {
+    font-size: 2rem;
+  }
+
+  .rank-description {
+    max-width: 100%;
+  }
+
+  .rank-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rank-card {
+    min-height: 150px;
+  }
+
+  .high-score-panel {
+    padding: 0.8rem;
+  }
+
+  .high-score-list {
+    columns: 1;
+  }
+}
+
 @media (max-width: 575px) {
   .site-header {
     padding: 0.65rem 0.8rem;
