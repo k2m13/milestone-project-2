@@ -1,7 +1,4 @@
-# Allow all search engines to crawl the site
 User-agent: *
-Disallow: /admin/
-Disallow: /private/
+Allow: /
 
-# Direct them to your sitemap
-Sitemap: https://www.yourdomain.com/sitemap.xml
+Sitemap: https://k2m13.github.io/milestone-project-2/sitemap.xml
