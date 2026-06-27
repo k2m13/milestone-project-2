@@ -19,8 +19,9 @@
 </head>
 
 <body class="page">
-
+    <!-- Site header with brand identity and main navigation -->
     <header class="site-header">
+        <!-- Logo and game title -->
         <div class="brand-panel">
             <img src="assets/images/logo/brain.png" alt="MindGame logo" class="brand-icon">
             <div class="brand-text">
@@ -31,14 +32,14 @@
                 </p>
             </div>
         </div>
-
+        <!-- Mobile navigation toggle -->
         <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
             aria-controls="main-navigation">
-            <span class="menu-toggle-line"></span>
-            <span class="menu-toggle-line"></span>
-            <span class="menu-toggle-line"></span>
+            <span class="menu-toggle-line" aria-hidden="true"></span>
+            <span class="menu-toggle-line" aria-hidden="true"></span>
+            <span class="menu-toggle-line" aria-hidden="true"></span>
         </button>
-
+        <!-- Main navigation links for the single-page app screens -->
         <nav id="main-navigation" class="main-nav" aria-label="Main navigation">
             <a class="nav-link nav-link--active" href="#play-screen" title="Play the game (Keyboard: 1)">
                 Play
@@ -58,34 +59,10 @@
         </nav>
     </header>
 
-    <main class="app-container">
+    <main class="app-container" aria-label="MindGame application">
+        <!-- Play screen: main interactive game area -->
         <section id="play-screen" class="screen active-screen">
-
-            <section class="quick-start-panel panel play-grid-quick-start">
-                <h2 class="hero-title">MindGame Arena</h2>
-
-                <p class="hero-subtitle">
-                    A strategic expansion of the classic Rock Paper Scissors game.
-                </p>
-
-                <p class="hero-text">
-                    Analyse patterns, improve your win rate, and defeat the computer
-                    using Rock, Paper, Scissors, Lizard and Spock.
-                </p>
-            </section>
-
-            <section class="quick-start-panel panel">
-                <h2 class="panel-title">First Time Here?</h2>
-
-                <ol class="quick-start-list">
-                    <li>Choose one of the five moves below.</li>
-                    <li>The computer chooses its move automatically.</li>
-                    <li>The winner is calculated instantly.</li>
-                    <li>Press Next Round to continue.</li>
-                    <li>Track your performance in Stats and Rank.</li>
-                </ol>
-            </section>
-
+            <!-- Move selection buttons -->
             <section id="play" class="move-panel panel play-grid-moves">
                 <h2 class="panel-title">Choose Your Move</h2>
                 <p class="panel-subtitle">Make your move against the computer.</p>
@@ -113,8 +90,8 @@
                     </button>
                 </div>
             </section>
-
-            <section class="battle-panel panel play-grid-battle" aria-live="polite">
+            <!-- Battle display and round result feedback -->
+            <section class="battle-panel panel play-grid-battle" aria-live="polite" aria-atomic="true">
                 <h2 class="panel-title">Round <span id="round-number">1</span></h2>
 
                 <div class="battle-area">
@@ -142,7 +119,7 @@
                         title="Next Round or New Game (Keyboard: N)">Next Round</button>
                 </div>
             </section>
-
+            <!-- Match scoreboard -->
             <section class="score-panel panel play-grid-score">
                 <h2 class="panel-title">Scoreboard</h2>
                 <p class="panel-subtitle score-panel-subtitle">
@@ -164,13 +141,13 @@
                 </div>
 
             </section>
-
+            <!-- Horizontally scrolling round history -->
             <section class="history-panel panel play-grid-history">
                 <h2 class="panel-title">Round History</h2>
                 <div class="history-list" id="history-list"></div>
             </section>
 
-
+            <!-- Current match statistics -->
             <section id="stats" class="summary-panel panel play-grid-stats">
                 <h2 class="panel-title">Stats</h2>
 
@@ -194,11 +171,10 @@
                     <p class="summary-value" id="highest-streak">0</p>
                 </div>
 
-
             </section>
 
         </section>
-
+        <!-- Rank screen: saved player statistics, achievements and high scores -->
         <section id="rank-screen" class="screen">
 
             <section class="rank-panel panel">
@@ -284,7 +260,8 @@
                                 </p>
                             </div>
 
-                            <button id="reset-highscores-button" class="secondary-button" title="Reset (Keyboard: H)">
+                            <button id="reset-highscores-button" class="secondary-button"
+                                title="Reset High Scores (Keyboard: H)">
                                 Reset High Scores
                             </button>
                         </div>
@@ -299,7 +276,7 @@
             </section>
 
         </section>
-
+        <!-- Guide screen: rules, features and keyboard access -->
         <section id="rules-screen" class="screen">
             <section class="rules-panel panel">
                 <h2 class="panel-title">Rules</h2>
@@ -379,7 +356,7 @@
                             <img src="assets/images/icons/spock.svg" alt="Spock" class="rule-flow-icon-small">
                         </div>
 
-                        <p>Lizard Eats Paper and poisons Spock.</p>
+                        <p>Lizard eats Paper and poisons Spock.</p>
                     </article>
 
                     <article class="rule-card">
@@ -481,7 +458,7 @@
                 </div>
             </section>
         </section>
-
+        <!-- Settings screen: difficulty, visual theme and audio controls -->
         <section id="settings-screen" class="screen">
             <section class="settings-panel panel">
                 <h2 class="panel-title">Settings</h2>
@@ -558,7 +535,8 @@
                         </div>
 
                         <label class="switch" for="sound-toggle">
-                            <input type="checkbox" id="sound-toggle" role="switch" checked>
+                            <input type="checkbox" id="sound-toggle" role="switch" aria-label="Toggle sound effects"
+                                checked>
                             <span class="switch-slider"></span>
                         </label>
                     </div>
@@ -570,16 +548,15 @@
                         </div>
 
                         <label class="switch" for="music-toggle">
-                            <input type="checkbox" id="music-toggle" role="switch">
+                            <input type="checkbox" id="music-toggle" role="switch" aria-label="Toggle background music">
                             <span class="switch-slider"></span>
                         </label>
                     </div>
                 </div>
             </section>
         </section>
-
-
     </main>
+    <!-- Main JavaScript file for game logic, navigation, settings and local storage -->
     <script src="assets/js/script.js"></script>
 </body>
 
