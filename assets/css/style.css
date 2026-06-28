@@ -1581,6 +1581,7 @@ button,
       "history"
       "stats";
     gap: 0.55rem;
+    padding-top: 0;
   }
 
   .rules-panel {
