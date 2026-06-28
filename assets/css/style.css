@@ -1,4 +1,27 @@
-/* CSS reset removes default browser settings */
+/* ==============================
+   MindGame CSS
+
+   Table of Contents
+
+   1. Reset
+   2. Design Tokens
+   3. Base Styles
+   4. Colour Themes
+   5. Layout, Header and Navigation
+   6. Screen Management
+   7. Shared Panel Styling
+   8. Play Screen
+   9. Guide Screen
+   10. Settings Screen
+   11. Rank Screen
+   12. History Panel
+   13. Responsive Layouts
+   14. 404 Page
+================================= */
+
+/* ==============================
+   1. Reset
+================================= */
 
 * {
   box-sizing: border-box;
@@ -6,7 +29,10 @@
   padding: 0;
 }
 
-/* Colour Variables */
+/* ==============================
+   2. Design Tokens
+================================= */
+
 :root {
   --color-background: #f7f3ff;
   --color-surface: rgba(255, 255, 255, 0.58);
@@ -35,7 +61,10 @@
   --heading-size: clamp(1rem, 1.2vw, 1.35rem);
 }
 
-/* Base Styles */
+/* ==============================
+   3. Base Styles
+================================= */
+
 body {
   min-height: 100vh;
   font-family: "Inter", sans-serif;
@@ -60,7 +89,9 @@ body {
   font-family: "Orbitron", sans-serif;
 }
 
-/* 2 Additional Colour Pallettes */
+/* ==============================
+   4. Colour Themes
+================================= */
 
 body.theme-high-contrast {
   --color-background: #0b1020;
@@ -116,7 +147,10 @@ body.theme-high-contrast .rank-badge-icon {
   border: 1px solid var(--color-border);
 }
 
-/* Layout */
+/* ==============================
+   5. Layout, Header and Navigation
+================================= */
+
 .site-header {
   border: 1px solid var(--color-border);
   padding: 0.75rem 1.25rem;
@@ -183,7 +217,10 @@ button,
   min-height: auto;
 }
 
-/* Screen Management */
+/* ==============================
+   6. Screen Management
+================================= */
+
 .screen {
   display: none;
 }
@@ -240,7 +277,9 @@ button,
   font-size: 1rem;
 }
 
-/* Glassmorphism Styling */
+/* ==============================
+   7. Shared Panel Styling
+================================= */
 
 .site-header,
 .panel {
@@ -313,6 +352,10 @@ body.theme-high-contrast .secondary-button {
   color: var(--color-muted);
   line-height: 1.5;
 }
+
+/* ==============================
+   8. Play Screen
+================================= */
 
 /* Move Cards */
 
@@ -761,7 +804,10 @@ body.theme-high-contrast .secondary-button {
   box-shadow: none;
 }
 
-/* Rules Screen */
+/* ==============================
+   9. Guide Screen
+================================= */
+
 #rules-screen.active-screen {
   display: block;
   padding: 0.5rem 0;
@@ -897,7 +943,10 @@ body.theme-high-contrast .secondary-button {
   font-weight: 500;
 }
 
-/* Settings Screen */
+/* ==============================
+   10. Settings Screen
+================================= */
+
 #settings-screen.active-screen {
   display: block;
   padding: 0.5rem 0;
@@ -1063,7 +1112,9 @@ body.theme-high-contrast .secondary-button {
   outline-offset: 3px;
 }
 
-/* Rank Screen */
+/* ==============================
+   11. Rank Screen
+================================= */
 
 #rank-screen.active-screen {
   display: block;
@@ -1269,7 +1320,10 @@ body.theme-high-contrast .secondary-button {
   margin-top: 0.5rem;
 }
 
-/* History Panel */
+/* ==============================
+   12. History Panel
+================================= */
+
 .history-list {
   display: flex;
   gap: 0.5rem;
@@ -1340,7 +1394,9 @@ body.theme-high-contrast .secondary-button {
   color: #6c757d;
 }
 
-/* Media Queries */
+/* ==============================
+   13. Responsive Layouts
+================================= */
 
 @media (max-width: 1250px) {
   #play-screen.active-screen {
@@ -2027,7 +2083,9 @@ body.theme-high-contrast .secondary-button {
   }
 }
 
-/* 404 Page */
+/* ==============================
+   14. 404 Page
+================================= */
 
 .brand-home-link {
   color: inherit;
