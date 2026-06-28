@@ -99,7 +99,7 @@ if (brandHomeLink) {
 }
 
 // =====================
-// Game State Variables|
+// Game State Variables
 // =====================
 
 let playerMove = "";
@@ -109,6 +109,7 @@ let roundNumber = 1;
 let roundPlayed = false;
 
 const winningScore = 8;
+const maxRounds = 15;
 let matchOver = false;
 
 let playerScore = 0;
@@ -657,10 +658,6 @@ async function playRound(selectedMove) {
   if (!matchOver) {
     nextRoundButton.disabled = false;
   }
-
-  console.log(playerMove);
-  console.log(computerMove);
-  console.log(result);
 }
 
 function updateChoiceTokenColour(choiceToken, move) {
@@ -950,7 +947,7 @@ function checkMatchWinner() {
     updateAchievement();
     playSound(sounds.matchLoss);
     matchOver = true;
-  } else if (roundNumber >= 15) {
+  } else if (roundNumber >= maxRounds) {
     if (playerScore > computerScore) {
       resultMessage.textContent = "You Win The Match!";
       resultRule.textContent = `Final score: ${playerScore} - ${computerScore}.`;
