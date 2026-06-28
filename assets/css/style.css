@@ -336,6 +336,18 @@ button,
   min-height: calc(100vh - 165px);
 }
 
+/* Keyboard focus states for interactive elements */
+.nav-link:focus-visible,
+.move-card:focus-visible,
+.next-round-button:focus-visible,
+.secondary-button:focus-visible,
+.menu-toggle:focus-visible,
+.setting-option:focus-within,
+.toggle-setting:focus-within {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+}
+
 /* ==============================
    8. Play Screen
 ================================= */
@@ -2073,6 +2085,18 @@ button,
   .move-card--spock .move-icon {
     width: 40px;
     height: 40px;
+  }
+}
+
+/* Reduce animation and transition effects for users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto;
+    transition-duration: 0.01ms;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
   }
 }
 
