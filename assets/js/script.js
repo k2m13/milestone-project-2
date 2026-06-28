@@ -1,3 +1,5 @@
+/* jshint esversion: 8, browser: true */
+
 // ==============================
 // MindGame JavaScript
 //
@@ -209,7 +211,7 @@ const winningRules = {
 };
 
 // ====================
-// 3. Local Storage      
+// 3. Local Storage
 // ====================
 
 /**
@@ -360,7 +362,7 @@ function displayHighScores() {
 }
 
 // ===================
-// 4. DOM References     
+// 4. DOM References
 // ===================
 
 const moveButtons = document.querySelectorAll(".move-card");
@@ -417,7 +419,7 @@ const soundToggle = document.getElementById("sound-toggle");
 const musicToggle = document.getElementById("music-toggle");
 
 // ==================
-// 5. Sound Effects       
+// 5. Sound Effects
 // ==================
 
 let soundEnabled = true;
@@ -556,7 +558,7 @@ if (soundToggle) {
 setSoundVolumes();
 
 // ====================
-// 6. Background Music    
+// 6. Background Music
 // ====================
 
 let musicEnabled = false;
@@ -704,7 +706,7 @@ function chooseComputerMove() {
 }
 
 // ======================
-// 8. Round Winner Logic   
+// 8. Round Winner Logic
 // ======================
 
 /**
@@ -737,7 +739,7 @@ function formatMoveName(move) {
 }
 
 // ===================
-// 9. Play Round Flow          
+// 9. Play Round Flow
 // ===================
 
 /**
@@ -1009,7 +1011,7 @@ moveButtons.forEach(function (button) {
 });
 
 // ======================
-// 11. Keyboard Controls   
+// 11. Keyboard Controls
 // ======================
 
 /**

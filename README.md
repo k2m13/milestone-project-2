@@ -407,6 +407,10 @@ HTML testing included:
 - Running the HTML through a validator and correcting any reported issues.
 - Testing the structure on desktop, tablet and mobile screen sizes to ensure content remained readable and usable.
 
+### HTML Validator
+
+...
+
 ## Testing Approach
 
 Testing was carried out throughout the development of MindGame to check that the project worked correctly, remained usable across different devices, and met the needs of the intended users.
@@ -427,8 +431,22 @@ Manual testing focused on:
 - Checking that local storage saved rank progress, high scores, favourite move data and settings correctly.
 - Checking that the deployed GitHub Pages version matched the local development version.
 
+### CSS Validator
+
+| CSS Validation | CSS Portal validator | Passed | No errors or warnings found after fixing invalid `min-height: auto` values. |
+
+<p align="left">
+  <img src="assets/readme/css-validation-pass.png" width="550" alt="Rules Diagram">
+</p>
+
+### JS Validator
+JavaScript was checked using JSHint and Esprima. JSHint was configured for ES8 and browser-based JavaScript. Esprima confirmed that the script was syntactically valid.
+
+| JavaScript Validation | JSHint and Esprima | Passed | JSHint showed no remaining warnings after ES8 configuration. Esprima confirmed that the code is syntactically valid. |
+
 ### Automated Testing
 
+After the final JavaScript cleanup, the Jest test suite was run again and all 20 tests passed.
 Automated testing was used to test the core JavaScript logic in a repeatable way. Jest tests were added for important game functions so that key parts of the game could be checked quickly after changes were made.
 Automated testing was important because the game contains logic that must remain reliable, such as move validation, winner calculation, score updates, statistics and local storage behaviour. These areas are easier to test with predictable inputs and expected outputs.
 
