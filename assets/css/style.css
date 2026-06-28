@@ -146,7 +146,6 @@ body.theme-high-contrast .panel:hover {
 }
 
 body.theme-high-contrast .move-card,
-body.theme-high-contrast .choice-display,
 body.theme-high-contrast .choice-token,
 body.theme-high-contrast .score-card,
 body.theme-high-contrast .summary-item,
@@ -154,7 +153,6 @@ body.theme-high-contrast .rule-card,
 body.theme-high-contrast .rank-card,
 body.theme-high-contrast .high-score-panel,
 body.theme-high-contrast .setting-option,
-body.theme-high-contrast .match-format,
 body.theme-high-contrast .result-message,
 body.theme-high-contrast .history-entry,
 body.theme-high-contrast .secondary-button {
@@ -466,22 +464,6 @@ button,
   align-items: center;
   text-align: center;
   margin: 1rem 0;
-}
-
-.choice-display {
-  min-height: clamp(170px, 24vh, 220px);
-  display: grid;
-  gap: 1rem;
-  align-content: center;
-  padding: 1rem;
-  border-radius: 1rem;
-  background: var(--color-surface-strong);
-  border: 1px solid var(--color-border);
-}
-
-.choice-title {
-  font-family: "Orbitron", sans-serif;
-  color: var(--color-muted);
 }
 
 .choice-token {
@@ -1290,7 +1272,7 @@ button,
   background: rgba(var(--color-primary-rgb), 0.1);
 }
 
-/* Match Format */
+/* Score panel layout */
 
 .play-grid-score .scoreboard {
   margin-top: 0.5rem;
@@ -1304,7 +1286,7 @@ button,
   font-size: clamp(2rem, 4vw, 3.2rem);
 }
 
-.play-grid-score .match-format {
+.play-grid-score {
   margin-top: 0.5rem;
 }
 
@@ -1499,11 +1481,6 @@ button,
   .battle-area {
     gap: 0.75rem;
     margin: 0.45rem 0;
-  }
-
-  .choice-display {
-    min-height: clamp(135px, 20vh, 170px);
-    padding: 0.7rem;
   }
 
   .choice-token {
