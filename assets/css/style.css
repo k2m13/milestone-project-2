@@ -192,6 +192,9 @@ body.theme-high-contrast .rank-badge-icon {
 }
 
 .brand-panel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   flex-shrink: 0;
 }
 
@@ -331,12 +334,6 @@ button,
 #rules-screen.active-screen > .panel,
 #settings-screen.active-screen > .panel {
   min-height: calc(100vh - 165px);
-}
-
-/* Panel text */
-.panel-subtitle {
-  color: var(--color-muted);
-  line-height: 1.5;
 }
 
 /* ==============================
@@ -687,10 +684,9 @@ button,
   color: var(--color-cyan);
 }
 
-.brand-panel {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.panel-subtitle {
+  color: var(--color-muted);
+  line-height: 1.5;
 }
 
 .brand-icon {
@@ -729,10 +725,6 @@ button,
   font-size: 1.5rem;
   color: var(--color-cyan);
   margin-top: 0.3rem;
-}
-
-.play-grid-stats {
-  grid-area: stats;
 }
 
 .play-grid-stats.summary-panel {
@@ -812,6 +804,11 @@ button,
 }
 
 .rule-card {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: var(--color-surface-strong);
+  border: 1px solid var(--color-border);
+
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
@@ -837,13 +834,6 @@ button,
   border-color: var(--color-cyan);
 
   box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.15);
-}
-
-.rule-card {
-  padding: 1rem;
-  border-radius: 1rem;
-  background: var(--color-surface-strong);
-  border: 1px solid var(--color-border);
 }
 
 .rule-card h3 {
