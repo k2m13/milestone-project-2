@@ -1,5 +1,27 @@
+// ==============================
+// MindGame JavaScript
+//
+// Table of Contents
+//
+// 1. Navigation System
+// 2. Game State Variables
+// 3. Local Storage
+// 4. DOM References
+// 5. Sound Effects
+// 6. Background Music
+// 7. Computer Move Logic
+// 8. Round Winner Logic
+// 9. Play Round Flow
+// 10. Move Button Events
+// 11. Keyboard Controls
+// 12. Score and Match Updates
+// 13. Round Controls
+// 14. Round History
+// 15. Theme Settings
+// ==============================
+
 // ====================
-// Navigation System  |
+// 1. Navigation System
 // ====================
 
 const navLinks = document.querySelectorAll(".nav-link");
@@ -8,6 +30,11 @@ const screens = document.querySelectorAll(".screen");
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNavigation = document.getElementById("main-navigation");
 
+/**
+ * Closes the mobile navigation menu and resets its ARIA attributes.
+ *
+ * @returns {void}
+ */
 function closeMobileMenu() {
   if (!menuToggle || !mainNavigation) {
     return;
@@ -30,6 +57,13 @@ if (menuToggle && mainNavigation) {
   });
 }
 
+/**
+ * Displays the selected application screen and updates the active navigation link.
+ *
+ * @param {string} screenId - The hash ID of the screen to display.
+ * @param {boolean} [playFeedback=true] - Whether to play navigation feedback sound.
+ * @returns {void}
+ */
 function showScreen(screenId, playFeedback = true) {
   const targetScreen = document.querySelector(screenId);
 
@@ -98,9 +132,9 @@ if (brandHomeLink) {
   });
 }
 
-// =====================
-// Game State Variables
-// =====================
+// =======================
+// 2. Game State Variables
+// =======================
 
 let playerMove = "";
 let computerMove = "";
@@ -145,7 +179,7 @@ const winningMoves = {
   spock: ["rock", "scissors"],
 };
 
-// Winning Rules Object
+// Winning rule messages displayed after each round
 
 const winningRules = {
   rock: {
@@ -175,15 +209,25 @@ const winningRules = {
 };
 
 // ====================
-// Local Storage      |
+// 3. Local Storage      
 // ====================
 
+/**
+ * Saves rank-related player statistics to local storage.
+ *
+ * @returns {void}
+ */
 function saveRankStats() {
   localStorage.setItem("matchesWon", matchesWon);
   localStorage.setItem("matchesLost", matchesLost);
   localStorage.setItem("highestStreak", highestStreak);
 }
 
+/**
+ * Loads rank-related statistics from local storage and updates the Rank screen.
+ *
+ * @returns {void}
+ */
 function loadRankStats() {
   matchesWon = Number(localStorage.getItem("matchesWon")) || 0;
 
@@ -200,6 +244,11 @@ function loadRankStats() {
   updateAchievement();
 }
 
+/**
+ * Updates the achievement title, rank badge and rank description based on matches won.
+ *
+ * @returns {void}
+ */
 function updateAchievement() {
   let achievement = "Beginner";
   let rankIcon = "rank-beginner.svg";
@@ -237,15 +286,32 @@ function updateAchievement() {
   }
 }
 
+/**
+ * Saves the high score list to local storage.
+ *
+ * @returns {void}
+ */
 function saveHighScores() {
   localStorage.setItem("highScores", JSON.stringify(highScores));
 }
 
+/**
+ * Loads high scores from local storage and displays them on the Rank screen.
+ *
+ * @returns {void}
+ */
 function loadHighScores() {
   highScores = JSON.parse(localStorage.getItem("highScores")) || [];
   displayHighScores();
 }
 
+/**
+ * Adds a new high score entry, sorts the leaderboard and saves the result.
+ *
+ * @param {number} finalScore - The player's final score.
+ * @param {number} finalRounds - The number of rounds played.
+ * @returns {void}
+ */
 function addHighScore(finalScore, finalRounds) {
   const playerName = prompt("New high score! Enter your name:");
 
@@ -271,6 +337,11 @@ function addHighScore(finalScore, finalRounds) {
   displayHighScores();
 }
 
+/**
+ * Displays saved high scores in the high score list.
+ *
+ * @returns {void}
+ */
 function displayHighScores() {
   highScoreList.innerHTML = "";
 
@@ -288,9 +359,9 @@ function displayHighScores() {
   });
 }
 
-// ====================
-// DOM References      |
-// ====================
+// ===================
+// 4. DOM References     
+// ===================
 
 const moveButtons = document.querySelectorAll(".move-card");
 
@@ -334,8 +405,6 @@ const playerChoiceIcon = document.getElementById("player-choice-icon");
 
 const computerChoiceIcon = document.getElementById("computer-choice-icon");
 
-const movePanel = document.querySelector(".play-grid-moves");
-
 const playerChoiceToken = playerChoiceDisplay.parentElement;
 
 const computerChoiceToken = computerChoiceDisplay.parentElement;
@@ -347,9 +416,9 @@ const themeInputs = document.querySelectorAll('input[name="theme-mode"]');
 const soundToggle = document.getElementById("sound-toggle");
 const musicToggle = document.getElementById("music-toggle");
 
-// ====================
-// Sound Effects       |
-// ====================
+// ==================
+// 5. Sound Effects       
+// ==================
 
 let soundEnabled = true;
 
@@ -377,6 +446,11 @@ const feedbackSounds = [
   sounds.newGame,
 ];
 
+/**
+ * Stops all short feedback sounds so that game effects do not overlap.
+ *
+ * @returns {void}
+ */
 function stopFeedbackSounds() {
   feedbackSounds.forEach(function (sound) {
     sound.pause();
@@ -384,6 +458,11 @@ function stopFeedbackSounds() {
   });
 }
 
+/**
+ * Sets the volume levels for all short game sound effects.
+ *
+ * @returns {void}
+ */
 function setSoundVolumes() {
   sounds.moveSelected.volume = 0.2;
   sounds.cpuReveal.volume = 0.2;
@@ -399,6 +478,13 @@ function setSoundVolumes() {
   sounds.newGame.volume = 0.2;
 }
 
+/**
+ * Plays a short sound effect if sound is enabled.
+ *
+ * @param {HTMLAudioElement} sound - The sound effect to play.
+ * @param {boolean} [stopOtherSounds=true] - Whether to stop other feedback sounds first.
+ * @returns {void}
+ */
 function playSound(sound, stopOtherSounds = true) {
   if (!soundEnabled || !sound) {
     return;
@@ -415,6 +501,11 @@ function playSound(sound, stopOtherSounds = true) {
   });
 }
 
+/**
+ * Toggles sound effects on or off and saves the setting.
+ *
+ * @returns {void}
+ */
 function toggleSoundEffects() {
   const newSetting = soundEnabled ? "off" : "on";
 
@@ -428,6 +519,11 @@ function toggleSoundEffects() {
   playSound(sounds.moveSelected);
 }
 
+/**
+ * Toggles background music on or off and saves the setting.
+ *
+ * @returns {void}
+ */
 function toggleBackgroundMusic() {
   const newSetting = musicEnabled ? "off" : "on";
 
@@ -435,15 +531,12 @@ function toggleBackgroundMusic() {
   applyMusicSetting(newSetting);
 }
 
-function updateToggleButton(button, isOn, label) {
-  if (!button) {
-    return;
-  }
-
-  button.setAttribute("aria-pressed", isOn);
-  button.textContent = `${label}: ${isOn ? "On" : "Off"}`;
-}
-
+/**
+ * Applies the selected sound effects setting and updates the sound switch.
+ *
+ * @param {string} setting - The saved sound setting, either "on" or "off".
+ * @returns {void}
+ */
 function applySoundSetting(setting) {
   soundEnabled = setting === "on";
   localStorage.setItem("soundSetting", setting);
@@ -463,7 +556,7 @@ if (soundToggle) {
 setSoundVolumes();
 
 // ====================
-// Background Music    |
+// 6. Background Music    
 // ====================
 
 let musicEnabled = false;
@@ -477,6 +570,11 @@ backgroundMusic.volume = 0.08;
 backgroundMusic.loop = false;
 backgroundMusic.preload = "auto";
 
+/**
+ * Plays the background music when music is enabled.
+ *
+ * @returns {void}
+ */
 function playBackgroundMusic() {
   if (!musicEnabled) {
     return;
@@ -487,10 +585,21 @@ function playBackgroundMusic() {
   });
 }
 
+/**
+ * Pauses the background music.
+ *
+ * @returns {void}
+ */
 function pauseBackgroundMusic() {
   backgroundMusic.pause();
 }
 
+/**
+ * Applies the selected music setting, updates the music switch and starts or stops music.
+ *
+ * @param {string} setting - The saved music setting, either "on" or "off".
+ * @returns {void}
+ */
 function applyMusicSetting(setting) {
   musicEnabled = setting === "on";
   localStorage.setItem("musicSetting", setting);
@@ -520,6 +629,11 @@ if (musicToggle) {
   });
 }
 
+/**
+ * Attempts to start background music after a user interaction.
+ *
+ * @returns {void}
+ */
 function startMusicAfterUserInteraction() {
   if (musicEnabled && backgroundMusic.paused) {
     playBackgroundMusic();
@@ -529,16 +643,26 @@ function startMusicAfterUserInteraction() {
 document.addEventListener("click", startMusicAfterUserInteraction);
 document.addEventListener("keydown", startMusicAfterUserInteraction);
 
-// ====================
-// Computer Move       |
-// ====================
+// ======================
+// 7. Computer Move Logic
+// ======================
 
+/**
+ * Selects a random move for the computer.
+ *
+ * @returns {string} A randomly selected move.
+ */
 function getComputerMove() {
   const randomIndex = Math.floor(Math.random() * moveList.length);
   return moveList[randomIndex];
 }
 
 // Hard Mode
+/**
+ * Selects a strategic computer move based on the player's most frequent move.
+ *
+ * @returns {string} A move that can beat the player's favourite move, or a random move if no pattern exists.
+ */
 function getHardComputerMove() {
   let favouriteMove = "";
   let highestCount = 0;
@@ -566,6 +690,11 @@ function getHardComputerMove() {
   return counterMoves[randomIndex];
 }
 
+/**
+ * Chooses the computer move according to the selected game mode.
+ *
+ * @returns {string} The computer's selected move.
+ */
 function chooseComputerMove() {
   if (gameMode === "hard") {
     return getHardComputerMove();
@@ -574,10 +703,17 @@ function chooseComputerMove() {
   return getComputerMove();
 }
 
-// ====================
-// Determine Winner    |
-// ====================
+// ======================
+// 8. Round Winner Logic   
+// ======================
 
+/**
+ * Determines the winner of a single round.
+ *
+ * @param {string} playerMove - The move selected by the player.
+ * @param {string} computerMove - The move selected by the computer.
+ * @returns {"player" | "computer" | "draw"} The round result.
+ */
 function determineWinner(playerMove, computerMove) {
   if (playerMove === computerMove) {
     return "draw";
@@ -590,20 +726,39 @@ function determineWinner(playerMove, computerMove) {
   return "computer";
 }
 
+/**
+ * Formats a move name with an initial capital letter for display text.
+ *
+ * @param {string} move - The move name to format.
+ * @returns {string} The formatted move name.
+ */
 function formatMoveName(move) {
   return move.charAt(0).toUpperCase() + move.slice(1);
 }
 
-// ====================
-// Play Round          |
-// ====================
+// ===================
+// 9. Play Round Flow          
+// ===================
 
+/**
+ * Creates a delay used for short gameplay pauses.
+ *
+ * @param {number} milliseconds - The delay duration in milliseconds.
+ * @returns {Promise<void>} A promise that resolves after the delay.
+ */
 function wait(milliseconds) {
   return new Promise(function (resolve) {
     setTimeout(resolve, milliseconds);
   });
 }
 
+/**
+ * Plays one full round: records the player move, chooses the computer move,
+ * updates the UI, updates scores and checks whether the match has ended.
+ *
+ * @param {string} selectedMove - The move selected by the player.
+ * @returns {Promise<void>}
+ */
 async function playRound(selectedMove) {
   if (matchOver) {
     return;
@@ -660,6 +815,13 @@ async function playRound(selectedMove) {
   }
 }
 
+/**
+ * Updates a choice token with the colour class for the selected move.
+ *
+ * @param {HTMLElement} choiceToken - The choice token element to update.
+ * @param {string} move - The move used to set the colour class.
+ * @returns {void}
+ */
 function updateChoiceTokenColour(choiceToken, move) {
   choiceToken.classList.remove(
     "choice-token--rock",
@@ -672,6 +834,11 @@ function updateChoiceTokenColour(choiceToken, move) {
   choiceToken.classList.add(`choice-token--${move}`);
 }
 
+/**
+ * Resets the battle panel ready for the next round.
+ *
+ * @returns {void}
+ */
 function resetBattlePanel() {
   if (matchOver) {
     return;
@@ -714,6 +881,12 @@ function resetBattlePanel() {
   enableMoveButtons();
 }
 
+/**
+ * Updates the result box styling according to the round result.
+ *
+ * @param {"player" | "computer" | "draw"} result - The round result.
+ * @returns {void}
+ */
 function updateResultBox(result) {
   resultBox.classList.remove("result-win", "result-loss", "result-draw");
 
@@ -726,6 +899,11 @@ function updateResultBox(result) {
   }
 }
 
+/**
+ * Resets the match state, scoreboard, statistics, history and battle display.
+ *
+ * @returns {void}
+ */
 function startNewGame() {
   playSound(sounds.newGame);
   playerScore = 0;
@@ -819,9 +997,9 @@ gameModeInputs.forEach(function (input) {
   });
 });
 
-// ====================
-// Move Button Events  |
-// ====================
+// =======================
+// 10. Move Button Events
+// =======================
 
 moveButtons.forEach(function (button) {
   button.addEventListener("click", function () {
@@ -830,10 +1008,16 @@ moveButtons.forEach(function (button) {
   });
 });
 
-// ====================
-// Keyboard Controls   |
-// ====================
+// ======================
+// 11. Keyboard Controls   
+// ======================
 
+/**
+ * Selects a move using a keyboard shortcut if the move is available.
+ *
+ * @param {string} move - The move linked to the keyboard shortcut.
+ * @returns {void}
+ */
 function selectMoveByKeyboard(move) {
   const moveButton = document.querySelector(`[data-choice="${move}"]`);
 
@@ -844,6 +1028,12 @@ function selectMoveByKeyboard(move) {
   playRound(move);
 }
 
+/**
+ * Switches application screen using a keyboard number shortcut.
+ *
+ * @param {number} index - The index of the navigation link to activate.
+ * @returns {void}
+ */
 function switchTabByKeyboard(index) {
   const navLink = navLinks[index];
 
@@ -888,10 +1078,16 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-// ====================
-// Update Scores       |
-// ====================
+// ===========================
+// 12. Score and Match Updates
+// ===========================
 
+/**
+ * Updates the player or computer score after a round.
+ *
+ * @param {"player" | "computer" | "draw"} result - The round result.
+ * @returns {void}
+ */
 function updateScores(result) {
   if (result === "player") {
     playerScore++;
@@ -905,6 +1101,12 @@ function updateScores(result) {
   computerScoreDisplay.textContent = computerScore;
 }
 
+/**
+ * Displays the round result message and the rule that explains the outcome.
+ *
+ * @param {"player" | "computer" | "draw"} result - The round result.
+ * @returns {void}
+ */
 function displayResult(result) {
   if (result === "draw") {
     resultMessage.textContent = "Draw!";
@@ -929,6 +1131,12 @@ function displayResult(result) {
 matchesWonDisplay.textContent = matchesWon;
 matchesLostDisplay.textContent = matchesLost;
 
+/**
+ * Checks whether the match has ended by first-to-8 score or maximum rounds.
+ * Updates match results, rank statistics, sounds and new-game controls.
+ *
+ * @returns {void}
+ */
 function checkMatchWinner() {
   if (playerScore >= winningScore) {
     resultMessage.textContent = "You Win The Match!";
@@ -979,6 +1187,12 @@ function checkMatchWinner() {
   }
 }
 
+/**
+ * Updates round count, win rate, current streak and highest streak.
+ *
+ * @param {"player" | "computer" | "draw"} result - The round result.
+ * @returns {void}
+ */
 function updateStats(result) {
   totalRounds++;
 
@@ -1003,6 +1217,11 @@ function updateStats(result) {
   rankHighestStreakDisplay.textContent = highestStreak;
 }
 
+/**
+ * Updates the player's most frequently selected move.
+ *
+ * @returns {void}
+ */
 function updateFavouriteMove() {
   moveFrequency[playerMove]++;
 
@@ -1032,26 +1251,42 @@ resetHighScoresButton.addEventListener("click", function () {
   }
 });
 
-// ====================
-// Round Controls      |
-// ====================
+// ===================
+// 13. Round Controls
+// ===================
 
+/**
+ * Disables all move buttons to prevent multiple selections during a round.
+ *
+ * @returns {void}
+ */
 function disableMoveButtons() {
   moveButtons.forEach(function (button) {
     button.disabled = true;
   });
 }
 
+/**
+ * Enables all move buttons for the next playable round.
+ *
+ * @returns {void}
+ */
 function enableMoveButtons() {
   moveButtons.forEach(function (button) {
     button.disabled = false;
   });
 }
 
-// ====================
-// Round History       |
-// ====================
+// ==================
+// 14. Round History
+// ==================
 
+/**
+ * Adds the completed round to the round history display.
+ *
+ * @param {"player" | "computer" | "draw"} result - The round result.
+ * @returns {void}
+ */
 function addRoundToHistory(result) {
   const roundData = {
     round: roundNumber,
@@ -1083,11 +1318,19 @@ loadRankStats();
 updateAchievement();
 loadHighScores();
 
+// ====================
+// 15. Theme Settings
+// ====================
+
 const savedTheme = localStorage.getItem("selectedTheme") || "theme-default";
 applyTheme(savedTheme);
 
-//Colour Pallettes
-
+/**
+ * Applies the selected colour theme and saves the setting to local storage.
+ *
+ * @param {string} themeName - The theme class name to apply to the body.
+ * @returns {void}
+ */
 function applyTheme(themeName) {
   document.body.classList.remove(
     "theme-default",
