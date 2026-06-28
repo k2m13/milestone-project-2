@@ -38,7 +38,6 @@
   --color-surface: rgba(255, 255, 255, 0.58);
   --color-surface-strong: rgba(255, 255, 255, 0.76);
   --color-border: rgba(124, 58, 237, 0.32);
-  --color-shadow: rgba(124, 58, 237, 0.22);
   --color-text: #261447;
   --color-muted: #6b5a86;
   --color-cyan: #7c3aed;
@@ -48,14 +47,11 @@
   --color-secondary-rgb: 245, 158, 11;
   --layout-gap: clamp(0.6rem, 0.9vw, 0.9rem);
   --card-gap: clamp(0.5rem, 0.8vw, 0.85rem);
-  --page-width: min(98vw, 1600px);
   --panel-padding: clamp(0.75rem, 1vw, 1.25rem);
-  --panel-radius: 1rem;
 
   --move-card-height: clamp(95px, 12vh, 145px);
   --move-icon-size: clamp(56px, 5vw, 90px);
 
-  --battle-token-height: clamp(120px, 18vh, 190px);
   --battle-icon-size: clamp(64px, 6vw, 120px);
 
   --heading-size: clamp(1rem, 1.2vw, 1.35rem);
