@@ -1485,7 +1485,15 @@ button,
   }
 
   .play-grid-history {
-    max-height: 78px;
+    max-height: 88px;
+  }
+
+  .play-grid-history.panel {
+    padding-bottom: 0.65rem;
+  }
+
+  .play-grid-history .history-list {
+    padding-bottom: 0.35rem;
   }
 }
 
