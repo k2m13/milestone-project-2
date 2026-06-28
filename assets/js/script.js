@@ -25,7 +25,7 @@ if (menuToggle && mainNavigation) {
     menuToggle.setAttribute("aria-expanded", isOpen.toString());
     menuToggle.setAttribute(
       "aria-label",
-      isOpen ? "Close navigation menu" : "Open navigation menu"
+      isOpen ? "Close navigation menu" : "Open navigation menu",
     );
   });
 }
@@ -364,6 +364,25 @@ const sounds = {
   newGame: new Audio("assets/audio/new-game.mp3"),
 };
 
+const feedbackSounds = [
+  sounds.moveSelected,
+  sounds.cpuReveal,
+  sounds.roundWin,
+  sounds.roundLoss,
+  sounds.roundDraw,
+  sounds.matchWin,
+  sounds.matchLoss,
+  sounds.matchDraw,
+  sounds.newGame,
+];
+
+function stopFeedbackSounds() {
+  feedbackSounds.forEach(function (sound) {
+    sound.pause();
+    sound.currentTime = 0;
+  });
+}
+
 function setSoundVolumes() {
   sounds.moveSelected.volume = 0.2;
   sounds.cpuReveal.volume = 0.2;
@@ -379,12 +398,17 @@ function setSoundVolumes() {
   sounds.newGame.volume = 0.2;
 }
 
-function playSound(sound) {
+function playSound(sound, stopOtherSounds = true) {
   if (!soundEnabled || !sound) {
     return;
   }
 
+  if (stopOtherSounds) {
+    stopFeedbackSounds();
+  }
+
   sound.currentTime = 0;
+
   sound.play().catch(function () {
     // Browser may block sound until the user interacts with the page.
   });
@@ -607,14 +631,6 @@ async function playRound(selectedMove) {
 
   const result = determineWinner(playerMove, computerMove);
 
-  if (result === "player") {
-    playSound(sounds.roundWin);
-  } else if (result === "computer") {
-    playSound(sounds.roundLoss);
-  } else {
-    playSound(sounds.roundDraw);
-  }
-
   updateScores(result);
   updateStats(result);
   displayResult(result);
@@ -625,6 +641,16 @@ async function playRound(selectedMove) {
   updateChoiceTokenColour(computerChoiceToken, computerMove);
 
   checkMatchWinner();
+
+  if (!matchOver) {
+    if (result === "player") {
+      playSound(sounds.roundWin);
+    } else if (result === "computer") {
+      playSound(sounds.roundLoss);
+    } else {
+      playSound(sounds.roundDraw);
+    }
+  }
 
   roundPlayed = true;
 
@@ -861,8 +887,8 @@ document.addEventListener("keydown", function (event) {
   } else if (key === "m") {
     toggleBackgroundMusic();
   } else if (key === "escape") {
-  closeMobileMenu();
-}
+    closeMobileMenu();
+  }
 });
 
 // ====================
