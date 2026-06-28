@@ -1282,10 +1282,6 @@ button,
   font-size: clamp(2rem, 4vw, 3.2rem);
 }
 
-.play-grid-score {
-  margin-top: 0.5rem;
-}
-
 /* ==============================
    12. History Panel
 ================================= */
@@ -1438,6 +1434,7 @@ button,
   .settings-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
 }
 
 /* Touch tablet landscape layout */
