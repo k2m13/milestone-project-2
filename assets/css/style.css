@@ -182,7 +182,6 @@ body.theme-high-contrast .rank-badge-icon {
 .panel {
   border: 1px solid var(--color-border);
   padding: var(--panel-padding);
-  min-height: auto;
 }
 
 .brand-panel {
@@ -231,9 +230,6 @@ button,
   margin-right: auto;
 }
 
-.app-container {
-  min-height: auto;
-}
 
 /* ==============================
    6. Screen Management
@@ -488,11 +484,6 @@ button,
   display: none;
 }
 
-.choice-token,
-.versus-token {
-  min-height: clamp(110px, 18vh, 140px);
-}
-
 .choice-token.choice-token--rock {
   border-color: var(--color-cyan);
 }
@@ -521,6 +512,7 @@ button,
 
 .choice-token,
 .versus-token {
+  min-height: clamp(110px, 18vh, 140px);
   border-radius: 1rem;
   font-family: "Orbitron", sans-serif;
   font-size: 2.4rem;
@@ -1543,7 +1535,7 @@ button,
   #rank-screen.active-screen > .panel,
   #rules-screen.active-screen > .panel,
   #settings-screen.active-screen > .panel {
-    min-height: auto;
+    min-height: 0;
   }
 
   .settings-panel {
@@ -1676,7 +1668,7 @@ button,
   #rank-screen.active-screen > .panel,
   #rules-screen.active-screen > .panel,
   #settings-screen.active-screen > .panel {
-    min-height: auto;
+    min-height: 0;
   }
 
   .site-header {
@@ -1789,7 +1781,6 @@ button,
 
   .score-card {
     padding: 0.45rem 0.35rem;
-    min-height: auto;
   }
 
   .score-value {
@@ -1972,7 +1963,7 @@ button,
   }
 
   .rank-card--achievement {
-    min-height: auto;
+    min-height: 0;
     padding: 0.8rem;
   }
 
