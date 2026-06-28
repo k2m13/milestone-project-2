@@ -1430,7 +1430,7 @@ button,
 }
 
 /* Touch tablet landscape layout */
-@media (hover: none) and (orientation: landscape) and (min-width: 900px) and (max-width: 1250px) {
+@media (hover: none) and (orientation: landscape) and (min-width: 901px) and (max-width: 1250px) {
   #play-screen.active-screen {
     grid-template-columns: minmax(230px, 0.9fr) minmax(390px, 1.5fr) minmax(
         230px,
@@ -1570,8 +1570,24 @@ button,
   }
 }
 
-/* Mobile layout */
-@media (max-width: 800px) {
+/* Fill available vertical space on desktop and wide tablet layouts only */
+@media (min-width: 901px) {
+  #play-screen.active-screen {
+    min-height: calc(100svh - 6.5rem);
+    align-content: stretch;
+  }
+
+  .play-grid-moves,
+  .play-grid-battle,
+  .play-grid-score,
+  .play-grid-stats,
+  .play-grid-history {
+    height: 100%;
+  }
+}
+
+/* Mobile and portrait tablet layout */
+@media (max-width: 900px) {
   #play-screen.active-screen {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -1950,6 +1966,54 @@ button,
 
   .summary-value {
     font-size: 1.25rem;
+  }
+}
+
+/* Portrait tablet play screen layout */
+@media (min-width: 700px) and (max-width: 900px) and (orientation: portrait) {
+  #play-screen.active-screen {
+    min-height: calc(100svh - 6.5rem);
+    grid-template-rows: auto minmax(260px, 1fr) auto auto auto;
+    align-content: stretch;
+  }
+
+  .play-grid-score,
+  .play-grid-battle,
+  .play-grid-moves,
+  .play-grid-history,
+  .play-grid-stats {
+    height: 100%;
+  }
+
+  .play-grid-battle {
+    align-content: center;
+  }
+
+  .battle-area {
+    margin: 0.75rem 0;
+  }
+
+  .choice-token {
+    min-height: 130px;
+  }
+
+  .battle-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .move-card {
+    min-height: 84px;
+  }
+
+  .move-icon,
+  .move-card--spock .move-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .play-grid-history {
+    max-height: 115px;
   }
 }
 
