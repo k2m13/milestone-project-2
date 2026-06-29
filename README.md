@@ -33,6 +33,7 @@ MindGame responsive design shown across desktop, laptop, tablet and mobile scree
   - [Responsive Testing](#responsive-testing)
   - [Browser Testing](#browser-testing)
   - [Accessibility Testing](#accessibility-testing)
+  - [Lighthouse Testing](#lighthouse-testing)
   - [Validator Testing](#validator-testing)
   - [Automated Testing](#automated-testing)
   - [Bugs Found and Fixed](#bugs-found-and-fixed)
@@ -319,6 +320,43 @@ The visual design was created to support the science-fiction theme of Rock Paper
 The interface uses strong visual hierarchy so that the most important gameplay elements are easy to find: move choices, battle feedback, score, round history and statistics. The Play screen was designed as a dashboard on larger screens and as a stacked layout on smaller screens.
 Colour themes were added to give users more control over readability. The default theme supports the main visual identity, while the high contrast and visually impaired friendly themes provide alternatives for users who need stronger separation between text, panels and background.
 Orbitron was used for headings and game-style interface elements because it matches the futuristic theme. Inter was used for body text because it is clean, readable and suitable for longer interface information.
+
+#### Colour Palette
+
+The colour palette was designed to support the futuristic game theme while keeping the interface readable. The project uses CSS custom properties for the main themes, allowing the visual style to change consistently across the application.
+
+| Theme / Role                    |                       Hex Value | Usage                                               |
+| ------------------------------- | ------------------------------: | --------------------------------------------------- |
+| Default background              |                       `#f7f3ff` | Main default page background                        |
+| Default text                    |                       `#261447` | Primary text colour                                 |
+| Default muted text              |                       `#6b5a86` | Supporting text and secondary labels                |
+| Default primary accent          |                       `#7c3aed` | Buttons, highlights and key interface accents       |
+| Default secondary accent        |                       `#ec4899` | Supporting accent colour and visual highlights      |
+| Default warning/accent          |                       `#f59e0b` | Warm highlight colour                               |
+| Default background gradient     | `#fbf8ff`, `#f4edff`, `#fff7e6` | Soft page background gradient                       |
+| High contrast background        |                       `#0b1020` | High contrast theme background                      |
+| High contrast surface           |                       `#111827` | High contrast cards and panels                      |
+| High contrast strong surface    |                       `#1f2937` | Stronger high contrast panel background             |
+| High contrast border            |                       `#38bdf8` | High contrast borders and focus accents             |
+| High contrast text              |                       `#f8fafc` | Main readable text in high contrast mode            |
+| High contrast muted text        |                       `#cbd5e1` | Secondary text in high contrast mode                |
+| High contrast cyan accent       |                       `#22d3ee` | Accessible bright accent                            |
+| High contrast purple accent     |                       `#c084fc` | Secondary high contrast accent                      |
+| High contrast orange accent     |                       `#fbbf24` | Warm high contrast accent                           |
+| Colourblind-friendly background |                       `#f8f9fa` | Light accessible theme background                   |
+| Colourblind-friendly surface    |                       `#ffffff` | Cards and panels in the accessible theme            |
+| Colourblind-friendly text       |                       `#1f2933` | Main readable text                                  |
+| Colourblind-friendly muted text |                       `#52616b` | Supporting text                                     |
+| Colourblind-friendly blue       |                       `#0072b2` | Blue accent chosen for clearer colour distinction   |
+| Colourblind-friendly purple     |                       `#cc79a7` | Purple accent chosen for clearer colour distinction |
+| Colourblind-friendly orange     |                       `#e69f00` | Orange accent chosen for clearer colour distinction |
+| Colourblind-friendly gradient   |            `#f8f9fa`, `#edf6fb` | Light accessible theme background gradient          |
+| Win / success feedback          |            `#20c997`, `#20a886` | Player win states and positive feedback             |
+| Loss / error feedback           | `#ff6b6b`, `#f1398c`, `#ff3c80` | Computer win states and negative feedback           |
+| Draw / neutral feedback         |            `#adb5bd`, `#6c757d` | Draw states and neutral feedback                    |
+| White text                      |                       `#ffffff` | Text used on darker or stronger colour backgrounds  |
+
+The high contrast and colourblind-friendly themes were included to give users more control over readability and visual comfort. Feedback colours are used consistently so that wins, losses and draws are easy to recognise during gameplay.
 
 ## Features
 
@@ -630,7 +668,7 @@ The table below records the results of manual regression testing carried out on 
 
 | Feature | Test | Expected Result | Pass/Fail |
 |----------|----------|----------|----------|
-| Navigation | Click Play, Rank, Rules and Settings tabs | Correct screen is displayed and active tab is highlighted | Pass |
+| Navigation | Click Play, Rank, Guide and Settings tabs | Correct screen is displayed and active tab is highlighted | Pass |
 | Next Round Button | Load page and click Next Round before choosing a move | Nothing happens | Pass |
 | Round Flow | Select a move card | Computer move appears, result is displayed and move buttons become disabled | Pass |
 | Next Round | Click Next Round after a completed round | Round number increases, battle panel resets and move buttons are re-enabled | Pass |
@@ -641,7 +679,6 @@ The table below records the results of manual regression testing carried out on 
 | Total Rounds | Complete a round | Total rounds statistic increases by 1 | Pass |
 | Win Rate | Win and lose multiple rounds | Win rate updates correctly | Pass |
 | Current Streak | Win consecutive rounds | Streak increases correctly | Pass |
-| Current Streak | Lose or draw a round | Streak resets to 0 | Pass |
 | Match End | Reach 8 wins or complete 15 rounds with a higher score | Match winner message is displayed | Pass |
 | Match End | Match finishes | Move buttons remain disabled | Pass |
 | New Game | Click New Game after a completed match | Scores, stats, history and round number reset | Pass |
@@ -677,6 +714,18 @@ The deployed project was also checked on physical devices where available.
 | iPhone 13 mini | Safari | Passed |
 | iPad Air | Safari | Passed |
 
+### Browser Testing
+
+Browser testing was carried out to check that the deployed project worked consistently across modern browsers.
+
+| Browser        | Device                  | Result |
+| -------------- | ----------------------- | ------ |
+| Google Chrome  | MacBook Pro             | Passed |
+| Safari         | MacBook Pro             | Passed |
+| Safari         | iPhone 13 mini          | Passed |
+| Safari         | iPad Air                | Passed |
+
+
 ### Accessibility Testing
 
 Accessibility testing focused on semantic HTML, keyboard access, colour themes, visible feedback and user control over sound and music.
@@ -689,7 +738,52 @@ Accessibility testing focused on semantic HTML, keyboard access, colour themes, 
 | ARIA attributes    | Mobile navigation, live round feedback and switch controls were checked during validation  |
 | Image alt text     | Decorative icons used empty alt text and meaningful images used descriptive alt text       |
 
+#### WAVE and Colour Contrast Testing
+
+WAVE accessibility testing was carried out on the deployed site to check contrast, structure and accessibility-related markup. The default theme was tested first because it is the main theme users see when they first load the game.
+
+The WAVE contrast panel reported no contrast errors on the default theme. Manual testing was still carried out because WAVE notes that contrast involving gradients, filters and transparent backgrounds may require human judgement.
+
+<p align="left">
+  <img src="assets/readme/wave-default-theme-contrast-pass.png" width="650" alt="WAVE contrast testing on the default MindGame theme showing no contrast errors detected">
+</p>
+
+The high contrast theme was also checked separately. This theme provides a stronger alternative visual style for users who prefer dark backgrounds and brighter text. Some minor accessibility warnings remained in the WAVE overlay for specific interface elements, but the main text, headings, game panels and key controls remained readable during manual testing.
+
+<p align="left">
+  <img src="assets/readme/wave-high-contrast-theme-check.png" width="650" alt="WAVE accessibility testing on the high contrast MindGame theme">
+</p>
+
+| Area Tested | Result |
+|---|---|
+| Default theme contrast | No WAVE contrast errors detected |
+| Main text readability | Passed manual check |
+| Button and control readability | Passed manual check |
+| High contrast theme readability | Passed manual check for main content and controls |
+| Colourblind-friendly theme | Checked manually as an alternative accessible theme |
+| Remaining WAVE overlay warnings | Noted as minor known issues in high contrast testing |
+
+### Lighthouse Testing
+
+Lighthouse testing was carried out on the deployed GitHub Pages version of MindGame using PageSpeed Insights / Lighthouse. The test was used to check performance, accessibility, best practices and SEO on the live project.
+
+| Test | Performance | Accessibility | Best Practices | SEO | Result |
+|---|---:|---:|---:|---:|---|
+| Mobile Lighthouse test | 93 | 100 | 96 | 100 | Passed |
+| Desktop Lighthouse test | 99 | 100 | 96 | 100 | Passed |
+
+<p align="left">
+  <img src="assets/readme/lighthouse-mobile-testing.png" width="650" alt="Mobile Lighthouse test results showing 93 performance, 100 accessibility, 96 best practices and 100 SEO">
+</p>
+
+<p align="left">
+  <img src="assets/readme/lighthouse-desktop-testing.png" width="650" alt="Desktop Lighthouse test results showing 99 performance, 100 accessibility, 96 best practices and 100 SEO">
+</p>
+
+The Lighthouse results show that the deployed project performs well across mobile and desktop, with full accessibility and SEO scores in the automated Lighthouse audit. Best Practices scored 96 on both mobile and desktop.
+
 ### Validator Testing
+
 #### HTML Validator
 
 The HTML was tested to check that the page structure remained valid, readable and accessible across the application.
@@ -706,9 +800,13 @@ HTML testing included:
 - Running the HTML through a validator and correcting any reported issues.
 - Testing the structure on desktop, tablet and mobile screen sizes to ensure content remained readable and usable.
 
-<p align="left">
-  <img src="assets/readme/html-validation-pass.png" width="550" alt="Rules Diagram">
-</p>
+<img src="assets/readme/html-validation-pass.png" width="550" alt="HTML validation pass result for MindGame">
+
+#### CSS Validator
+
+| CSS Validation | CSS Portal validator | Passed | No errors or warnings found after fixing invalid `min-height: auto` values. |
+
+<img src="assets/readme/css-validation-pass.png" width="550" alt="CSS validation pass result for MindGame">
 
 ### Controls
 
@@ -727,28 +825,15 @@ MindGame can be played using mouse, touch or keyboard input.
 - `H` = reset high scores.
 - `Escape` = close the mobile navigation menu.
 
-
-#### CSS Validator
-
-| CSS Validation | CSS Portal validator | Passed | No errors or warnings found after fixing invalid `min-height: auto` values. |
-
-<p align="left">
-  <img src="assets/readme/css-validation-pass.png" width="550" alt="Rules Diagram">
-</p>
-
 #### JavaScript Validator
 
 JavaScript was checked using JSHint and Esprima. JSHint was configured for ES8 and browser-based JavaScript. Esprima confirmed that the script was syntactically valid.
 
 | JavaScript Validation | JSHint and Esprima | Passed | JSHint showed no remaining warnings after ES8 configuration. Esprima confirmed that the code is syntactically valid. |
 
-<p align="left">
-  <img src="assets/readme/jshint-validation-pass.png" width="550" alt="Rules Diagram">
-</p>
+<img src="assets/readme/jshint-validation-pass.png" width="550" alt="JSHint validation pass result for MindGame">
 
-<p align="left">
-  <img src="assets/readme/esprima-validation-pass.png" width="550" alt="Rules Diagram">
-</p>
+<img src="assets/readme/esprima-validation-pass.png" width="550" alt="Esprima JavaScript syntax validation pass result for MindGame">
 
 ### Automated Testing
 
@@ -842,8 +927,6 @@ To run the project locally:
 
 ### Content
 
-### Content
-
 - The Rock Paper Scissors Lizard Spock rules are based on the commonly known expanded version of Rock Paper Scissors.
 - README structure was informed by Code Institute project requirements and example student README files, including Forest Pals, Echoes of the Crystal Cave and my previous Nokia E72 milestone project.
 - All written explanations, feature descriptions, UX notes, testing notes and deployment documentation were written specifically for this project.
@@ -854,6 +937,7 @@ To run the project locally:
 - Background music: [LumiaMusic18 - "Starfall"](https://www.newgrounds.com/audio/listen/1577123) from Newgrounds.
 - Sound effects: Pixabay sound effects. https://pixabay.com/sound-effects/search/victory/
 - Game graphics and icons: SVG Repo universe icon collection: https://www.svgrepo.com/collection/universe-18/2
+- Fonts: [Orbitron](https://fonts.google.com/specimen/Orbitron) and [Inter](https://fonts.google.com/specimen/Inter) from Google Fonts.
 
 ### Code
 
