@@ -42,6 +42,7 @@ MindGame also includes live score tracking, round history, win-rate statistics, 
   - [Structure Plane](#structure-plane)
   - [Skeleton Plane](#skeleton-plane)
   - [Surface Plane](#surface-plane)
+- [Wireframes](#wireframes)
 - [Features](#features)
   - [Existing Features](#existing-features)
   - [Future Features](#future-features)
@@ -104,6 +105,34 @@ MindGame also includes live score tracking, round history, win-rate statistics, 
 ## 2. Features
 * Existing Features
 * Features Left to Implement
+
+
+## Wireframes
+
+Wireframes were used during the planning stage to map out the structure, layout, and content priority of the application across different screen sizes.  
+They helped guide the responsive design of the final single-page application and ensured that the most important gameplay elements remained accessible on desktop, tablet, and mobile devices.
+
+Because the project evolved during development, the final build includes some refinements and layout improvements beyond the original concept. However, the wireframes remained a useful reference point throughout the design process.
+
+### Desktop Wireframe
+
+The desktop wireframe focuses on a spacious dashboard layout, allowing the player to view the move selection area, battle panel, scoreboard, stats, and round history at the same time.
+
+![MindGame desktop wireframe](assets/readme/wireframes/mindgame-desktop-wireframe.png)
+
+### Tablet Wireframe
+
+The tablet wireframe adapts the layout for medium-sized screens, preserving the core gameplay flow while making better use of reduced horizontal space.
+
+![MindGame tablet wireframe](assets/readme/wireframes/mindgame-tablet-wireframe.png)
+
+### Mobile Wireframe
+
+The mobile wireframe prioritises vertical stacking and touch-friendly interaction. Key gameplay elements are arranged in a compact order to support usability on smaller screens.
+
+![MindGame mobile wireframe](assets/readme/wireframes/mindgame-mobile-wireframe.png)
+
+
 
 ## 3. [Technologies Used](#techonlogies-used)
 * Interesting Code Solutions
