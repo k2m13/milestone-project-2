@@ -297,9 +297,6 @@ The final visual design uses a futuristic glassmorphism style with soft panels, 
 
 The project includes a default theme, a high contrast theme and a colourblind-friendly theme. These options support accessibility and allow players to customise the visual experience. Typography, spacing, icons and responsive layout rules were refined throughout testing to keep the interface clear across desktop, tablet and mobile screens.
 
-
-## Features
-
 ## Features
 
 The features in MindGame were developed to support the main user stories: helping first-time visitors understand the game quickly, allowing returning players to track progress, and giving competitive players a reason to replay through statistics, rank progression and higher difficulty.
@@ -465,144 +462,6 @@ Commit messages were written to describe each feature or fix clearly, providing 
   <img src="assets/readme/git-commit-history.png" width="650" alt="Git commit history showing regular project commits">
 </p>
 
-### Variables
-
-- `playerMove` — stores the move selected by the player.
-- `computerMove` — stores the move randomly selected by the computer.
-- `roundNumber` — tracks the current round.
-- `playerScore` — tracks the player's score.
-- `computerScore` — tracks the computer's score.
-- `totalRounds` — tracks the number of completed rounds.
-- `wins` — tracks player wins.
-- `losses` — tracks player losses.
-- `draws` — tracks drawn rounds.
-- `currentStreak` — tracks consecutive player wins.
-
-### Arrays
-
-- `moveList` — stores the five possible moves: rock, paper, scissors, lizard, spock.
-- `roundHistory` — stores previous round results.
-
-### Objects
-
-- `winningMoves` — stores which moves beat which other moves.
-- `moveFrequency` — stores how often the player chooses each move.
-- `ruleMessages` — stores the explanation for each winning combination.
-
-### Functions
-
-- `getComputerMove()` — randomly selects a computer move.
-- `playRound(playerMove)` — runs one complete round.
-- `determineWinner(playerMove, computerMove)` — compares both moves and returns win, lose, or draw.
-- `updateScores(result)` — updates player and computer scores.
-- `updateRoundStats(result)` — updates total rounds, wins, losses, draws, streak, and win rate.
-- `updateMoveFrequency(playerMove)` — records how often the player uses each move.
-- `displayChoices(playerMove, computerMove)` — displays both selected moves.
-- `displayResult(result, playerMove, computerMove)` — displays the round result message.
-- `addRoundToHistory(roundData)` — stores the round result in the history array.
-- `renderHistory()` — displays round history on the page.
-- `renderStats()` — updates total rounds, win rate, and current streak.
-- `resetBattlePanel()` — resets the visible battle area.
-- `resetGame()` — resets scores, rounds, history, and statistics.
-
-### Event Listeners
-
-- Navigation click listeners for Play, Rank, Rules, and Settings.
-- Move button click listeners for Rock, Paper, Scissors, Lizard, and Spock.
-- Optional keyboard listeners for accessibility:
-  - `r` = Rock
-  - `p` = Paper
-  - `s` = Scissors
-  - `l` = Lizard
-  - `k` = Spock
-  - `Escape` = return to Play or close overlays
-  - Arrow keys or Tab for navigation support where appropriate.
-
-### Game Loop
-
-1. Player selects a move.
-2. Computer randomly selects a move.
-3. Both choices are displayed.
-4. Winner is determined.
-5. Scoreboard is updated.
-6. Round history is updated.
-7. Statistics are recalculated.
-8. Round number increases.
-9. Player can continue by choosing another move or reset the game.
-
-### Score System
-
-- Player gains 1 point for a win.
-- Computer gains 1 point for a loss.
-- No points are awarded for a draw.
-- The game can be played until a set round limit, for example 15 rounds.
-
-### History System
-
-Each completed round should store:
-
-- Round number.
-- Player move.
-- Computer move.
-- Result.
-- Rule explanation.
-
-Example:
-
-```javascript
-{
-  round: 1,
-  playerMove: "rock",
-  computerMove: "scissors",
-  result: "win",
-  rule: "Rock crushes Scissors"
-}
-```
-
-### Statistics System
-
-The statistics system should calculate:
-
-- Total rounds played.
-- Player win rate.
-- Current winning streak.
-- Most frequently selected move.
-- Move frequency for each option.
-- Win Condition
-
-The game should check the `winningMoves` object.
-
-```javascript
-const winningMoves = {
-  rock: ["scissors", "lizard"],
-  paper: ["rock", "spock"],
-  scissors: ["paper", "lizard"],
-  lizard: ["spock", "paper"],
-  spock: ["scissors", "rock"]
-};
-```
-
-If `winningMoves[playerMove].includes(computerMove)` is true, the player wins.
-If both moves are the same, the round is a draw. Otherwise, the computer wins.
-
-### Rank
-
-Players now progress:
-
-0 wins      Beginner
-5 wins      Competitor
-10 wins     Veteran
-25 wins     Grand Strategist
-50 wins     Mind Master
-
-
-### Custom 404 Page
-
-Although MindGame is a single-page application with hash-based navigation, a custom 404 page has been included to improve the user experience when visitors enter an incorrect URL path, follow a broken link, or try to access a page that does not exist.
-This supports a more complete and polished deployment on GitHub Pages.
-
-https://k2m13.github.io/milestone-project-2/broken-link
-
 ## Accessibility
 
 ### HTML and ARIA Accessibility
@@ -724,6 +583,40 @@ The table below records the results of manual regression testing carried out on 
 | Invalid local storage data | Corrupt saved high-score data in localStorage and reload the page | Game loads safely and resets high-score data without console errors | Pass |
 
 
+### Responsive Testing
+
+Responsive testing was carried out using Chrome DevTools and the deployed GitHub Pages site. The layout was tested across desktop, laptop, tablet and mobile screen sizes to check that the interface remained readable, usable and free from horizontal overflow.
+
+| Device / Viewport  | Orientation | Result                                                       |
+| ------------------ | ----------- | ------------------------------------------------------------ |
+| Desktop 1440 × 900 | Landscape   | Layout displayed correctly with all main panels visible      |
+| Laptop 1280 × 800  | Landscape   | Layout remained readable and usable                          |
+| Tablet 820 × 1180  | Portrait    | Layout stacked correctly after tablet spacing refinements    |
+| Tablet 1024 × 768  | Landscape   | Layout remained balanced with no major empty spacing         |
+| Mobile 390 × 844   | Portrait    | Layout stacked correctly and buttons remained touch-friendly |
+
+### Browser Testing
+
+Browser testing was carried out to check that the deployed project worked consistently in modern browsers.
+
+| Browser        | Result |
+| -------------- | ------ |
+| Google Chrome  | Passed |
+| Safari         | Passed |
+| Microsoft Edge | Passed |
+
+### Accessibility Testing
+
+Accessibility testing focused on semantic HTML, keyboard access, colour themes, visible feedback and user control over sound and music.
+
+| Area Tested        | Result                                                                                     |
+| ------------------ | ------------------------------------------------------------------------------------------ |
+| Keyboard shortcuts | Move selection, navigation, sound, music and high-score reset shortcuts worked as expected |
+| Colour themes      | Default, high contrast and visually impaired friendly themes could be selected and saved   |
+| Audio controls     | Sound effects and background music could be controlled by the user                         |
+| ARIA attributes    | Mobile navigation, live round feedback and switch controls were checked during validation  |
+| Image alt text     | Decorative icons used empty alt text and meaningful images used descriptive alt text       |
+
 ### Validator Testing
 #### HTML Validator
 
@@ -814,22 +707,6 @@ Together, these testing methods provided stronger evidence that MindGame works a
 
 No known unfixed bugs remain at the time of submission.
 
-
-### 404
-
-404 page tested by visiting an invalid deployed URL path and confirming that the custom 404 page loads, displays the themed astronaut illustration, 
-and provides a working return-to-homepage button.
-
-## Credits
-
-Favicon from Magnific(https://www.magnific.com/icon/creativity_15557951#fromView=search&page=1&position=3&uuid=e59fb263-67ba-4c6e-9098-a6b2811f5241)
-
-
-Background music: LumiaMusic18 - 'Starfall' https://www.newgrounds.com/audio/listen/1577123
-Sounds: https://pixabay.com/sound-effects/search/victory/
-Graphics: https://www.svgrepo.com/collection/universe-18/2
-
-
 ## Deployment
 
 ### GitHub Pages Deployment
@@ -852,22 +729,25 @@ To run the project locally:
 
 1. Clone the repository:
 
-    ```bash
+   ```bash
    git clone https://github.com/k2m13/milestone-project-2.git
+   ```
 
 2. Open the project folder in VS Code.
+
 3. Open `index.html` in a browser, or use a local development server.
 
 4. To run automated tests, install dependencies:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
+
 5. Run the Jest test suite:
 
-    ```bash
-    npm test
-    ```
+   ```bash
+   npm test
+   ```
 
 ## Credits
 
