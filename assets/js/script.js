@@ -555,8 +555,10 @@ function toggleBackgroundMusic() {
  * @returns {void}
  */
 function applySoundSetting(setting) {
-  soundEnabled = setting === "on";
-  localStorage.setItem("soundSetting", setting);
+  const validSetting = getValidAudioSetting(setting, "on");
+
+  soundEnabled = validSetting === "on";
+  localStorage.setItem("soundSetting", validSetting);
 
   if (soundToggle) {
     soundToggle.checked = soundEnabled;
@@ -618,8 +620,10 @@ function pauseBackgroundMusic() {
  * @returns {void}
  */
 function applyMusicSetting(setting) {
-  musicEnabled = setting === "on";
-  localStorage.setItem("musicSetting", setting);
+  const validSetting = getValidAudioSetting(setting, "off");
+
+  musicEnabled = validSetting === "on";
+  localStorage.setItem("musicSetting", validSetting);
 
   if (musicToggle) {
     musicToggle.checked = musicEnabled;
@@ -1019,7 +1023,8 @@ nextRoundButton.addEventListener("click", function () {
 
 gameModeInputs.forEach(function (input) {
   input.addEventListener("change", function () {
-    gameMode = input.value;
+    gameMode = getValidGameMode(input.value);
+    localStorage.setItem("gameMode", gameMode);
     playSound(sounds.moveSelected);
   });
 });
@@ -1345,11 +1350,56 @@ loadRankStats();
 updateAchievement();
 loadHighScores();
 
+const validGameModes = ["casual", "hard"];
+const validThemes = [
+  "theme-default",
+  "theme-high-contrast",
+  "theme-colourblind",
+];
+
+/**
+ * Returns a valid game mode or falls back to Casual Mode.
+ * @param {string} mode - Saved or selected game mode.
+ * @returns {string} Valid game mode.
+ */
+function getValidGameMode(mode) {
+  return validGameModes.includes(mode) ? mode : "casual";
+}
+
+/**
+ * Returns a valid theme or falls back to the default theme.
+ * @param {string} theme - Saved or selected theme.
+ * @returns {string} Valid theme class.
+ */
+function getValidTheme(theme) {
+  return validThemes.includes(theme) ? theme : "theme-default";
+}
+
+/**
+ * Returns a valid audio setting or falls back to the supplied default.
+ *
+ * @param {string|null} setting - Saved or selected audio setting.
+ * @param {"on" | "off"} fallback - Fallback setting.
+ * @returns {"on" | "off"} Valid audio setting.
+ */
+function getValidAudioSetting(setting, fallback) {
+  return setting === "on" || setting === "off" ? setting : fallback;
+}
+
 // ====================
 // 15. Theme Settings
 // ====================
 
 const savedTheme = localStorage.getItem("selectedTheme") || "theme-default";
+applyTheme(savedTheme);
+const savedGameMode = getValidGameMode(localStorage.getItem("gameMode"));
+gameMode = savedGameMode;
+
+gameModeInputs.forEach(function (input) {
+  input.checked = input.value === savedGameMode;
+});
+
+const savedTheme = getValidTheme(localStorage.getItem("selectedTheme"));
 applyTheme(savedTheme);
 
 /**
@@ -1359,29 +1409,37 @@ applyTheme(savedTheme);
  * @returns {void}
  */
 function applyTheme(themeName) {
+  const validThemeName = getValidTheme(themeName);
+
   document.body.classList.remove(
     "theme-default",
     "theme-high-contrast",
     "theme-colourblind",
   );
 
-  document.body.classList.add(themeName);
-  localStorage.setItem("selectedTheme", themeName);
+  document.body.classList.add(validThemeName);
+  localStorage.setItem("selectedTheme", validThemeName);
 
   themeInputs.forEach(function (input) {
-    input.checked = input.value === themeName;
+    input.checked = input.value === validThemeName;
   });
 }
 
 themeInputs.forEach(function (input) {
   input.addEventListener("change", function () {
-    applyTheme(input.value);
+    applyTheme(getValidTheme(input.value));
     playSound(sounds.moveSelected);
   });
 });
 
-const savedSoundSetting = localStorage.getItem("soundSetting") || "on";
+const savedSoundSetting = getValidAudioSetting(
+  localStorage.getItem("soundSetting"),
+  "on",
+);
 applySoundSetting(savedSoundSetting);
 
-const savedMusicSetting = localStorage.getItem("musicSetting") || "off";
+const savedMusicSetting = getValidAudioSetting(
+  localStorage.getItem("musicSetting"),
+  "off",
+);
 applyMusicSetting(savedMusicSetting);
