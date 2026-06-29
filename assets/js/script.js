@@ -173,6 +173,10 @@ let highScores = [];
 
 const moveList = ["rock", "paper", "scissors", "lizard", "spock"];
 
+function isValidMove(move) {
+  return moveList.includes(move);
+}
+
 const winningMoves = {
   rock: ["scissors", "lizard"],
   paper: ["rock", "spock"],
@@ -303,7 +307,14 @@ function saveHighScores() {
  * @returns {void}
  */
 function loadHighScores() {
-  highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+  try {
+    const savedScores = JSON.parse(localStorage.getItem("highScores"));
+
+    highScores = Array.isArray(savedScores) ? savedScores : [];
+  } catch (error) {
+    highScores = [];
+  }
+
   displayHighScores();
 }
 
@@ -315,7 +326,11 @@ function loadHighScores() {
  * @returns {void}
  */
 function addHighScore(finalScore, finalRounds) {
-  const playerName = prompt("New high score! Enter your name:");
+  const playerNameInput = prompt("New high score! Enter your name:");
+  const playerName =
+    playerNameInput && playerNameInput.trim()
+      ? playerNameInput.trim().slice(0, 20)
+      : "Anonymous";
 
   if (!playerName) {
     return;
@@ -717,6 +732,10 @@ function chooseComputerMove() {
  * @returns {"player" | "computer" | "draw"} The round result.
  */
 function determineWinner(playerMove, computerMove) {
+  if (!isValidMove(playerMove) || !isValidMove(computerMove)) {
+    return "invalid";
+  }
+
   if (playerMove === computerMove) {
     return "draw";
   }
@@ -763,6 +782,12 @@ function wait(milliseconds) {
  */
 async function playRound(selectedMove) {
   if (matchOver) {
+    return;
+  }
+
+  if (!isValidMove(selectedMove)) {
+    resultMessage.textContent = "Please choose a valid move.";
+    resultRule.textContent = "";
     return;
   }
 

@@ -329,6 +329,13 @@ the importance of debugging both behaviour and presentation separately.
 
 ## Code Quality and Interesting Solutions
 
+### Empty and Invalid Input Handling
+
+MindGame includes validation and defensive checks to handle empty or invalid data. Move selection is limited to the five valid game choices: Rock, Paper, Scissors, Lizard and Spock. If an invalid move value is received, the round does not continue and the user is prompted to choose a valid move.
+The Next Round button is disabled until a valid round has been played, preventing the user from progressing through the game without making a move.
+High-score name input is also handled defensively. If the user cancels the prompt, enters an empty value, or enters only spaces, the game uses a safe fallback name rather than saving empty data. Long names are shortened before being saved.
+Local storage data is checked when high scores are loaded. If saved high-score data is missing, empty or invalid, the game resets the high-score list safely instead of causing a JavaScript error.
+
 ### Variables
 
 - `playerMove` — stores the move selected by the player.
@@ -561,6 +568,9 @@ Manual testing focused on:
 | New Game | Click New Game after a completed match | Scores, stats, history and round number reset | Pass |
 | New Game | Start a new game | Move buttons are enabled and game is playable again | Pass |
 | Responsiveness | Test on mobile, tablet and desktop widths | Layout remains usable and readable | Pass |
+| Invalid move value | Attempt to call the round function with an invalid move value | Game does not continue and user receives valid-move feedback | Pass |
+| Empty high-score name | Cancel or submit an empty high-score prompt | Empty name is not saved and fallback handling is applied | Pass |
+| Invalid local storage data | Corrupt the saved high-score data in localStorage and reload the page | Game loads safely and high scores reset without console errors | Pass |
 
 
 ### Validator Testing
