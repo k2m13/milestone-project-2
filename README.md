@@ -24,6 +24,7 @@ MindGame responsive design shown across desktop, laptop, tablet and mobile scree
 
 ## Table of Contents
 
+- [At a Glance](#at-a-glance)
 - [About](#about)
 - [Key Features](#key-features)
 - [Game Concept and Rules](#game-concept-and-rules)
@@ -97,7 +98,7 @@ MindGame also includes live score tracking, round history, win-rate statistics, 
 - Rank progression and high score storage
 - Sound effects and background music controls
 - Keyboard, mouse and touch support
-- High contrast and colourblind-friendly themes
+- High contrast and colour-blind-friendly themes
 - Responsive layout for desktop, tablet and mobile
 - Custom 404 page
 
@@ -123,7 +124,24 @@ The game is played by two opponents who simultaneously choose one of the five av
   <img src="assets/readme/game-diagram.jpg" width="350" alt="Rules Diagram">
 </p>
 
-## 🧭 User Experience UX
+### Controls
+
+MindGame can be played using mouse, touch or keyboard input.
+
+- Mouse or touch: select a move card.
+- `R` = Rock.
+- `P` = Paper.
+- `S` = Scissors.
+- `L` = Lizard.
+- `K` = Spock.
+- `N` = Next Round or New Game.
+- `1–4` = switch between Play, Rank, Guide and Settings.
+- `E` = toggle sound effects.
+- `M` = toggle background music.
+- `H` = reset high scores.
+- `Escape` = close the mobile navigation menu.
+
+## User Experience UX
 
 The UX section describes the design process, planning, and the idea behind MindGame, taking into consideration user needs, accessibility and project goals.
 
@@ -279,7 +297,7 @@ The following features were considered but are outside the scope of the current 
 * Mobile application version.
 
 
->While the core project focuses on creating a polished and accessible implementation of Rock, Paper, Scissors, Lizard, Spock, the longer-term vision for MindGame is to evolve into a strategic browser game that analyses player behaviour and adapts to individual playing styles.
+> While the core project focuses on creating a polished and accessible implementation of Rock, Paper, Scissors, Lizard, Spock, the longer-term vision for MindGame is to evolve into a strategic browser game that analyses player behaviour and adapts to individual playing styles.
 
 ### Structure Plane
 
@@ -372,26 +390,26 @@ The colour palette was designed to support the futuristic game theme while keepi
 | High contrast cyan accent       |                       `#22d3ee` | Accessible bright accent                            |
 | High contrast purple accent     |                       `#c084fc` | Secondary high contrast accent                      |
 | High contrast orange accent     |                       `#fbbf24` | Warm high contrast accent                           |
-| Colourblind-friendly background |                       `#f8f9fa` | Light accessible theme background                   |
-| Colourblind-friendly surface    |                       `#ffffff` | Cards and panels in the accessible theme            |
-| Colourblind-friendly text       |                       `#1f2933` | Main readable text                                  |
-| Colourblind-friendly muted text |                       `#52616b` | Supporting text                                     |
-| Colourblind-friendly blue       |                       `#0072b2` | Blue accent chosen for clearer colour distinction   |
-| Colourblind-friendly purple     |                       `#cc79a7` | Purple accent chosen for clearer colour distinction |
-| Colourblind-friendly orange     |                       `#e69f00` | Orange accent chosen for clearer colour distinction |
-| Colourblind-friendly gradient   |            `#f8f9fa`, `#edf6fb` | Light accessible theme background gradient          |
+| Colour-blind-friendly background |                       `#f8f9fa` | Light accessible theme background                   |
+| Colour-blind-friendly surface    |                       `#ffffff` | Cards and panels in the accessible theme            |
+| Colour-blind-friendly text       |                       `#1f2933` | Main readable text                                  |
+| Colour-blind-friendly muted text |                       `#52616b` | Supporting text                                     |
+| Colour-blind-friendly blue       |                       `#0072b2` | Blue accent chosen for clearer colour distinction   |
+| Colour-blind-friendly purple     |                       `#cc79a7` | Purple accent chosen for clearer colour distinction |
+| Colour-blind-friendly orange     |                       `#e69f00` | Orange accent chosen for clearer colour distinction |
+| Colour-blind-friendly gradient   |            `#f8f9fa`, `#edf6fb` | Light accessible theme background gradient          |
 | Win / success feedback          |            `#20c997`, `#20a886` | Player win states and positive feedback             |
 | Loss / error feedback           | `#ff6b6b`, `#f1398c`, `#ff3c80` | Computer win states and negative feedback           |
 | Draw / neutral feedback         |            `#adb5bd`, `#6c757d` | Draw states and neutral feedback                    |
 | White text                      |                       `#ffffff` | Text used on darker or stronger colour backgrounds  |
 
-The table below lists the main colours used in the project. A visual palette screenshot was also included because Markdown previews and GitHub do not automatically render hex values as colour swatches.
+The table above lists the main colours used in the project. A visual palette screenshot was also included because Markdown previews and GitHub do not automatically render hex values as colour swatches.
 
 <p align="left">
   <img src="assets/readme/colour-palette.png" width="650" alt="MindGame colour palette showing the main colours used across the three themes and feedback states">
 </p>
 
-The high contrast and colourblind-friendly themes were included to give users more control over readability and visual comfort. Feedback colours are used consistently so that wins, losses and draws are easy to recognise during gameplay.
+The high contrast and colour-blind-friendly themes were included to give users more control over readability and visual comfort. Feedback colours are used consistently so that wins, losses and draws are easy to recognise during gameplay.
 
 <p align="right">
   <a href="#mindgame-rock-paper-scissors-lizard-spock">Back to top</a>
@@ -399,7 +417,7 @@ The high contrast and colourblind-friendly themes were included to give users mo
 
 ---
 
-## 🎮 Features
+## Features
 
 The features in MindGame were developed to support the main user stories: helping first-time visitors understand the game quickly, allowing returning players to track progress, and giving competitive players a reason to replay through statistics, rank progression and higher difficulty.
 
@@ -673,7 +691,7 @@ Sound effects are enabled by default but only play after user interaction. Backg
 ### Auditory Feedback
 Sound effects only play after user interaction, and background music is disabled by default so that users remain in control of audio playback.
 
-## 🧪 Testing
+## Testing
 
 ### Testing Approach
 
@@ -801,7 +819,7 @@ The WAVE contrast panel reported no contrast errors on the default theme. Manual
 The high contrast theme was also checked separately. This theme provides a stronger alternative visual style for users who prefer dark backgrounds and brighter text. Some minor accessibility warnings remained in the WAVE overlay for specific interface elements, but the main text, headings, game panels and key controls remained readable during manual testing.
 
 <p align="left">
-  <img src="assets/readme/wave-high-contrast-theme-check.png" width="650" alt="WAVE accessibility testing on the high contrast MindGame theme">
+  <img src="assets/readme/wave-high-contrast-theme-pass.png" width="650" alt="WAVE accessibility testing on the high contrast MindGame theme">
 </p>
 
 | Area Tested | Result |
@@ -810,7 +828,7 @@ The high contrast theme was also checked separately. This theme provides a stron
 | Main text readability | Passed manual check |
 | Button and control readability | Passed manual check |
 | High contrast theme readability | Passed manual check for main content and controls |
-| Colourblind-friendly theme | Checked manually as an alternative accessible theme |
+| Colour-blind-friendly theme | Checked manually as an alternative accessible theme |
 | Remaining WAVE overlay warnings | Noted as minor known issues in high contrast testing |
 
 ### Lighthouse Testing
@@ -854,31 +872,18 @@ HTML testing included:
 
 #### CSS Validator
 
+| Validator | Tool | Result | Notes |
+|---|---|---|---|
 | CSS Validation | CSS Portal validator | Passed | No errors or warnings found after fixing invalid `min-height: auto` values. |
 
 <img src="assets/readme/css-validation-pass.png" width="550" alt="CSS validation pass result for MindGame">
-
-### Controls
-
-MindGame can be played using mouse, touch or keyboard input.
-
-- Mouse or touch: select a move card.
-- `R` = Rock.
-- `P` = Paper.
-- `S` = Scissors.
-- `L` = Lizard.
-- `K` = Spock.
-- `N` = Next Round or New Game.
-- `1–4` = switch between Play, Rank, Guide and Settings.
-- `E` = toggle sound effects.
-- `M` = toggle background music.
-- `H` = reset high scores.
-- `Escape` = close the mobile navigation menu.
 
 #### JavaScript Validator
 
 JavaScript was checked using JSHint and Esprima. JSHint was configured for ES8 and browser-based JavaScript. Esprima confirmed that the script was syntactically valid.
 
+| Validator | Tool | Result | Notes |
+|---|---|---|---|
 | JavaScript Validation | JSHint and Esprima | Passed | JSHint showed no remaining warnings after ES8 configuration. Esprima confirmed that the code is syntactically valid. |
 
 <img src="assets/readme/jshint-validation-pass.png" width="550" alt="JSHint validation pass result for MindGame">
@@ -931,7 +936,7 @@ Together, these testing methods provided stronger evidence that MindGame works a
 No known functionality bugs remain at the time of submission. Navigation, gameplay, scoring, settings, local storage, keyboard shortcuts and deployment testing all passed.
 A small number of minor accessibility warnings were noted during WAVE testing of the high contrast theme. These related to specific interface elements rather than core gameplay functionality. 
 > [!NOTE]
->The default theme showed no WAVE contrast errors, and the high contrast and colourblind-friendly themes were retained because they still provide users with additional readability options.
+> The default theme showed no WAVE contrast errors, and the high contrast and colour-blind-friendly themes were retained because they still provide users with additional readability options.
 
 <p align="right">
   <a href="#mindgame-rock-paper-scissors-lizard-spock">Back to top</a>
@@ -939,7 +944,7 @@ A small number of minor accessibility warnings were noted during WAVE testing of
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
 ### GitHub Pages Deployment
 
@@ -1032,7 +1037,7 @@ Alternatively, the repository can be forked on GitHub:
 
 ---
 
-## 📚 Credits
+## Credits
 
 ### Content
 
