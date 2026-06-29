@@ -25,6 +25,7 @@ MindGame responsive design shown across desktop, laptop, tablet and mobile scree
   - [Future Features](#future-features)
 - [Technologies Used](#technologies-used)
 - [Code Quality and Interesting Solutions](#code-quality-and-interesting-solutions)
+- [Development Cycle and Version Control](#development-cycle-and-version-control)
 - [Accessibility](#accessibility)
 - [Testing](#testing)
   - [Testing Approach](#testing-approach)
@@ -98,6 +99,13 @@ The UX section describes the design process, planning, and the idea behind MindG
 
 ### Strategy Plane
 
+#### Project Rationale and Target Audience
+
+MindGame was developed to create a more strategic and replayable version of a familiar browser game. Traditional Rock Paper Scissors is simple and quick to understand, but it can become repetitive because there are only three possible choices. Rock Paper Scissors Lizard Spock adds two extra moves, creating more possible outcomes and giving the player a greater sense of strategy.
+The project was designed for casual players who want a quick game, first-time visitors who need clear rules and feedback, and returning players who enjoy tracking progress over time. The game also targets users who may be playing on different devices, so the interface needed to work clearly across desktop, tablet and mobile screens.
+The purpose of the project is to provide an accessible, responsive and interactive game that gives immediate feedback after each round, teaches the rules clearly, and encourages replay through statistics, rank progression, high scores and difficulty settings. These design decisions are directly connected to the user stories identified during the planning stage.
+
+
 #### Project Goals
 
 MindGame aims to create an engaging and visually appealing browser-based implementation of Rock, Paper, Scissors, Lizard, Spock. The project combines strategic gameplay with modern web design principles, including glassmorphism and futuristic user interface elements inspired by science fiction and cyberpunk aesthetics.
@@ -167,6 +175,24 @@ Site Owner
 * As the site owner, I want users to enjoy the game so that they remain engaged with the application.
 * As the site owner, I want the website to function correctly across different devices and browsers.
 * As the site owner, I want the codebase to be maintainable and scalable so that additional features can be implemented in future releases.
+
+#### User Story Alignment
+
+The main project features were developed in response to the user stories identified during planning.
+
+| User Need                         | Related User Story                                                                                                                       | Project Response                                                                                             |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Learn the game quickly            | As a first-time visitor, I want to understand the rules quickly so that I can start playing immediately                                  | Added a Guide screen, rule cards, move explanations and a rules diagram                                      |
+| Start playing easily              | As a first-time visitor, I want the interface to be intuitive so that I do not need external instructions                                | Designed a clear Play screen with visible move cards, scoreboard and result feedback                         |
+| Understand round outcomes         | As a first-time visitor, I want clear visual feedback after each round so that I understand why I won or lost                            | Added battle panel feedback, result messages, rule explanations, score updates and sound effects             |
+| Track performance                 | As a returning player, I want to track my score so that I can measure my performance                                                     | Added scoreboard, total rounds, win rate, current streak and highest streak                                  |
+| Review previous rounds            | As a returning player, I want to review previous rounds so that I can identify patterns in my gameplay                                   | Added a round history panel                                                                                  |
+| Improve strategy                  | As a returning player, I want to see statistics about my choices so that I can improve my strategy                                       | Added favourite move tracking and rank statistics                                                            |
+| Feel rewarded for replaying       | As a competitive player, I want to view progression and ranking information so that I feel rewarded for continued play                   | Added Rank Centre, achievement levels and high scores                                                        |
+| Increase challenge                | As a competitive player, I want the game to provide strategic insights so that I can make better decisions                               | Added Hard Mode, where the computer analyses the player's most frequent move and counters it                 |
+| Use the game on different devices | As the site owner, I want the website to function correctly across different devices and browsers                                        | Built a responsive layout and tested it across desktop, tablet and mobile screen sizes                       |
+| Support future development        | As the site owner, I want the codebase to be maintainable and scalable so that additional features can be implemented in future releases | Organised files by type, used clear JavaScript sections, external CSS/JS files, comments and version control |
+
 
 #### Must Have
 
@@ -274,31 +300,101 @@ The project includes a default theme, a high contrast theme and a colourblind-fr
 
 ## Features
 
+## Features
+
+The features in MindGame were developed to support the main user stories: helping first-time visitors understand the game quickly, allowing returning players to track progress, and giving competitive players a reason to replay through statistics, rank progression and higher difficulty.
+
 ### Existing Features
 
-- Play screen with move selection, scoreboard, battle panel, statistics and round history.
-- Casual Mode with random computer moves.
-- Hard Mode that analyses the player's most frequent move and chooses a counter move.
-- First-to-8 match system with a 15-round maximum.
-- Rank screen with achievement progress, match statistics, favourite move and high scores.
-- Guide screen explaining rules, move relationships and keyboard shortcuts.
-- Settings screen for difficulty, colour theme, sound effects and background music.
-- Local storage for rank progress, high scores and selected settings.
-- Custom 404 page with a clear route back to the homepage.
+#### Play Screen
 
-#### Sound Effects and Background Music
+The Play screen is the main gameplay area. It gives the player access to move selection, the battle panel, scoreboard, statistics and round history from one screen. This supports first-time visitors by making the main action clear as soon as the page loads.
 
-Sound effects are enabled by default but only play after user interaction. Background music is disabled by default and must be switched on by the user.
-This gives players audio feedback during gameplay while avoiding unexpected autoplay music when the page first loads.
+<p align="center">
+  <img src="assets/readme/play-screen-default.png" width="750" alt="MindGame Play screen showing move choices, battle panel, scoreboard, statistics and round history">
+</p>
+
+#### Round Feedback
+
+After the player selects a move, the game displays the player's choice, the computer's choice, the round result and the rule explanation. The scoreboard and round history update immediately, helping the player understand why they won, lost or drew the round.
+
+<p align="center">
+  <img src="assets/readme/round-feedback.png" width="750" alt="MindGame round feedback showing selected moves, result message, rule explanation, scoreboard update and round history">
+</p>
+
+#### Match End and New Game Flow
+
+A match ends when either the player or the computer reaches 8 wins, or when 15 rounds have been completed and one side has the higher score. When the match ends, the game displays the final result and changes the Next Round button into a New Game button so the user can restart clearly.
+
+<p align="center">
+  <img src="assets/readme/match-end-new-game.png" width="750" alt="MindGame match end screen showing final score, winner message and New Game button">
+</p>
+
+#### Guide Screen
+
+The Guide screen explains the rules of Rock Paper Scissors Lizard Spock. Each move card shows which two moves it beats, helping first-time users learn the game without needing external instructions.
+
+<p align="center">
+  <img src="assets/readme/guide-screen.png" width="750" alt="MindGame Guide screen showing rule cards for Rock, Paper, Scissors, Lizard and Spock">
+</p>
+
+#### Rank Centre and High Scores
+
+The Rank screen supports returning and competitive players by saving long-term progress on the device. It displays achievement rank, matches won and lost, highest streak, favourite move and saved high scores.
+
+<p align="center">
+  <img src="assets/readme/rank-centre.png" width="750" alt="MindGame Rank Centre showing achievement progress, match statistics, favourite move and high scores">
+</p>
+
+#### Settings and User Control
+
+The Settings screen allows users to customise the game. Players can choose Casual Mode or Hard Mode, select a colour theme, toggle sound effects and switch background music on or off. Sound effects are enabled by default but only play after user interaction. Background music is disabled by default and must be switched on by the user.
+
+<p align="center">
+  <img src="assets/readme/settings-screen.png" width="750" alt="MindGame Settings screen showing game mode, colour theme, sound effects and background music controls">
+</p>
+
+#### Responsive Mobile Layout
+
+The mobile layout stacks the game panels vertically and keeps the buttons large enough for touch interaction. This supports users playing on smaller screens and helps prevent horizontal scrolling or cramped controls.
+
+<p align="center">
+  <img src="assets/readme/mobile-play-screen.jpg" width="350" alt="MindGame mobile Play screen showing stacked responsive layout on a phone-sized screen">
+</p>
+
+#### Responsive Tablet Layout
+
+The tablet layout preserves the main gameplay flow while adapting the interface for portrait orientation. The scoreboard, battle panel, move selection, history and statistics remain readable and usable.
+
+<p align="center">
+  <img src="assets/readme/tablet-play-screen.jpg" width="550" alt="MindGame tablet Play screen showing responsive portrait layout">
+</p>
+
+#### Casual Mode and Hard Mode
+
+MindGame includes two difficulty options. Casual Mode gives the computer a random move each round. Hard Mode analyses the player's most frequently selected move and chooses a counter move, creating a more strategic challenge for competitive players.
+
+#### Local Storage
+
+Local storage is used to save rank progress, high scores, favourite move data and selected settings. This allows returning players to continue seeing their progress when they come back to the game on the same device.
+
+#### Custom 404 Page
+
+A custom 404 page was added so that users who visit an incorrect URL path still receive a styled MindGame page instead of a default browser or GitHub Pages error. The page matches the visual identity of the main project and includes a clear Return to Homepage button so users can recover easily.
+
+<p align="center">
+  <img src="assets/readme/custom-404-page.png" width="750" alt="MindGame custom 404 page with astronaut illustration and Return to Homepage button">
+</p>
 
 ### Future Features
 
-- Online multiplayer.
-- Global leaderboard.
-- Additional difficulty levels.
-- More advanced adaptive computer opponent.
-- Player profile customisation.
-- Additional animations and sound settings.
+* Online multiplayer.
+* Global leaderboard.
+* Additional difficulty levels.
+* More advanced adaptive computer opponent.
+* Player profile customisation.
+* Additional animations and sound settings.
+
 
 ## Technologies Used
 
@@ -335,6 +431,34 @@ MindGame includes validation and defensive checks to handle empty or invalid dat
 The Next Round button is disabled until a valid round has been played, preventing the user from progressing through the game without making a move.
 High-score name input is also handled defensively. If the user cancels the prompt, enters an empty value, or enters only spaces, the game uses a safe fallback name rather than saving empty data. Long names are shortened before being saved.
 Local storage data is checked when high scores are loaded. If saved high-score data is missing, empty or invalid, the game resets the high-score list safely instead of causing a JavaScript error.
+
+
+## Development Cycle and Version Control
+
+The project was developed using Git and GitHub throughout the full development cycle. Regular commits were made for individual features, layout changes, bug fixes, validation improvements and README updates.
+
+The development process included:
+
+- Planning the game concept, user stories and MoSCoW priorities.
+- Building the HTML structure for the Play, Rank, Guide and Settings screens.
+- Styling the interface with responsive CSS and theme support.
+- Implementing JavaScript game logic, scoring, statistics and local storage.
+- Adding Casual Mode and Hard Mode.
+- Adding sound effects, background music and user-controlled settings.
+- Creating the Rank Centre, high scores and achievement progression.
+- Testing and fixing gameplay logic, layout behaviour and validation issues.
+- Adding automated Jest tests for core JavaScript logic.
+- Refining responsive layouts for desktop, tablet and mobile.
+- Creating a custom 404 page.
+- Validating HTML, CSS and JavaScript.
+- Deploying the project to GitHub Pages.
+- Updating the README with UX, testing, accessibility, deployment and credits documentation.
+
+Commit messages were written to describe each feature or fix clearly, providing evidence of the development process through the GitHub commit history.
+
+<p align="left">
+  <img src="assets/readme/git-commit-history.png" width="650" alt="Git commit history showing regular project commits">
+</p>
 
 ### Variables
 
@@ -547,7 +671,26 @@ Manual testing focused on:
 - Checking that local storage saved rank progress, high scores, favourite move data and settings correctly.
 - Checking that the deployed GitHub Pages version matched the local development version.
 
+### Development and Deployed Version Testing
+
+Testing was carried out throughout development and again after deployment to GitHub Pages. During development, features were tested locally after each major change or bug fix. This included testing game logic, navigation, layout behaviour, settings, local storage, accessibility features and responsive design.
+
+After deployment, the live GitHub Pages version was tested again to confirm that it matched the local development version. The deployed site was checked for the same core functionality, layout, navigation, responsiveness and console behaviour.
+
+| Test Area | Local Development Version | Deployed GitHub Pages Version | Result |
+|---|---|---|---|
+| Main navigation | Play, Rank, Guide and Settings screens opened correctly | Same behaviour confirmed on deployed site | Pass |
+| Game flow | Player could select a move, view the CPU move, see the result and continue to the next round | Same behaviour confirmed on deployed site | Pass |
+| Match ending | Match ended at 8 wins or after 15 rounds with the higher score winning | Same behaviour confirmed on deployed site | Pass |
+| Rank and high scores | Rank progress, match statistics and high scores saved correctly in local storage | Same behaviour confirmed on deployed site | Pass |
+| Settings | Game mode, colour theme, sound effects and background music controls worked correctly | Same behaviour confirmed on deployed site | Pass |
+| Responsive layout | Layout worked across desktop, tablet and mobile screen sizes during development | Same layout confirmed using the deployed site | Pass |
+| Custom 404 page | Invalid paths displayed the custom 404 page locally | Invalid deployed URL displayed the custom 404 page and return button | Pass |
+| Console errors | No user action caused internal JavaScript console errors | No user action caused internal JavaScript console errors on the deployed site | Pass |
+
 ### Manual Regression Testing
+
+The table below records the results of manual regression testing carried out on the final version of the project. Tests were chosen to cover functionality, usability, responsiveness, accessibility-related controls and the deployed user experience.
 
 | Feature | Test | Expected Result | Pass/Fail |
 |----------|----------|----------|----------|
@@ -571,6 +714,7 @@ Manual testing focused on:
 | Invalid move value | Attempt to call the round function with an invalid move value | Game does not continue and user receives valid-move feedback | Pass |
 | Empty high-score name | Cancel or submit an empty high-score prompt | Empty name is not saved and fallback handling is applied | Pass |
 | Invalid local storage data | Corrupt the saved high-score data in localStorage and reload the page | Game loads safely and high scores reset without console errors | Pass |
+| Custom 404 page | Visit an invalid deployed URL path | Styled 404 page loads and Return to Homepage button works | Pass |
 
 
 ### Validator Testing
@@ -677,6 +821,7 @@ Favicon from Magnific(https://www.magnific.com/icon/creativity_15557951#fromView
 Background music: LumiaMusic18 - 'Starfall' https://www.newgrounds.com/audio/listen/1577123
 Sounds: https://pixabay.com/sound-effects/search/victory/
 Graphics: https://www.svgrepo.com/collection/universe-18/2
+
 
 ## Deployment
 
