@@ -294,8 +294,12 @@ The mobile wireframe prioritises vertical stacking and touch-friendly controls. 
 ### Surface Plane
 
 The final visual design uses a futuristic glassmorphism style with soft panels, rounded corners, neon-inspired accent colours and Orbitron headings. This gives the game a distinctive science-fiction identity while keeping the content readable.
-
 The project includes a default theme, a high contrast theme and a colourblind-friendly theme. These options support accessibility and allow players to customise the visual experience. Typography, spacing, icons and responsive layout rules were refined throughout testing to keep the interface clear across desktop, tablet and mobile screens.
+
+#### Colour Palette and Typography
+
+The visual design uses a futuristic palette with neon-inspired accent colours, soft panel backgrounds and strong contrast between text and interface elements. The default theme was designed to feel bright and game-like, while the high contrast and visually impaired friendly themes provide alternatives for users who need clearer separation between content and background.
+The project uses two main typefaces. Orbitron is used for headings and game-style interface elements to support the science-fiction theme. Inter is used for body text and supporting information because it is clean, readable and suitable for longer interface text.
 
 ## Features
 
@@ -413,14 +417,43 @@ and maintain consistent proportions across different screen sizes.
 Empty move labels are hidden using the :empty pseudo-class, allowing the placeholder icon 
 to remain perfectly centred until a move is selected.
 
+### JavaScript
+
+JavaScript was used to create the interactive behaviour of MindGame. It controls screen navigation, move selection, computer move generation, winner calculation, scoring, statistics, round history, rank progression, high scores, settings, audio controls and local storage.
+
+### Jest
+
+Jest was used for automated testing of core JavaScript logic, DOM updates and statistics calculations. This helped check that important functionality continued to work after changes were made.
+
+### Git and GitHub
+
+Git was used for version control throughout the project. GitHub was used to store the repository and track the development history through regular commits.
+
+### GitHub Pages
+
+GitHub Pages was used to deploy the live version of the project.
+
+### Chrome DevTools
+
+Chrome DevTools was used for debugging, responsive testing, layout inspection, console checks and localStorage testing.
+
+### Validation Tools
+
+The project was checked using the W3C Nu HTML Checker, CSS Portal, JSHint and Esprima.
+
+## Code Quality and Interesting Solutions
+
 ### Interesting Solutions
 
 When the expected visual change did not occur, browser developer tools and CSS inspection revealed that the issue 
 was not in the JavaScript logic but in CSS specificity and property overriding. This reinforced 
 the importance of debugging both behaviour and presentation separately.
 
+### JavaScript Organisation
 
-## Code Quality and Interesting Solutions
+The main JavaScript file is organised with a table of contents and section comments so that related functionality is grouped together. This includes navigation, game state, local storage, sound effects, background music, computer move logic, winner logic, round flow, keyboard controls, scoring, history and theme settings.
+Important functions include JSDoc comments explaining parameters, return values and purpose. This improves readability and makes the code easier to maintain or extend in future.
+Additional helper files are used for automated Jest testing. These helper files allow core logic to be tested separately from the full browser interface.
 
 ### Empty and Invalid Input Handling
 
@@ -580,7 +613,6 @@ The table below records the results of manual regression testing carried out on 
 | Invalid local storage data | Corrupt the saved high-score data in localStorage and reload the page | Game loads safely and high scores reset without console errors | Pass |
 | Custom 404 page | Visit an invalid deployed URL path | Styled 404 page loads and Return to Homepage button works | Pass |
 | Asynchronous round feedback | Select a move and wait for the CPU reveal and result message | CPU move, rule explanation, score, history and sound feedback appear in the correct order without overriding the match result | Pass |
-| Invalid local storage data | Corrupt saved high-score data in localStorage and reload the page | Game loads safely and resets high-score data without console errors | Pass |
 
 
 ### Responsive Testing
@@ -637,6 +669,23 @@ HTML testing included:
 <p align="left">
   <img src="assets/readme/html-validation-pass.png" width="550" alt="Rules Diagram">
 </p>
+
+### Controls
+
+MindGame can be played using mouse, touch or keyboard input.
+
+- Mouse or touch: select a move card.
+- `R` = Rock.
+- `P` = Paper.
+- `S` = Scissors.
+- `L` = Lizard.
+- `K` = Spock.
+- `N` = Next Round or New Game.
+- `1–4` = switch between Play, Rank, Guide and Settings.
+- `E` = toggle sound effects.
+- `M` = toggle background music.
+- `H` = reset high scores.
+- `Escape` = close the mobile navigation menu.
 
 
 #### CSS Validator
@@ -759,7 +808,7 @@ To run the project locally:
 ### Media
 
 - Favicon: Magnific creativity icon. (https://www.magnific.com/icon/creativity_15557951#fromView=search&page=1&position=3&uuid=e59fb263-67ba-4c6e-9098-a6b2811f5241)
-- Background music: [LumiaMusic18 - 'Starfall'](from Newgrounds https://www.newgrounds.com/audio/listen/1577123).
+- Background music: [LumiaMusic18 - "Starfall"](https://www.newgrounds.com/audio/listen/1577123) from Newgrounds.
 - Sound effects: Pixabay sound effects. https://pixabay.com/sound-effects/search/victory/
 - Game graphics and icons: SVG Repo universe icon collection: https://www.svgrepo.com/collection/universe-18/2
 
@@ -783,7 +832,7 @@ To run the project locally:
 
 - Code Institute for the project brief and course material.
 - My tutor for feedback during development.
-- Example student projects used as README structure references.
+- [Forest Pals](https://github.com/Carokyp/Forest-Pals) and [Echoes of the Crystal Cave](https://github.com/Seren-Hughes/crystal-cave) README files were used as structure and documentation references.
 
 ## Licence
 
