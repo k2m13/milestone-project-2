@@ -733,7 +733,7 @@ function chooseComputerMove() {
  *
  * @param {string} playerMove - The move selected by the player.
  * @param {string} computerMove - The move selected by the computer.
- * @returns {"player" | "computer" | "draw"} The round result.
+ * @returns {"player" | "computer" | "draw" | "invalid"} The round result.
  */
 function determineWinner(playerMove, computerMove) {
   if (!isValidMove(playerMove) || !isValidMove(computerMove)) {
@@ -1390,18 +1390,6 @@ function getValidAudioSetting(setting, fallback) {
 // 15. Theme Settings
 // ====================
 
-const savedTheme = localStorage.getItem("selectedTheme") || "theme-default";
-applyTheme(savedTheme);
-const savedGameMode = getValidGameMode(localStorage.getItem("gameMode"));
-gameMode = savedGameMode;
-
-gameModeInputs.forEach(function (input) {
-  input.checked = input.value === savedGameMode;
-});
-
-const savedTheme = getValidTheme(localStorage.getItem("selectedTheme"));
-applyTheme(savedTheme);
-
 /**
  * Applies the selected colour theme and saves the setting to local storage.
  *
@@ -1427,10 +1415,20 @@ function applyTheme(themeName) {
 
 themeInputs.forEach(function (input) {
   input.addEventListener("change", function () {
-    applyTheme(getValidTheme(input.value));
+    applyTheme(input.value);
     playSound(sounds.moveSelected);
   });
 });
+
+const savedGameMode = getValidGameMode(localStorage.getItem("gameMode"));
+gameMode = savedGameMode;
+
+gameModeInputs.forEach(function (input) {
+  input.checked = input.value === savedGameMode;
+});
+
+const savedTheme = getValidTheme(localStorage.getItem("selectedTheme"));
+applyTheme(savedTheme);
 
 const savedSoundSetting = getValidAudioSetting(
   localStorage.getItem("soundSetting"),
