@@ -1,10 +1,24 @@
 # MindGame: Rock Paper Scissors Lizard Spock
 
 <p align="center">
+  <img src="https://img.shields.io/badge/HTML5-validated-orange" alt="HTML5 validated badge">
+  <img src="https://img.shields.io/badge/CSS3-validated-blue" alt="CSS3 validated badge">
+  <img src="https://img.shields.io/badge/JavaScript-tested-yellow" alt="JavaScript tested badge">
+  <img src="https://img.shields.io/badge/Jest-20_tests_passed-brightgreen" alt="Jest tests passed badge">
+  <img src="https://img.shields.io/badge/Lighthouse-100_accessibility-brightgreen" alt="Lighthouse accessibility badge">
+</p>
+
+<p align="center">
   <img src="assets/readme/responsive-design.png" width="900" alt="MindGame responsive design mockup shown on desktop, laptop, tablet and mobile screens">
 </p>
 
-[View Live Website](https://k2m13.github.io/milestone-project-2/)
+<p align="center">
+  <a href="https://k2m13.github.io/milestone-project-2/">Live Website</a> |
+  <a href="#features">Features</a> |
+  <a href="#testing">Testing</a> |
+  <a href="#deployment">Deployment</a> |
+  <a href="#credits">Credits</a>
+</p>
 
 MindGame responsive design shown across desktop, laptop, tablet and mobile screen sizes.
 
@@ -49,6 +63,21 @@ MindGame responsive design shown across desktop, laptop, tablet and mobile scree
 - [Acknowledgements](#acknowledgements)
 - [Licence](#licence)
 
+
+## At a Glance
+
+| Item | Details |
+|---|---|
+| Project | MindGame: Rock Paper Scissors Lizard Spock |
+| Purpose | Interactive browser game with strategy, statistics and replay value |
+| Technologies | HTML5, CSS3, JavaScript, Jest |
+| Deployment | GitHub Pages |
+| Testing | Manual testing, Jest, Lighthouse, WAVE, HTML/CSS/JS validation |
+| Accessibility | Keyboard shortcuts, ARIA support, colour themes, audio controls |
+| Live Site | [View MindGame](https://k2m13.github.io/milestone-project-2/) |
+
+---
+
 ## About
 
 MindGame is an interactive browser-based implementation of Rock Paper Scissors Lizard Spock, developed as part of the Code Institute Level 5 Diploma in Web Application Development. The game is designed for players who want a quick, strategic and accessible challenge that is more varied than traditional Rock Paper Scissors.
@@ -87,14 +116,14 @@ The game is played by two opponents who simultaneously choose one of the five av
 - Scissors decapitates Lizard
 - Lizard eats Paper
 - Paper disproves Spock
-- Spock vaporizes Rock
+- Spock vaporises Rock
 - and Rock crushes Scissors
 
 <p align="center">
   <img src="assets/readme/game-diagram.jpg" width="350" alt="Rules Diagram">
 </p>
 
-## User Experience UX
+## 🧭 User Experience UX
 
 The UX section describes the design process, planning, and the idea behind MindGame, taking into consideration user needs, accessibility and project goals.
 
@@ -307,7 +336,7 @@ The mobile wireframe prioritises vertical stacking and touch-friendly controls. 
 ### Surface Plane
 
 The final visual design uses a futuristic glassmorphism style with soft panels, rounded corners, neon-inspired accent colours and Orbitron headings. This gives the game a distinctive science-fiction identity while keeping the content readable.
-The project includes a default theme, a high contrast theme and a colourblind-friendly theme. These options support accessibility and allow players to customise the visual experience. Typography, spacing, icons and responsive layout rules were refined throughout testing to keep the interface clear across desktop, tablet and mobile screens.
+The project includes a default theme, a high contrast theme and a colour-blind friendly theme. These options support accessibility and allow players to customise the visual experience. Typography, spacing, icons and responsive layout rules were refined throughout testing to keep the interface clear across desktop, tablet and mobile screens.
 
 #### Colour Palette and Typography
 
@@ -356,9 +385,21 @@ The colour palette was designed to support the futuristic game theme while keepi
 | Draw / neutral feedback         |            `#adb5bd`, `#6c757d` | Draw states and neutral feedback                    |
 | White text                      |                       `#ffffff` | Text used on darker or stronger colour backgrounds  |
 
+The table below lists the main colours used in the project. A visual palette screenshot was also included because Markdown previews and GitHub do not automatically render hex values as colour swatches.
+
+<p align="left">
+  <img src="assets/readme/colour-palette.png" width="650" alt="MindGame colour palette showing the main colours used across the three themes and feedback states">
+</p>
+
 The high contrast and colourblind-friendly themes were included to give users more control over readability and visual comfort. Feedback colours are used consistently so that wins, losses and draws are easy to recognise during gameplay.
 
-## Features
+<p align="right">
+  <a href="#mindgame-rock-paper-scissors-lizard-spock">Back to top</a>
+</p>
+
+---
+
+## 🎮 Features
 
 The features in MindGame were developed to support the main user stories: helping first-time visitors understand the game quickly, allowing returning players to track progress, and giving competitive players a reason to replay through statistics, rank progression and higher difficulty.
 
@@ -453,6 +494,11 @@ A custom 404 page was added so that users who visit an incorrect URL path still 
 * Player profile customisation.
 * Additional animations and sound settings.
 
+<p align="right">
+  <a href="#mindgame-rock-paper-scissors-lizard-spock">Back to top</a>
+</p>
+
+---
 
 ## Technologies Used
 
@@ -572,6 +618,12 @@ Commit messages were written to describe each feature or fix clearly, providing 
 | Test local and deployed versions | Yes |
 | Deploy to GitHub Pages | Yes |
 
+<p align="right">
+  <a href="#mindgame-rock-paper-scissors-lizard-spock">Back to top</a>
+</p>
+
+---
+
 ## Accessibility
 
 ### HTML and ARIA Accessibility
@@ -616,14 +668,12 @@ The main keyboard shortcuts are:
 ### Tooltips and Feedback
 
 Interactive elements include helpful tooltip text using `title` attributes. These tooltips provide additional guidance for mouse users, such as identifying keyboard shortcuts for navigation links, move buttons and game controls. The game also provides immediate visual feedback after each round through the battle panel, result message, rule explanation, scoreboard and round history.
-
 Sound effects are enabled by default but only play after user interaction. Background music is disabled by default and must be switched on by the user. This gives players control over audio playback and avoids unexpected background music when the page first loads.
-
 
 ### Auditory Feedback
 Sound effects only play after user interaction, and background music is disabled by default so that users remain in control of audio playback.
 
-## Testing
+## 🧪 Testing
 
 ### Testing Approach
 
@@ -854,8 +904,7 @@ The purpose of automated testing was to reduce the risk of regressions. When new
 ### Automated testing with Jest
 
 Automated testing was implemented using Jest. Core game logic, DOM manipulation, and statistics calculations were tested independently.
-I prioritised testing the core game logic, statistics calculations and DOM updates because these are the most important functions and 
-the most likely to affect gameplay if they fail.
+Testing prioritised the core game logic, statistics calculations and DOM updates because these are the areas most likely to affect gameplay if they fail.
 
 ![Jest](assets/readme/jest-tests-pass.png)
 
@@ -879,9 +928,18 @@ Together, these testing methods provided stronger evidence that MindGame works a
 
 ### Unfixed Bugs
 
-No known unfixed bugs remain at the time of submission.
+No known functionality bugs remain at the time of submission. Navigation, gameplay, scoring, settings, local storage, keyboard shortcuts and deployment testing all passed.
+A small number of minor accessibility warnings were noted during WAVE testing of the high contrast theme. These related to specific interface elements rather than core gameplay functionality. 
+> [!NOTE]
+>The default theme showed no WAVE contrast errors, and the high contrast and colourblind-friendly themes were retained because they still provide users with additional readability options.
 
-## Deployment
+<p align="right">
+  <a href="#mindgame-rock-paper-scissors-lizard-spock">Back to top</a>
+</p>
+
+---
+
+## 🚀 Deployment
 
 ### GitHub Pages Deployment
 
@@ -899,31 +957,82 @@ Live site: [MindGame](https://k2m13.github.io/milestone-project-2/)
 
 ### Local Development
 
-To run the project locally:
+The project can be viewed locally by downloading a copy of the repository and opening the files on your own computer.
 
-1. Clone the repository:
+#### Cloning the Repository
+
+1. Go to the project repository on GitHub.
+
+2. Click the green **Code** button.
+
+3. Copy the repository URL.
+
+4. Open a terminal on your computer.
+
+5. Navigate to the folder where you want to store the project.
+
+6. Run the following command:
 
    ```bash
    git clone https://github.com/k2m13/milestone-project-2.git
    ```
 
-2. Open the project folder in VS Code.
+7. Move into the project folder:
 
-3. Open `index.html` in a browser, or use a local development server.
+   ```bash
+   cd milestone-project-2
+   ```
 
-4. To run automated tests, install dependencies:
+#### Opening the Project
+
+The project can be opened in a code editor such as VS Code.
+
+1. Open VS Code.
+2. Select **File > Open Folder**.
+3. Choose the `milestone-project-2` folder.
+4. Open `index.html` in a browser.
+
+For the best local development experience, use the **Live Server** extension in VS Code:
+
+1. Install the Live Server extension.
+2. Right-click `index.html`.
+3. Select **Open with Live Server**.
+4. The project will open in the browser using a local development server.
+
+#### Running Automated Tests
+
+Automated tests were created using Jest. To run these tests locally, Node.js and npm must be installed on your computer.
+
+1. Install the project dependencies:
 
    ```bash
    npm install
    ```
 
-5. Run the Jest test suite:
+2. Run the test suite:
 
    ```bash
    npm test
    ```
 
-## Credits
+3. The terminal should show that the Jest tests have passed.
+
+#### Forking the Repository
+
+Alternatively, the repository can be forked on GitHub:
+
+1. Open the GitHub repository.
+2. Click **Fork** in the top-right corner.
+3. GitHub will create a copy of the repository in your own account.
+4. You can then clone your fork using the same steps above.
+
+<p align="right">
+  <a href="#mindgame-rock-paper-scissors-lizard-spock">Back to top</a>
+</p>
+
+---
+
+## 📚 Credits
 
 ### Content
 
@@ -933,33 +1042,46 @@ To run the project locally:
 
 ### Media
 
-- Favicon: Magnific creativity icon. (https://www.magnific.com/icon/creativity_15557951#fromView=search&page=1&position=3&uuid=e59fb263-67ba-4c6e-9098-a6b2811f5241)
-- Background music: [LumiaMusic18 - "Starfall"](https://www.newgrounds.com/audio/listen/1577123) from Newgrounds.
-- Sound effects: Pixabay sound effects. https://pixabay.com/sound-effects/search/victory/
-- Game graphics and icons: SVG Repo universe icon collection: https://www.svgrepo.com/collection/universe-18/2
-- Fonts: [Orbitron](https://fonts.google.com/specimen/Orbitron) and [Inter](https://fonts.google.com/specimen/Inter) from Google Fonts.
+* Favicon: [Magnific creativity icon](https://www.magnific.com/icon/creativity_15557951#fromView=search&page=1&position=3&uuid=e59fb263-67ba-4c6e-9098-a6b2811f5241) was used as the browser favicon.
+* Background music: [LumiaMusic18 - "Starfall"](https://www.newgrounds.com/audio/listen/1577123) from Newgrounds was used as the optional background music track.
+* Sound effects: [Pixabay Sound Effects](https://pixabay.com/sound-effects/) were used for move selection, round results, match results and new-game feedback.
+* Game graphics and icons: [SVG Repo universe icon collection](https://www.svgrepo.com/collection/universe-18/) was used for space-themed interface icons and game graphics.
+* Fonts: [Orbitron](https://fonts.google.com/specimen/Orbitron) and [Inter](https://fonts.google.com/specimen/Inter) from Google Fonts were used for headings, interface text and body text.
 
 ### Code
 
 - The project code was written by Kamil Sterniczuk.
-- Jest was used for automated JavaScript testing.
-- JSHint and Esprima were used for JavaScript validation.
-- CSS Portal was used for CSS validation.
-- W3C Nu HTML Checker was used for HTML validation.
+- [Jest](https://jestjs.io/docs/getting-started) was used to write and run automated tests for JavaScript logic.
+- [JSHint](https://jshint.com/docs/) was used to check JavaScript code quality.
+- [Esprima](https://esprima.org/) was used to confirm JavaScript syntax validity.
+- [W3C Nu HTML Checker](https://validator.w3.org/nu/) was used to validate HTML.
+- [CSS Portal CSS Validator](https://www.cssportal.com/css-validator/) was used to validate CSS.
 
 ### Tools
 
-- Git and GitHub for version control.
-- GitHub Pages for deployment.
-- Chrome DevTools for responsive testing and debugging.
-- VS Code for development.
+- [Git](https://git-scm.com/) was used for version control.
+- [GitHub](https://github.com/) was used to store the repository and manage commits.
+- [GitHub Pages](https://pages.github.com/) was used to deploy the live project.
+- [VS Code](https://code.visualstudio.com/) was used as the main code editor.
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/) was used for debugging, responsive testing, layout inspection, console checks and localStorage testing.
+- [Jest](https://jestjs.io/docs/getting-started) was used for automated JavaScript testing.
+- [JSHint](https://jshint.com/docs/) was used for JavaScript code quality checks.
+- [Esprima](https://esprima.org/) was used for JavaScript syntax validation.
+- [W3C Nu HTML Checker](https://validator.w3.org/nu/) was used for HTML validation.
+- [CSS Portal CSS Validator](https://www.cssportal.com/css-validator/) was used for CSS validation.
+- [PageSpeed Insights](https://pagespeed.web.dev/) / Lighthouse was used for performance, accessibility, best practices and SEO testing.
+- [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/) was used for accessibility and contrast checking.
 - Balsamiq-style wireframes were used to support responsive layout planning.
 
 ## Acknowledgements
 
 - Code Institute for the project brief and course material.
-- My tutor for feedback during development.
+- My tutor, Miguel Ortego Legorreta, for feedback during development.
 - [Forest Pals](https://github.com/Carokyp/Forest-Pals) and [Echoes of the Crystal Cave](https://github.com/Seren-Hughes/crystal-cave) README files were used as structure and documentation references.
+
+<p align="right">
+  <a href="#mindgame-rock-paper-scissors-lizard-spock">Back to top</a>
+</p>
 
 ## Licence
 
@@ -984,3 +1106,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+<p align="right">
+  <a href="#mindgame-rock-paper-scissors-lizard-spock">Back to top</a>
+</p>
