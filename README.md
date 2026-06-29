@@ -286,6 +286,11 @@ The project includes a default theme, a high contrast theme and a colourblind-fr
 - Local storage for rank progress, high scores and selected settings.
 - Custom 404 page with a clear route back to the homepage.
 
+#### Sound Effects and Background Music
+
+Sound effects are enabled by default but only play after user interaction. Background music is disabled by default and must be switched on by the user.
+This gives players audio feedback during gameplay while avoiding unexpected autoplay music when the page first loads.
+
 ### Future Features
 
 - Online multiplayer.
@@ -472,6 +477,46 @@ The navigation is placed inside a `nav` element with an accessible label. The mo
 The battle panel uses `aria-live="polite"` so that round feedback can be announced to assistive technology users when the result changes. `aria-atomic="true"` was added so that the updated battle feedback is treated as a complete message rather than disconnected fragments.
 The audio controls use native checkbox inputs with `role="switch"` to communicate that they behave like on/off switches. Additional `aria-label` attributes were added so that screen readers can identify the Sound Effects and Background Music controls clearly.
 Decorative icons use empty `alt=""` text where the surrounding text already provides the meaning. This avoids unnecessary repetition for screen reader users. Visual-only hamburger menu lines use `aria-hidden="true"` because the button itself already has an accessible label.
+
+### Visual Accessibility and User Control
+
+MindGame includes additional colour theme options to support different visual preferences and accessibility needs. In addition to the default theme, users can select a high contrast theme for stronger readability and a visually impaired friendly theme using a more accessible blue, orange and purple palette. These options can be changed from the Settings screen and are saved in local storage so that the selected theme remains active when the user returns to the game.
+
+<p align="left">
+  <img src="assets/readme/high-contrast-theme.png" width="550" alt="MindGame high contrast theme shown on the Settings screen">
+</p>
+
+<p align="left">
+  <img src="assets/readme/colourblind-theme.png" width="550" alt="MindGame visually impaired friendly colour theme shown on the Settings screen">
+</p>
+
+### Keyboard Navigation and SPA Structure
+
+The application is built as a single-page application with separate Play, Rank, Guide and Settings screens. Users can move between these screens without loading a new page. Keyboard shortcuts were added to support faster navigation and gameplay on desktop or tablet devices with an external keyboard.
+
+The main keyboard shortcuts are:
+
+* `1–4` to switch between Play, Rank, Guide and Settings.
+* `R`, `P`, `S`, `L` and `K` to choose Rock, Paper, Scissors, Lizard or Spock.
+* `N` to move to the next round or start a new game after a match.
+* `E` to toggle sound effects.
+* `M` to toggle background music.
+* `H` to reset high scores.
+* `Escape` to close the mobile navigation menu.
+
+<p align="left">
+  <img src="assets/readme/keyboard-shortcuts.png" width="550" alt="MindGame guide screen showing keyboard shortcuts">
+</p>
+
+### Tooltips and Feedback
+
+Interactive elements include helpful tooltip text using `title` attributes. These tooltips provide additional guidance for mouse users, such as identifying keyboard shortcuts for navigation links, move buttons and game controls. The game also provides immediate visual feedback after each round through the battle panel, result message, rule explanation, scoreboard and round history.
+
+Sound effects are enabled by default but only play after user interaction. Background music is disabled by default and must be switched on by the user. This gives players control over audio playback and avoids unexpected background music when the page first loads.
+
+
+### Auditory Feedback
+Sound effects only play after user interaction, and background music is disabled by default so that users remain in control of audio playback.
 
 ## Testing
 
