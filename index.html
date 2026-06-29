@@ -61,7 +61,7 @@
 
     <main class="app-container" aria-label="MindGame application">
         <!-- Play screen: main interactive game area -->
-        <section id="play-screen" class="screen active-screen">
+        <div id="play-screen" class="screen active-screen">
             <!-- Move selection buttons -->
             <section id="play" class="move-panel panel play-grid-moves">
                 <h2 class="panel-title">Choose Your Move</h2>
@@ -173,9 +173,9 @@
 
             </section>
 
-        </section>
+        </div>
         <!-- Rank screen: saved player statistics, achievements and high scores -->
-        <section id="rank-screen" class="screen">
+        <div id="rank-screen" class="screen">
 
             <section class="rank-panel panel">
 
@@ -188,7 +188,7 @@
 
                 <div class="rank-layout">
 
-                    <article class="rank-card rank-card--achievement">
+                    <div class="rank-card rank-card--achievement">
                         <img src="assets/images/icons/ranks/rank-beginner.svg" alt="" class="rank-badge-icon"
                             id="rank-badge-icon">
 
@@ -201,35 +201,35 @@
                         <p class="rank-description" id="rank-description">
                             Win matches to unlock higher achievement titles.
                         </p>
-                        <div class="rank-ladder" aria-label="Achievement rank ladder">
-                            <div class="rank-ladder-item">
+                        <div class="rank-ladder" role="list" aria-label="Achievement rank ladder">
+                            <div class="rank-ladder-item" role="listitem">
                                 <span>Beginner</span>
                                 <strong>0 wins</strong>
                             </div>
 
-                            <div class="rank-ladder-item">
+                            <div class="rank-ladder-item" role="listitem">
                                 <span>Competitor</span>
                                 <strong>5 wins</strong>
                             </div>
 
-                            <div class="rank-ladder-item">
+                            <div class="rank-ladder-item" role="listitem">
                                 <span>Veteran</span>
                                 <strong>10 wins</strong>
                             </div>
 
-                            <div class="rank-ladder-item">
+                            <div class="rank-ladder-item" role="listitem">
                                 <span>Grand Strategist</span>
                                 <strong>25 wins</strong>
                             </div>
 
-                            <div class="rank-ladder-item">
+                            <div class="rank-ladder-item" role="listitem">
                                 <span>Mind Master</span>
                                 <strong>50 wins</strong>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
-                    <div class="rank-grid" aria-label="Player statistics">
+                    <div class="rank-grid" role="group" aria-label="Player statistics">
                         <div class="rank-card">
                             <p class="rank-label">Matches Won</p>
                             <p class="rank-value" id="matches-won">0</p>
@@ -275,14 +275,15 @@
 
             </section>
 
-        </section>
+        </div>
         <!-- Guide screen: rules, features and keyboard access -->
-        <section id="rules-screen" class="screen">
+        <div id="rules-screen" class="screen">
             <section class="rules-panel panel">
                 <h2 class="panel-title">Rules</h2>
 
                 <p class="panel-subtitle">
-                    Each move defeats two other moves and loses to two others. First to 8 wins. After 15 rounds, high score wins.
+                    Each move defeats two other moves and loses to two others. First to 8 wins. After 15 rounds, high
+                    score wins.
                 </p>
 
                 <div class="rules-grid">
@@ -457,9 +458,9 @@
                     </article>
                 </div>
             </section>
-        </section>
+        </div>
         <!-- Settings screen: difficulty, visual theme and audio controls -->
-        <section id="settings-screen" class="screen">
+        <div id="settings-screen" class="screen">
             <section class="settings-panel panel">
                 <h2 class="panel-title">Settings</h2>
 
@@ -554,7 +555,7 @@
                     </div>
                 </div>
             </section>
-        </section>
+        </div>
     </main>
     <!-- Main JavaScript file for game logic, navigation, settings and local storage -->
     <script src="assets/js/script.js"></script>

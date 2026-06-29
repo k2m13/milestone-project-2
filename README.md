@@ -92,7 +92,7 @@ The game is played by two opponents who simultaneously choose one of the five av
 - and Rock crushes Scissors
 
 <p align="center">
-  <img src="assets/readme/RockPaperScissorsLizardSpock.jpg" width="350" alt="Rules Diagram">
+  <img src="assets/readme/game-diagram.jpg" width="350" alt="Rules Diagram">
 </p>
 
 ## User Experience UX
@@ -538,7 +538,9 @@ HTML testing included:
 - Running the HTML through a validator and correcting any reported issues.
 - Testing the structure on desktop, tablet and mobile screen sizes to ensure content remained readable and usable.
 
-### HTML Validator
+<p align="left">
+  <img src="assets/readme/html-validation-pass.png" width="550" alt="Rules Diagram">
+</p>
 
 
 #### CSS Validator
@@ -555,6 +557,13 @@ JavaScript was checked using JSHint and Esprima. JSHint was configured for ES8 a
 
 | JavaScript Validation | JSHint and Esprima | Passed | JSHint showed no remaining warnings after ES8 configuration. Esprima confirmed that the code is syntactically valid. |
 
+<p align="left">
+  <img src="assets/readme/jshint-validation-pass.png" width="550" alt="Rules Diagram">
+</p>
+
+<p align="left">
+  <img src="assets/readme/esprima-validation-pass.png" width="550" alt="Rules Diagram">
+</p>
 
 ### Automated Testing
 
@@ -578,7 +587,7 @@ Automated testing was implemented using Jest. Core game logic, DOM manipulation,
 I prioritised testing the core game logic, statistics calculations and DOM updates because these are the most important functions and 
 the most likely to affect gameplay if they fail.
 
-![Jest](assets/readme/Screenshot%202026-06-09%20at%2000.08.29.png)
+![Jest](assets/readme/jest-tests-pass.png)
 
 ### Why Both Testing Methods Were Needed
 
