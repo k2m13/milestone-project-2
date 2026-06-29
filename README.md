@@ -254,12 +254,24 @@ The following features were considered but are outside the scope of the current 
 ### Structure Plane
 
 MindGame is structured as a single-page application with four main screens: Play, Rank, Guide and Settings. The navigation is consistent across the application so that users can move between gameplay, progress tracking, instructions and preferences without leaving the main experience.
-
 The Play screen is the main interaction area. It prioritises the scoreboard, battle panel, move selection, round history and statistics. This allows players to make a move, understand the result and continue to the next round without needing to search for controls.
-
 The Rank screen gives returning and competitive players a reason to continue playing by showing achievement progress, matches won and lost, highest streak, favourite move and saved high scores.
-
 The Guide screen supports first-time users by explaining the rules, winning combinations and keyboard shortcuts. The Settings screen gives users control over game mode, colour theme, sound effects and background music.
+
+#### User Flow
+
+The main user flow was designed to keep gameplay simple and direct.
+
+1. The user lands on the Play screen.
+2. The user selects a move using mouse, touch or keyboard input.
+3. The game shows the player's move and briefly delays the computer reveal.
+4. The computer move is displayed.
+5. The result, rule explanation, score, statistics and round history are updated.
+6. The user selects Next Round to continue.
+7. When the match ends, the Next Round button changes to New Game.
+8. Returning users can visit the Rank screen to view progress or the Settings screen to change difficulty, theme and audio preferences.
+
+This flow was chosen so that first-time users can start playing immediately, while returning and competitive users can access deeper features such as rank progression, statistics and Hard Mode.
 
 ### Skeleton Plane
 
@@ -300,6 +312,13 @@ The project includes a default theme, a high contrast theme and a colourblind-fr
 
 The visual design uses a futuristic palette with neon-inspired accent colours, soft panel backgrounds and strong contrast between text and interface elements. The default theme was designed to feel bright and game-like, while the high contrast and visually impaired friendly themes provide alternatives for users who need clearer separation between content and background.
 The project uses two main typefaces. Orbitron is used for headings and game-style interface elements to support the science-fiction theme. Inter is used for body text and supporting information because it is clean, readable and suitable for longer interface text.
+
+#### Design Choices
+
+The visual design was created to support the science-fiction theme of Rock Paper Scissors Lizard Spock while keeping the interface clear and usable. Glass-style panels, rounded corners, neon-inspired accents and space-themed icons were used to give the game a distinctive identity.
+The interface uses strong visual hierarchy so that the most important gameplay elements are easy to find: move choices, battle feedback, score, round history and statistics. The Play screen was designed as a dashboard on larger screens and as a stacked layout on smaller screens.
+Colour themes were added to give users more control over readability. The default theme supports the main visual identity, while the high contrast and visually impaired friendly themes provide alternatives for users who need stronger separation between text, panels and background.
+Orbitron was used for headings and game-style interface elements because it matches the futuristic theme. Inter was used for body text because it is clean, readable and suitable for longer interface information.
 
 ## Features
 
@@ -495,6 +514,26 @@ Commit messages were written to describe each feature or fix clearly, providing 
   <img src="assets/readme/git-commit-history.png" width="650" alt="Git commit history showing regular project commits">
 </p>
 
+### Development Plan Completion
+
+| Development Area | Completed |
+|---|---|
+| Plan game concept, target users and user stories | Yes |
+| Create responsive wireframes | Yes |
+| Build HTML structure for Play, Rank, Guide and Settings screens | Yes |
+| Add responsive CSS layout and visual themes | Yes |
+| Implement core JavaScript game logic | Yes |
+| Add Casual Mode and Hard Mode | Yes |
+| Add score, statistics, round history and rank progression | Yes |
+| Add local storage for progress, high scores and settings | Yes |
+| Add sound effects and user-controlled background music | Yes |
+| Add keyboard shortcuts and accessibility improvements | Yes |
+| Add custom 404 page | Yes |
+| Validate HTML, CSS and JavaScript | Yes |
+| Add automated Jest testing | Yes |
+| Test local and deployed versions | Yes |
+| Deploy to GitHub Pages | Yes |
+
 ## Accessibility
 
 ### HTML and ARIA Accessibility
@@ -627,15 +666,16 @@ Responsive testing was carried out using Chrome DevTools and the deployed GitHub
 | Tablet 1024 × 768  | Landscape   | Layout remained balanced with no major empty spacing         |
 | Mobile 390 × 844   | Portrait    | Layout stacked correctly and buttons remained touch-friendly |
 
-### Browser Testing
+### Real Device Testing
 
-Browser testing was carried out to check that the deployed project worked consistently in modern browsers.
+The deployed project was also checked on physical devices where available.
 
-| Browser        | Result |
-| -------------- | ------ |
-| Google Chrome  | Passed |
-| Safari         | Passed |
-| Microsoft Edge | Passed |
+| Device | Browser | Result |
+|---|---|---|
+| MacBook Pro | Chrome | Passed |
+| MacBook Pro | Safari | Passed |
+| iPhone 13 mini | Safari | Passed |
+| iPad Air | Safari | Passed |
 
 ### Accessibility Testing
 
@@ -802,8 +842,11 @@ To run the project locally:
 
 ### Content
 
-- Rock Paper Scissors Lizard Spock rules are based on the commonly known expanded version of Rock Paper Scissors.
-- README structure was informed by Code Institute project requirements and example student README files.
+### Content
+
+- The Rock Paper Scissors Lizard Spock rules are based on the commonly known expanded version of Rock Paper Scissors.
+- README structure was informed by Code Institute project requirements and example student README files, including Forest Pals, Echoes of the Crystal Cave and my previous Nokia E72 milestone project.
+- All written explanations, feature descriptions, UX notes, testing notes and deployment documentation were written specifically for this project.
 
 ### Media
 
