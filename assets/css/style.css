@@ -2140,15 +2140,16 @@ button,
 }
 
 .error-container {
-  min-height: calc(100vh - 140px);
-  display: grid;
-  place-items: center;
-  padding: 1rem 0;
+  min-height: calc(100svh - 7rem);
+  display: flex;
+  align-items: stretch;
+  padding: 0.5rem 0 0.75rem;
 }
 
 .error-panel {
   width: 100%;
-  min-height: clamp(430px, 58vh, 620px);
+  flex: 1;
+  min-height: 0;
 
   text-align: center;
 
@@ -2192,4 +2193,54 @@ button,
 .error-button {
   text-decoration: none;
   margin-top: 0.5rem;
+}
+
+/* 404 responsive spacing */
+@media (max-width: 900px) {
+  .error-container {
+    min-height: calc(100svh - 7.5rem);
+    padding: 0.45rem 0 0.75rem;
+  }
+
+  .error-panel {
+    gap: 0.75rem;
+    padding: clamp(1.1rem, 5vw, 2rem);
+  }
+
+  .error-illustration {
+    width: clamp(120px, 28vw, 190px);
+    height: clamp(120px, 28vw, 190px);
+    transform: none;
+  }
+
+  .error-text {
+    max-width: 34rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .error-container {
+    min-height: calc(100svh - 7rem);
+  }
+
+  .error-panel {
+    gap: 0.7rem;
+  }
+
+  .error-code {
+    font-size: clamp(3.5rem, 18vw, 5.6rem);
+  }
+
+  .error-title {
+    font-size: clamp(1.1rem, 5vw, 1.6rem);
+  }
+
+  .error-text {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .error-button {
+    width: min(100%, 21rem);
+  }
 }
