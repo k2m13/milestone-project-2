@@ -8,9 +8,6 @@
 
 MindGame responsive design shown across desktop, laptop, tablet and mobile screen sizes.
 
-MindGame is a browser-based implementation of Rock, Paper, Scissors, Lizard, Spock, developed as part of the Code Institute Level 5 Diploma in Web Application Development. The project combines strategic gameplay, modern web technologies, and a futuristic user interface inspired by glassmorphism and science-fiction aesthetics.
-The application allows players to compete against a computer opponent while tracking scores, analysing gameplay patterns, and developing winning strategies.
-
 ## Table of Contents
 
 - [About](#about)
@@ -465,7 +462,7 @@ This supports a more complete and polished deployment on GitHub Pages.
 
 https://k2m13.github.io/milestone-project-2/broken-link
 
-### Accessibility
+## Accessibility
 
 ### HTML and ARIA Accessibility
 
@@ -476,7 +473,7 @@ The battle panel uses `aria-live="polite"` so that round feedback can be announc
 The audio controls use native checkbox inputs with `role="switch"` to communicate that they behave like on/off switches. Additional `aria-label` attributes were added so that screen readers can identify the Sound Effects and Background Music controls clearly.
 Decorative icons use empty `alt=""` text where the surrounding text already provides the meaning. This avoids unnecessary repetition for screen reader users. Visual-only hamburger menu lines use `aria-hidden="true"` because the button itself already has an accessible label.
 
-### Testing
+## Testing
 
 ### Testing Approach
 
@@ -596,7 +593,20 @@ Automated testing helped confirm that the JavaScript logic produced the correct 
 Together, these testing methods provided stronger evidence that MindGame works as intended across its main features, devices and user interactions.
 
 ### Bugs Found and Fixed
+
+| Bug | Cause | Fix | Status |
+|---|---|---|---|
+| Match continued after the intended match limit | Match-ending state was not stopping further input reliably | Added match-end logic and disabled move buttons when the match finishes | Fixed |
+| Final match feedback was sometimes replaced by round feedback | Round-end feedback could still run after the match had ended | Added checks to prevent round sounds and messages from overriding match-end feedback | Fixed |
+| Scoreboard and stats panels were uneven on compact screens | Extra spacing affected the scoreboard panel in responsive layouts | Removed unnecessary spacing and refined compact layout rules | Fixed |
+| CSS validation failed for `min-height: auto` | `auto` is not a valid value for `min-height` | Removed or replaced invalid CSS values | Fixed |
+| Tablet portrait layout had excessive empty space | The Play screen layout did not suit portrait tablet dimensions | Added responsive layout rules for portrait tablet screens | Fixed |
+| 404 page had excessive spacing on some devices | The 404 panel was centred inside the available screen height instead of stretching naturally | Updated the 404 container and panel layout | Fixed |
+| HTML validation showed ARIA and section warnings | Some ARIA labels were used on generic `div` elements and some structural containers used `section` unnecessarily | Updated the HTML structure and ARIA roles so the document passed validation | Fixed |
+
 ### Unfixed Bugs
+
+No known unfixed bugs remain at the time of submission.
 
 
 ### 404
@@ -604,7 +614,7 @@ Together, these testing methods provided stronger evidence that MindGame works a
 404 page tested by visiting an invalid deployed URL path and confirming that the custom 404 page loads, displays the themed astronaut illustration, 
 and provides a working return-to-homepage button.
 
-### Credits
+## Credits
 
 Favicon from Magnific(https://www.magnific.com/icon/creativity_15557951#fromView=search&page=1&position=3&uuid=e59fb263-67ba-4c6e-9098-a6b2811f5241)
 
@@ -613,15 +623,82 @@ Background music: LumiaMusic18 - 'Starfall' https://www.newgrounds.com/audio/lis
 Sounds: https://pixabay.com/sound-effects/search/victory/
 Graphics: https://www.svgrepo.com/collection/universe-18/2
 
-### Deployment
+## Deployment
 
-#### Deployment to Gitbub
+### GitHub Pages Deployment
 
-### How to Run This Project Locally
+The project was deployed using GitHub Pages.
 
-### Acknowledgements
+1. The project was created and version controlled using Git and GitHub.
+2. The repository was pushed to GitHub.
+3. In the GitHub repository, Settings was opened.
+4. Pages was selected from the left-hand menu.
+5. The `main` branch was selected as the deployment source.
+6. The root folder was selected.
+7. GitHub Pages built and published the project.
 
-### Licence
+Live site: [MindGame](https://k2m13.github.io/milestone-project-2/)
+
+### Local Development
+
+To run the project locally:
+
+1. Clone the repository:
+
+    ```bash
+   git clone https://github.com/k2m13/milestone-project-2.git
+
+2. Open the project folder in VS Code.
+3. Open `index.html` in a browser, or use a local development server.
+
+4. To run automated tests, install dependencies:
+
+    ```bash
+    npm install
+    ```
+5. Run the Jest test suite:
+
+    ```bash
+    npm test
+    ```
+
+## Credits
+
+### Content
+
+- Rock Paper Scissors Lizard Spock rules are based on the commonly known expanded version of Rock Paper Scissors.
+- README structure was informed by Code Institute project requirements and example student README files.
+
+### Media
+
+- Favicon: Magnific creativity icon. (https://www.magnific.com/icon/creativity_15557951#fromView=search&page=1&position=3&uuid=e59fb263-67ba-4c6e-9098-a6b2811f5241)
+- Background music: [LumiaMusic18 - 'Starfall'](from Newgrounds https://www.newgrounds.com/audio/listen/1577123).
+- Sound effects: Pixabay sound effects. https://pixabay.com/sound-effects/search/victory/
+- Game graphics and icons: SVG Repo universe icon collection: https://www.svgrepo.com/collection/universe-18/2
+
+### Code
+
+- The project code was written by Kamil Sterniczuk.
+- Jest was used for automated JavaScript testing.
+- JSHint and Esprima were used for JavaScript validation.
+- CSS Portal was used for CSS validation.
+- W3C Nu HTML Checker was used for HTML validation.
+
+### Tools
+
+- Git and GitHub for version control.
+- GitHub Pages for deployment.
+- Chrome DevTools for responsive testing and debugging.
+- VS Code for development.
+- Balsamiq-style wireframes were used to support responsive layout planning.
+
+## Acknowledgements
+
+- Code Institute for the project brief and course material.
+- My tutor for feedback during development.
+- Example student projects used as README structure references.
+
+## Licence
 
 MIT Licence
 
