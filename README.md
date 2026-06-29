@@ -432,6 +432,11 @@ The Next Round button is disabled until a valid round has been played, preventin
 High-score name input is also handled defensively. If the user cancels the prompt, enters an empty value, or enters only spaces, the game uses a safe fallback name rather than saving empty data. Long names are shortened before being saved.
 Local storage data is checked when high scores are loaded. If saved high-score data is missing, empty or invalid, the game resets the high-score list safely instead of causing a JavaScript error.
 
+### Asynchronicity and Timing Control
+
+MindGame uses asynchronous behaviour to improve the feel of gameplay. When a player selects a move, the game briefly delays the computer reveal so that the result does not appear instantly. This creates a clearer sense of round progression and makes the interaction feel more natural.
+Timing control was important because several parts of the game can update at the end of a round: the computer move, result message, rule explanation, score, sound effects, round history and match-ending state. To prevent conflicting feedback, the game checks whether the match has ended before continuing with normal round feedback. This prevents round sounds or messages from overriding the final match result.
+The game also uses defensive checks around stored data and user input. High-score data is loaded from local storage safely, and invalid or empty data is handled without breaking the application. This helps prevent timing or state problems when saved browser data is missing, corrupted or changed unexpectedly.
 
 ## Development Cycle and Version Control
 
@@ -715,6 +720,8 @@ The table below records the results of manual regression testing carried out on 
 | Empty high-score name | Cancel or submit an empty high-score prompt | Empty name is not saved and fallback handling is applied | Pass |
 | Invalid local storage data | Corrupt the saved high-score data in localStorage and reload the page | Game loads safely and high scores reset without console errors | Pass |
 | Custom 404 page | Visit an invalid deployed URL path | Styled 404 page loads and Return to Homepage button works | Pass |
+| Asynchronous round feedback | Select a move and wait for the CPU reveal and result message | CPU move, rule explanation, score, history and sound feedback appear in the correct order without overriding the match result | Pass |
+| Invalid local storage data | Corrupt saved high-score data in localStorage and reload the page | Game loads safely and resets high-score data without console errors | Pass |
 
 
 ### Validator Testing
