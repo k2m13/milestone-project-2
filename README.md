@@ -1,3 +1,75 @@
+# MindGame: Rock Paper Scissors Lizard Spock
+
+<p align="center">
+  <img src="assets/readme/responsive-design.png" width="900" alt="MindGame responsive design mockup shown on desktop, laptop, tablet and mobile screens">
+</p>
+
+[View Live Website](https://k2m13.github.io/milestone-project-2/)
+
+MindGame responsive design shown across desktop, laptop, tablet and mobile screen sizes.
+
+## About
+
+MindGame is an interactive browser-based implementation of Rock Paper Scissors Lizard Spock, developed as part of the Code Institute Level 5 Diploma in Web Application Development. The game is designed for players who want a quick, strategic and accessible challenge that is more varied than traditional Rock Paper Scissors.
+
+Players choose between five moves: Rock, Paper, Scissors, Lizard and Spock. Each move defeats two other moves and loses to two other moves. The first player to reach 8 wins takes the match. If neither player reaches 8 wins after 15 rounds, the player with the highest score wins.
+
+The project includes two game modes. Casual Mode gives the computer a random move each round, while Hard Mode analyses the player's most frequently selected move and attempts to counter it. This gives players a choice between relaxed gameplay and a more strategic challenge.
+
+MindGame also includes live score tracking, round history, win-rate statistics, rank progression, high scores, keyboard shortcuts, sound effects, background music, colour themes and local storage.
+
+## Key Features
+
+- Rock Paper Scissors Lizard Spock gameplay
+- Casual Mode and Hard Mode
+- First-to-8 match system with 15-round maximum
+- Live scoreboard, win rate, streak and round history
+- Rank progression and high score storage
+- Sound effects and background music controls
+- Keyboard, mouse and touch support
+- High contrast and colourblind-friendly themes
+- Responsive layout for desktop, tablet and mobile
+- Custom 404 page
+
+## Table of Contents
+
+- [About](#about)
+- [Key Features](#key-features)
+- [Game Concept and Rules](#game-concept-and-rules)
+- [User Experience UX](#user-experience-ux)
+  - [Strategy Plane](#strategy-plane)
+  - [Scope Plane](#scope-plane)
+  - [Structure Plane](#structure-plane)
+  - [Skeleton Plane](#skeleton-plane)
+  - [Surface Plane](#surface-plane)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+  - [Future Features](#future-features)
+- [Technologies Used](#technologies-used)
+- [Code Quality and Interesting Solutions](#code-quality-and-interesting-solutions)
+- [Accessibility](#accessibility)
+- [Testing](#testing)
+  - [Testing Approach](#testing-approach)
+  - [Manual Testing](#manual-testing)
+  - [Responsive Testing](#responsive-testing)
+  - [Browser Testing](#browser-testing)
+  - [Accessibility Testing](#accessibility-testing)
+  - [Validator Testing](#validator-testing)
+  - [Automated Testing](#automated-testing)
+  - [Bugs Found and Fixed](#bugs-found-and-fixed)
+  - [Unfixed Bugs](#unfixed-bugs)
+- [Deployment](#deployment)
+  - [GitHub Pages Deployment](#github-pages-deployment)
+  - [Local Development](#local-development)
+- [Credits](#credits)
+  - [Content](#content)
+  - [Media](#media)
+  - [Code](#code)
+  - [Tools](#tools)
+- [Acknowledgements](#acknowledgements)
+- [Licence](#licence)
+
+
 # Mindgame: Rock • Paper • Scissors • Lizard • Spock
 * [Introduction](#introduction)
 * [Idea](#idea)
@@ -61,7 +133,7 @@ MindGame is a browser-based implementation of Rock, Paper, Scissors, Lizard, Spo
 The application allows players to compete against a computer opponent while tracking scores, analysing gameplay patterns, and developing winning strategies.
 
 
-## Idea
+## Game Concept and Rules
 
 Rock, Paper, Scissors, Lizard, Spock is an extension of the traditional game of Rock, Paper, Scissors, popularised by the television series The Big Bang Theory. Two additional hand signs are introduced: Lizard (represented by a hand puppet gesture) and Spock (represented by the Vulcan salute).
 
@@ -82,7 +154,7 @@ The game is played by two opponents who simultaneously choose one of the five av
   <img src="assets/readme/RockPaperScissorsLizardSpock.jpg" width="350" alt="Rules Diagram">
 </p>
 
-1. ## User Experience 
+## User Experience UX
 
 The UX section describes the design process, planning, and the idea behind Mindgame, taking into consideration user needs, accessibility and project goals.
 
@@ -211,9 +283,8 @@ The following features were considered but are outside the scope of the current 
 
 >While the core project focuses on creating a polished and accessible implementation of Rock, Paper, Scissors, Lizard, Spock, the longer-term vision for MindGame is to evolve into a strategic browser game that analyses player behaviour and adapts to individual playing styles.
 
-Favicon from Magnific(https://www.magnific.com/icon/creativity_15557951#fromView=search&page=1&position=3&uuid=e59fb263-67ba-4c6e-9098-a6b2811f5241)
 
-3. ## Techonlogies Used
+## Technologies Used
 
 ### HTML5
 
@@ -378,6 +449,8 @@ Players now progress:
 Although MindGame is a single-page application with hash-based navigation, a custom 404 page has been included to improve the user experience when visitors enter an incorrect URL path, follow a broken link, or try to access a page that does not exist.
 This supports a more complete and polished deployment on GitHub Pages.
 
+https://k2m13.github.io/milestone-project-2/broken-link
+
 ### Accessibility
 
 ### HTML and ARIA Accessibility
@@ -389,7 +462,7 @@ The battle panel uses `aria-live="polite"` so that round feedback can be announc
 The audio controls use native checkbox inputs with `role="switch"` to communicate that they behave like on/off switches. Additional `aria-label` attributes were added so that screen readers can identify the Sound Effects and Background Music controls clearly.
 Decorative icons use empty `alt=""` text where the surrounding text already provides the meaning. This avoids unnecessary repetition for screen reader users. Visual-only hamburger menu lines use `aria-hidden="true"` because the button itself already has an accessible label.
 
-4. ## Testing
+## Testing
 
 ### HTML Testing
 
@@ -501,14 +574,17 @@ the most likely to affect gameplay if they fail.
 404 page tested by visiting an invalid deployed URL path and confirming that the custom 404 page loads, displays the themed astronaut illustration, 
 and provides a working return-to-homepage button.
 
-6. ## Credits
+## Credits
+
+Favicon from Magnific(https://www.magnific.com/icon/creativity_15557951#fromView=search&page=1&position=3&uuid=e59fb263-67ba-4c6e-9098-a6b2811f5241)
+
 
 Background music: LumiaMusic18 - 'Starfall' https://www.newgrounds.com/audio/listen/1577123
 Sounds: https://pixabay.com/sound-effects/search/victory/
 Graphics: https://www.svgrepo.com/collection/universe-18/2
 
 
-7. ## Licence
+## Licence
 
 MIT Licence
 
