@@ -1,7 +1,7 @@
 const {
   calculateWinRate,
   updateStreak,
-} = require("../assets/js/statsLogic");
+} = require("../assets/js/stats-logic");
 
 test("calculateWinRate returns 50 percent", () => {
   expect(calculateWinRate(5, 10)).toBe(50);

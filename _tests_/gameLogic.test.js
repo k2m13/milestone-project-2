@@ -2,7 +2,7 @@ const {
   moveList,
   getComputerMove,
   determineWinner,
-} = require("../assets/js/gameLogic");
+} = require("../assets/js/game-logic");
 
 test("getComputerMove returns a valid move", () => {
   const move = getComputerMove();
